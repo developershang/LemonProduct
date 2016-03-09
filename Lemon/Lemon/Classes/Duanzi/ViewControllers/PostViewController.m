@@ -53,6 +53,9 @@
     user.img = [UIImage imageNamed:@"Duanzi.png"];
     AVUser *auser = [Dem_UserData shareInstance].user;
     
+
+//    [Dem_LeanMethod addFpuserWithUser:auser fpuser:user];
+
     
     [Dem_LeanMethod addFpuserWithUser:auser fpuser:user block:^(BOOL save) {
         
@@ -72,6 +75,7 @@
         [self presentViewController:alert animated:YES completion:nil];
         
     }];
+
     NSLog(@"-----%@--- %@",user.content,auser);
 }
 }

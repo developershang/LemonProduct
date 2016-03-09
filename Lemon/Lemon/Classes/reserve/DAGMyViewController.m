@@ -89,7 +89,6 @@
        
        if (sender.on == YES) {
               [DKNightVersionManager nightFalling];
-              sender.onTintColor = [UIColor cyanColor];
        } else {
               [DKNightVersionManager dawnComing];
        }

@@ -11,7 +11,11 @@
 #import <AVOSCloud/AVOSCloud.h>
 #import "DHSlideMenuController.h"
 #import "LoginViewController.h"
-#import "LoginViewController/LoginViewController.h"
+
+#import "DAGRegardingViewController.h"
+
+#import "RoserViewController.h"
+
 @interface UserViewController ()<UITableViewDataSource,UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *photo;
 @property (weak, nonatomic) IBOutlet UILabel *name;
@@ -67,27 +71,34 @@
         }
         else if (indexPath.row == 1){
             NSLog(@"关于我们");
+               
+               DAGRegardingViewController *drvc = [[DAGRegardingViewController alloc] init];
+               UINavigationController *ndrvc = [[UINavigationController alloc] initWithRootViewController:drvc];
+               [self presentViewController:ndrvc animated:YES completion:nil];
+               
         }
     }
     else if(indexPath.section == 1){
-        
         if (indexPath.row == 0) {
-            
                 LoginViewController *lvc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil]instantiateViewControllerWithIdentifier:@"lvc"];
                 [self presentViewController:lvc animated:YES completion:^{
                     [Dem_UserData shareInstance].reLoad = YES;
                 }];
-            
             NSLog(@"更换用户");
         }
         else if (indexPath.row == 1){
             NSLog(@"zhuxiao");
             [[Dem_UserData shareInstance]logoutUser];
             [Dem_UserData shareInstance].reLoad = YES;
+            [[DHSlideMenuController sharedInstance]hideSlideMenuViewController:NO];
+            [DHSlideMenuController sharedInstance].leftViewController = nil;
+            
+            [[NSNotificationCenter defaultCenter]postNotificationName:@"reload" object:@"refresh"];
             
         }
     }
 }
+
 
 
 

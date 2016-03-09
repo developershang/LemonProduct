@@ -54,12 +54,12 @@
 
        
        
-    UserViewController *uvc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil]instantiateViewControllerWithIdentifier:@"uvc"];
+//    UserViewController *uvc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil]instantiateViewControllerWithIdentifier:@"uvc"];
     HomeViewController *hvc = [[HomeViewController alloc] init];
     
     DHSlideMenuController * mainVC = [DHSlideMenuController sharedInstance];
     mainVC.mainViewController = hvc;
-    mainVC.leftViewController = uvc;
+    mainVC.leftViewController = nil;
     mainVC.animationType = SlideAnimationTypeMove;
     mainVC.needPanFromViewBounds = YES;
     mainVC.leftViewShowWidth = self.window.frame.size.width-100;
