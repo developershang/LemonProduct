@@ -20,18 +20,9 @@
     return self;
 }
 
-
+#pragma mark MVC设计思想设计视图
 - (void)setup{
     self.backgroundColor = [UIColor blackColor];
-    
-//    self.sv = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 64, self.frame.size.width, 30)];
-//    self.sv.contentSize = CGSizeMake(self.frame.size.width*8, 30);
-//    self.sv.backgroundColor = [UIColor cyanColor];
-//    UIImageView *imageViews = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"IMG_0011.jpg"]];
-//    [self.sv addSubview:imageViews];
-//    [self addSubview:self.sv];
-    
-    
     self.segement = [[UISegmentedControl alloc] initWithItems:@[@"段子",@"图片",@"笑话",@"动图"]];
     self.segement.frame = CGRectMake(0, 64, self.frame.size.width, 30);
     self.segement.backgroundColor = [UIColor cyanColor];
@@ -39,7 +30,6 @@
     
     self.table = [[UITableView alloc] initWithFrame:CGRectMake(0, 64+30, self.frame.size.width, self.frame.size.height - 94 - 49 ) style:UITableViewStylePlain];
     self.table.backgroundColor = [UIColor cyanColor];
-   // self.table.tableHeaderView = self.sv;
     
     [self addSubview:self.table];
 

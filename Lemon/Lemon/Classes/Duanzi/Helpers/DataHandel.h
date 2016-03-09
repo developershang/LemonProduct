@@ -11,28 +11,32 @@
 @class SG_Model;
 @interface DataHandel : NSObject
 
-@property (nonatomic, strong)NSMutableArray *infoDAtaArray;
+//存储maxtime 拼接字 用于加密解析数据
+@property (nonatomic, strong)NSMutableArray*infoDAtaArray;
+
+//存储model 用于解析cell数据
 @property (nonatomic, strong)NSMutableArray *DataArray;
 
+#pragma mark单例的建立
 +(instancetype)shareInstance;
 
-
-//根据文本设置cell高度
+#pragma mark根据文本设置cell高度
 - (CGFloat)heightForCell:(NSString *)text;
 
 
-//根据网址请求数据
+#pragma mark根据网址请求数据
 - (void)requestDuanziDataWithUrl:(NSString *)url
                finshed:(void(^)())finsh;
 
-//下拉刷新数据
+#pragma mark下拉刷新数据
 - (void)requestUpDataWithUrl:(NSString *)url
+
                      finshed:(void(^)())finsh;
-//返回数组个数
+#pragma mark返回数组个数
 - (NSInteger)countOfDataArray;
 
 
-//根据索引获取model
+#pragma mark根据索引获取model
 - (SG_Model *)modelAtIndexPath:(NSIndexPath*)indexPath;
 
 

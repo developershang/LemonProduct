@@ -18,6 +18,10 @@
 #import "LoginViewController.h"
 #import "PostViewController.h"
 #import "SearchViewController.h"
+#import "Dem_LeanCloudData.h"
+#import "Dem_LeanMethod.h"
+#import "Dem_Fpuser.h"
+#import "Dem_UserModel.h"
 @interface RootViewController ()<UITableViewDataSource ,UITableViewDelegate>
 
 @end
@@ -154,7 +158,19 @@
             newUrl = [NSString stringWithFormat:@"http://api.budejie.com/api/api_open.php?a=list&appname=baisishequ&asid=79C90406-DB8A-4758-9466-DEDB502C2A14&c=data&client=iphone&device=%@ios&jbk=0&mac=&maxtime=%@&market=&openudid=3739a3941c7bb4f82c78c8c53228edcb4a14f0d0&page=0&per=20&sub_flag=1&type=10&udid=&ver=3.6",str1,string];}
             
             break;
-        case 2:
+        case 2:{
+            
+            AVObject *obj = [AVObject objectWithClassName:@"Fpuser"];
+            
+            [Dem_LeanMethod theContentWithFpuser:obj fpus:nil mo:^(Dem_UserModel *user) {
+                
+                
+            }];
+            
+           
+            
+            
+        }
             
             break;
             
@@ -252,10 +268,24 @@
         }];
         
         }break;
-        case 2: {}break;
-        case 3: {}break;
+        case 2: {
+            UIViewController *vc = [[UIViewController alloc] init];
+            vc.view.backgroundColor = [UIColor cyanColor];
+            [self.navigationController pushViewController:vc
+                                                 animated:YES];
+        
+        
+        
+        }break;
+        case 3: {
+            
+
             
             
+            
+        }
+         
+            break;
             
         default:NSLog(@"asdf");
             break;
@@ -309,7 +339,8 @@
             case 2:
                 
                 break;
-                
+               case 3:
+                break;
             default:
                 break;
         }
