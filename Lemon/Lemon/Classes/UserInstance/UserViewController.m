@@ -11,12 +11,12 @@
 #import <AVOSCloud/AVOSCloud.h>
 #import "DHSlideMenuController.h"
 #import "LoginViewController.h"
+#import "LoginViewController/LoginViewController.h"
 @interface UserViewController ()<UITableViewDataSource,UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *photo;
 @property (weak, nonatomic) IBOutlet UILabel *name;
 @property (weak, nonatomic) IBOutlet UITableView *table;
 @property (weak, nonatomic) IBOutlet UIButton *loadButton;
-
 @property(nonatomic,strong)NSMutableArray *array;
 
 @end
@@ -36,7 +36,7 @@
 }
 
 -(void)loginAction{
-    [Dem_UserData shareInstance].reLoad = YES;
+
 }
 
 

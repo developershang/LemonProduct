@@ -9,6 +9,7 @@
 #import "Dem_LeanMethod.h"
 #import <AVOSCloud/AVOSCloud.h>
 #import "Dem_Fpuser.h"
+
 @implementation Dem_LeanMethod
 
 +(void)addFpuserWithUser:(AVUser *)user fpuser:(Dem_Fpuser*)fpuser block:(void(^)(BOOL save))block{
@@ -22,7 +23,7 @@
         if (succeeded == 1) {
             [file deleteInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                 NSLog(@"%@ // %d",error,succeeded);
-                block(succeeded);
+               // block(succeeded);
             }];
         }
     } progressBlock:^(NSInteger percentDone) {
@@ -32,5 +33,8 @@
     NSError *error1 = nil;
     [text save:&error1];
 }
+
+
+
 
 @end

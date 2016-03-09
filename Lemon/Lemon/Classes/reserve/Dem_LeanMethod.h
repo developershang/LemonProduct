@@ -10,11 +10,14 @@
 @class Dem_Fpuser;
 @class AVUser;
 @interface Dem_LeanMethod : NSObject
-
+@property (nonatomic, strong)NSString *str;
 /**
  *@param
  *@return 添加帖子
  **/
 +(void)addFpuserWithUser:(AVUser *)user fpuser:(Dem_Fpuser*)fpuser block:(void(^)(BOOL save))block;
+
+
+
 
 @end
