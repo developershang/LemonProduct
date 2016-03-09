@@ -20,7 +20,7 @@
 
 @property (nonatomic, copy)NSString *img; // 图片
 
-
+@property (nonatomic, assign)BOOL isLoading; // 是否被加载
 
 
 
