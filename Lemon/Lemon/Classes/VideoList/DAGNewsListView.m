@@ -20,8 +20,7 @@
 }
 
 - (void)setupView {
-       self.backgroundColor = [UIColor cyanColor];
-       
+       self.backgroundColor = [UIColor clearColor];
        self.table = [[UITableView alloc] initWithFrame:[UIScreen mainScreen].bounds style:UITableViewStylePlain];
        [self addSubview:self.table];
        

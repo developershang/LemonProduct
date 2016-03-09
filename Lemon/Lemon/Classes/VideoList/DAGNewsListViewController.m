@@ -37,6 +37,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+       self.view.backgroundColor = [UIColor clearColor];
+       self.navigationItem.title = @"实时热点";
        
        UIBarButtonItem *right = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"06-magnifying-glass"] style:UIBarButtonItemStyleDone target:self action:@selector(searchAction)];
        self.navigationItem.rightBarButtonItem = right;
@@ -46,9 +48,10 @@
 
        [self p_setupProgressHud];
        [self loadData];
+
        
        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 5.0 *NSEC_PER_SEC), dispatch_get_main_queue(), ^{
-          
+              [self loadShowCells];
               [self.hud removeFromSuperview];
               
        });
@@ -68,6 +71,36 @@
        [_hud show:YES];
 }
 
+- (void)loadShowCells {
+       
+       NSArray *indexArray = [self.dlv.table indexPathsForVisibleRows];
+       
+       for (NSIndexPath *indexPath in indexArray) {
+              NewsListTableViewCell *cell = [self.dlv.table cellForRowAtIndexPath:indexPath];
+              DAGNewsDetailList *model = self.DetailArray[indexPath.row];
+              [cell setimageWithModel:model];
+       }
+       
+       
+}
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+       [self loadShowCells];
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+       if (!decelerate) {
+              [self loadShowCells];
+       }
+}
+
+- (void)modelIsCellDelegateWith:(UITableViewCell *)cell {
+       NSIndexPath *indexPath = [self.dlv.table indexPathForCell:cell];
+       DAGNewsDetailList *model = self.DetailArray[indexPath.row];
+       [model setIsLoading:YES];
+}
+
+
 - (void)loadData {
        [[DAG_NewsListManager shareInstance] requestWithUrl:kHotUrl finish:^{
               self.NewsListArray = [NSMutableArray array];
@@ -86,7 +119,8 @@
                      NSString *detailUrl = [NSString stringWithFormat:kDetailUrl, encode];
                      [[DAG_NewsListManager shareInstance] requestWithDetailUrl:detailUrl finish:^{
                             self.DetailArray = [DAG_NewsListManager shareInstance].NewsDetailArray;
-                            
+                            DAGNewsDetailList *model = self.DetailArray[i];
+                            model.isLoading = NO;
                             [self.dlv.table reloadData];
                      }];
               }
@@ -107,14 +141,19 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-       NewsListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"NewsListCell" forIndexPath:indexPath];
        
+       NewsListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"NewsListCell" forIndexPath:indexPath];
+       cell.backgroundColor = [UIColor clearColor];
+       [cell setDelegate:self];
        
               DAGNewsDetailList *model = self.DetailArray[indexPath.row];
-       
               cell.TitleLab.text = model.full_title;
               cell.UpdateTimeLab.text = model.pdate_src;
-              [cell.PhotoView sd_setImageWithURL:[NSURL URLWithString:model.img] placeholderImage:[UIImage imageNamed:@"placeholder"]];
+       if (model.isLoading) {
+              [cell setimageWithModel:model];
+       } else {
+              [cell setimageWithModel:nil];
+       }
        
        return cell;
 }

@@ -26,7 +26,8 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *UpdateTimeLab;
 
-@property (nonatomic, copy)id<DAGNewsDetailDelegate>delegate;
+@property (nonatomic, assign)id<DAGNewsDetailDelegate>delegate;
+
 
 // 图片加载
 - (void)setimageWithModel:(DAGNewsDetailList *)model;

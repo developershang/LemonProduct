@@ -81,10 +81,10 @@ static DAG_NewsListManager *manager = nil;
           
               NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
               
-              if (dic[@"result"] == nil) {
+              if (dic[@"result"] == [NSNull null]) {
                      return ;
               }
-              
+
               
               for (NSDictionary *dict in dic[@"result"]) {
                   
@@ -93,6 +93,7 @@ static DAG_NewsListManager *manager = nil;
                      if ([model.img isEqualToString:@""]) {
                             continue;
                      }
+                
                      [self.NewsDetailArray addObject:model];
               }
               
