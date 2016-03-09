@@ -15,6 +15,6 @@
  *@param
  *@return 添加帖子
  **/
-+(void)addFpuserWithUser:(AVUser *)user fpuser:(Dem_Fpuser*)fpuser;
++(void)addFpuserWithUser:(AVUser *)user fpuser:(Dem_Fpuser*)fpuser block:(void(^)(BOOL save))block;
 
 @end
