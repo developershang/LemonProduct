@@ -11,7 +11,11 @@
 #import <AVOSCloud/AVOSCloud.h>
 #import "DHSlideMenuController.h"
 #import "LoginViewController.h"
+
+#import "DAGRegardingViewController.h"
+
 #import "RoserViewController.h"
+
 @interface UserViewController ()<UITableViewDataSource,UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *photo;
 @property (weak, nonatomic) IBOutlet UILabel *name;
@@ -67,6 +71,11 @@
         }
         else if (indexPath.row == 1){
             NSLog(@"关于我们");
+               
+               DAGRegardingViewController *drvc = [[DAGRegardingViewController alloc] init];
+               UINavigationController *ndrvc = [[UINavigationController alloc] initWithRootViewController:drvc];
+               [self presentViewController:ndrvc animated:YES completion:nil];
+               
         }
     }
     else if(indexPath.section == 1){

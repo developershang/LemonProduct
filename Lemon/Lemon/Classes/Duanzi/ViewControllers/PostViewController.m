@@ -11,6 +11,8 @@
 #import "Dem_Fpuser.h"
 #import "Dem_UserData.h"
 #import "LoginViewController.h"
+
+@class AVObject;
 @interface PostViewController ()
 
 @end
@@ -51,6 +53,9 @@
     user.img = [UIImage imageNamed:@"Duanzi.png"];
     AVUser *auser = [Dem_UserData shareInstance].user;
     
+
+//    [Dem_LeanMethod addFpuserWithUser:auser fpuser:user];
+
     
     [Dem_LeanMethod addFpuserWithUser:auser fpuser:user block:^(BOOL save) {
         
@@ -70,9 +75,12 @@
         [self presentViewController:alert animated:YES completion:nil];
         
     }];
+
     NSLog(@"-----%@--- %@",user.content,auser);
 }
 }
+
+
 
 
 - (void)didReceiveMemoryWarning {
