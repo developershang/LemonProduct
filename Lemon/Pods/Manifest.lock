@@ -1,0 +1,17 @@
+PODS:
+  - AVOSCloud (3.2.5.1)
+  - AVOSCloudIM (3.2.6):
+    - AVOSCloud
+  - RongCloudIMKit (2.4.8)
+
+DEPENDENCIES:
+  - AVOSCloud
+  - AVOSCloudIM
+  - RongCloudIMKit
+
+SPEC CHECKSUMS:
+  AVOSCloud: f5b1f8d04b2ad4035d01b6b96fb9ed450fd7a1cd
+  AVOSCloudIM: 9b23286bf2a86b8a7440c70762990dcb15092d52
+  RongCloudIMKit: 43f367cba48b58238f1ab3b268842e6951231a54
+
+COCOAPODS: 0.39.0

@@ -1,0 +1,50 @@
+//
+//  SysPCH.pch
+//  Lemon
+//
+//  Created by lanou3g on 16/3/1.
+//  Copyright © 2016年 Demon. All rights reserved.
+//
+
+#ifndef SysPCH_pch
+#define SysPCH_pch
+
+#define kScreenWidth  CGRectGetWidth([UIScreen mainScreen].bounds)
+
+//Token调试
+#define Token123 @"iMN51cAmZ2PuuEk+kW3Wsvt8+g/DMJbkE8zXlPf5RYqjCTwU4SNif/MLh7X20Owwwtwt4s/sf4nwEjN9ujzn7Q=="
+
+// 实时热点接口
+#define kHotUrl @"http://op.juhe.cn/onebox/news/words?dtype=&key=c054c35b7452fc801973cf1d06c9998e"
+
+// 新闻详情接口(参数是搜索框内容或标题)
+#define kDetailUrl @"http://op.juhe.cn/onebox/news/query?q=%@&dtype=&key=c054c35b7452fc801973cf1d06c9998e"
+
+// 最新趣图URL
+#define kFunPicURL @"http://japi.juhe.cn/joke/img/text.from?page=%ld&pagesize=20&key=f33173f37b13d9b9227577e7d8e87433"
+
+// 最新笑话URL
+#define kJokeUrl @"http://japi.juhe.cn/joke/content/text.from?page=%ld&pagesize=20&key=f33173f37b13d9b9227577e7d8e87433"
+
+//段子精华
+#define DuziUrl @"http://api.budejie.com/api/api_open.php?a=list&appname=baisishequ&asid=79C90406-DB8A-4758-9466-DEDB502C2A14&c=data&client=iphone&device=ios%20%E8%AE%BE%E5%A4%87&from=ios&jbk=0&mac=&market=&openudid=3739a3941c7bb4f82c78c8c53228edcb4a14f0d0&page=0&per=100&sub_flag=1&type=29&udid=&ver=3.6"
+
+
+//最新图片
+#define PicURL @"http://api.budejie.com/api/api_open.php?a=newlist&appname=baisishequ&asid=79C90406-DB8A-4758-9466-DEDB502C2A14&c=data&client=iphone&device=ios%20%E8%AE%BE%E5%A4%87&from=ios&jbk=0&mac=&market=&openudid=3739a3941c7bb4f82c78c8c53228edcb4a14f0d0&page=0&per=100&sub_flag=1&type=10&udid=&ver=3.6"
+
+//融云AppKey
+#define RongAppKey @"x4vkb1qpvdquk"
+
+//NSLog抑制
+#ifdef DEBUG
+#define  DLog(...) NSLog(__VA_ARGS__)
+#else
+#define DLog(...)
+#endif
+
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#endif /* SysPCH_pch */

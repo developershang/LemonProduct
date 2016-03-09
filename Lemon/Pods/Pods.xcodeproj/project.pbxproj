@@ -1,0 +1,466 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		6E579FF358AF2261C8682A7FA383EAA6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E4E89230EF59BC255123B67864ACF77 /* Foundation.framework */; };
+		B991A49F4C12A4F8462C02B69D83DB11 /* Pods-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 272643F56613CA0D336AE3DBF19DC404 /* Pods-dummy.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		01CE04BC4F92442C303D85687E27FAEE /* AVIMTypedMessage.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = AVIMTypedMessage.h; sourceTree = "<group>"; };
+		04E3C9808D12FA0230E77EE7DA5621CF /* AVUser.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = AVUser.h; sourceTree = "<group>"; };
+		0697E976AD73658A183A3382A643EFF5 /* AVIMConversationQuery.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = AVIMConversationQuery.h; sourceTree = "<group>"; };
+		0A8786DE3BE8CBF21F260D2DD30B9C85 /* AVIMTextMessage.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = AVIMTextMessage.h; sourceTree = "<group>"; };
+		0B3AC3397978AC751E21AD9D27B64F5F /* libAVOSCloud.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; path = libAVOSCloud.a; sourceTree = "<group>"; };
+		0BE6FECA879D682B1E9079D701A00243 /* zh-Hans.lproj */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; name = "zh-Hans.lproj"; path = "Rong_Cloud_iOS_IMKit_SDK_v2_4_8_stable/zh-Hans.lproj"; sourceTree = "<group>"; };
+		10834806BD7B412BC24F347361FA2C8E /* Pods-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-acknowledgements.plist"; sourceTree = "<group>"; };
+		111670CFB151C48DE473F2CF40DB1954 /* AVGroup.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = AVGroup.h; sourceTree = "<group>"; };
+		138D872D4B48513007B937E4DD8F03EF /* AVInstallation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = AVInstallation.h; sourceTree = "<group>"; };
+		1E01D5AC0E9056BC88065EC2DBA96A48 /* AVSearchSortBuilder.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = AVSearchSortBuilder.h; sourceTree = "<group>"; };
+		1E2A0B9EF55177F583C9895E193079BE /* AVAvailability.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = AVAvailability.h; sourceTree = "<group>"; };
+		2664A2670838ECB4D1D39FDFF62E2AE1 /* AVStatus.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = AVStatus.h; sourceTree = "<group>"; };
+		272643F56613CA0D336AE3DBF19DC404 /* Pods-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-dummy.m"; sourceTree = "<group>"; };
+		29985D11B3590D9A4F8C2F8803180670 /* AVIMConversation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = AVIMConversation.h; sourceTree = "<group>"; };
+		2C163AD15CB4B69F8B7273EEEED2E9FC /* Emoji.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = Emoji.plist; path = Rong_Cloud_iOS_IMKit_SDK_v2_4_8_stable/Emoji.plist; sourceTree = "<group>"; };
+		2EF6DE6645A9ACE38DF2F18EFBB21BA3 /* AVMessage.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = AVMessage.h; sourceTree = "<group>"; };
+		32B7A589D117E4E8A5666BB635EECBAE /* AVSignature.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = AVSignature.h; sourceTree = "<group>"; };
+		34740F1951D07E39779BFDACA65EE6F9 /* AVIMAvailability.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = AVIMAvailability.h; sourceTree = "<group>"; };
+		367A8CAF73D7B60A63A0B0B37870E2B1 /* AVObject.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = AVObject.h; sourceTree = "<group>"; };
+		37DB56D75062CC75FCB0966E1C6E8A8E /* Pods-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-acknowledgements.markdown"; sourceTree = "<group>"; };
+		3B8861613BB2F1B57DA76E2D9792BFC6 /* AVIMKeyedConversation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = AVIMKeyedConversation.h; sourceTree = "<group>"; };
+		3E4E89230EF59BC255123B67864ACF77 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		43E4F71C027E33C5DA0CDE4BD5088DD1 /* AVLogger.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = AVLogger.h; sourceTree = "<group>"; };
+		477C8D61B380E102BCEA321CBB090E6B /* AVSearchQuery.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = AVSearchQuery.h; sourceTree = "<group>"; };
+		489DFF1898262C62D9F298FBB709C003 /* AVIMAudioMessage.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = AVIMAudioMessage.h; sourceTree = "<group>"; };
+		4E762F23EC34ED4A6FF3312D84E33A40 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Pods.debug.xcconfig; sourceTree = "<group>"; };
+		5088BCA0D6F4B6DAB6D810ACDFB87878 /* AVAnalytics.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = AVAnalytics.h; sourceTree = "<group>"; };
+		527379C34BD60F318922B227D0F0A468 /* AVIMClient.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = AVIMClient.h; sourceTree = "<group>"; };
+		529C5AE70C86A202848A5AC520F86F45 /* AVSaveOption.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = AVSaveOption.h; sourceTree = "<group>"; };
+		53E7EEBE989E77BDBB367D5168555980 /* AVGeoPoint.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = AVGeoPoint.h; sourceTree = "<group>"; };
+		5569895ABCF3152D2E9414772113F77E /* AVOSCloudIM.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = AVOSCloudIM.h; sourceTree = "<group>"; };
+		5BFE9887B8DEA9B376BE5CD42CAEAC51 /* AVACL.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = AVACL.h; sourceTree = "<group>"; };
+		5C14CA3F5A06C7CC1697639BF1DCA36D /* AVAnonymousUtils.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = AVAnonymousUtils.h; sourceTree = "<group>"; };
+		6911BECA35E7518D864239B7E898EEF3 /* Pods-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-frameworks.sh"; sourceTree = "<group>"; };
+		7EA49D007934CAACD0B3C5EB9D917AAC /* libopencore-amrnb.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = "libopencore-amrnb.a"; path = "Rong_Cloud_iOS_IMKit_SDK_v2_4_8_stable/libopencore-amrnb.a"; sourceTree = "<group>"; };
+		80E15FD977478CFDC374CE45648DE7C2 /* libAVOSCloudIM.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; path = libAVOSCloudIM.a; sourceTree = "<group>"; };
+		8212ACD6FF1A22867945A31424A7F509 /* AVRole.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = AVRole.h; sourceTree = "<group>"; };
+		83004543ADA5AB1C033CA3806A074B0A /* AVIMUserOptions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = AVIMUserOptions.h; sourceTree = "<group>"; };
+		877E2AE29F79F18EC52B29798F58B3EC /* AVIMFileMessage.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = AVIMFileMessage.h; sourceTree = "<group>"; };
+		896F7AC8E4E017FC0AC7FEA7A33D640E /* AVHistoryMessageQuery.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = AVHistoryMessageQuery.h; sourceTree = "<group>"; };
+		8E6057A81C9DA85BC0FFE0DC62E1B9FF /* AVSession.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = AVSession.h; sourceTree = "<group>"; };
+		8FFD8E269CF08532E096C05D18D8545D /* AVPush.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = AVPush.h; sourceTree = "<group>"; };
+		90D26A4621CC5508D0A31674778730D3 /* AVFileQuery.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = AVFileQuery.h; sourceTree = "<group>"; };
+		96410F8C7C14B165785BA04581E904DC /* en.lproj */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; name = en.lproj; path = Rong_Cloud_iOS_IMKit_SDK_v2_4_8_stable/en.lproj; sourceTree = "<group>"; };
+		9866D1E0569A5BE8A1C49B9BED6CB446 /* RongIMLib.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RongIMLib.framework; path = Rong_Cloud_iOS_IMKit_SDK_v2_4_8_stable/RongIMLib.framework; sourceTree = "<group>"; };
+		987C4C0080B70C57C409BBFC826B32B3 /* AVQuery.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = AVQuery.h; sourceTree = "<group>"; };
+		98C98CDFB3F20F2925F6CD1F141BB14F /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Pods.release.xcconfig; sourceTree = "<group>"; };
+		A1A36D34413696BE466E2CA0AFF194DA /* Pods-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-resources.sh"; sourceTree = "<group>"; };
+		A3BC75EC1CDCDA76A16DA8354372F685 /* AVObject+Subclass.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "AVObject+Subclass.h"; sourceTree = "<group>"; };
+		A768F167FD0653BAEE20B24DFCAA6698 /* AVCloudQueryResult.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = AVCloudQueryResult.h; sourceTree = "<group>"; };
+		ADDBD88A62100ECAEF5590F72D897C57 /* AVIMConversationUpdateBuilder.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = AVIMConversationUpdateBuilder.h; sourceTree = "<group>"; };
+		B1CA6EEA34790DF19BF57EE5F701E28B /* AVIMSignature.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = AVIMSignature.h; sourceTree = "<group>"; };
+		B4709824BF94311CF261FE5116587B9B /* RongIMKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RongIMKit.framework; path = Rong_Cloud_iOS_IMKit_SDK_v2_4_8_stable/RongIMKit.framework; sourceTree = "<group>"; };
+		BA6428E9F66FD5A23C0A2E06ED26CD2F /* Podfile */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		BFDCEDF11CC5329E8A2F6885DA7FBE21 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		C13A5D6BFC23F0733933CC90B974B99C /* AVRelation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = AVRelation.h; sourceTree = "<group>"; };
+		C592B011645260766618304B15AB9710 /* AVIMVideoMessage.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = AVIMVideoMessage.h; sourceTree = "<group>"; };
+		C7F345E906050DBFA596B98487AC9A12 /* AVIMClientOpenOption.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = AVIMClientOpenOption.h; sourceTree = "<group>"; };
+		CB835F25D749FA21CF04B65D3C5DB308 /* AVHistoryMessage.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = AVHistoryMessage.h; sourceTree = "<group>"; };
+		D18FD797DA2E683EF1C75520256B34CF /* AVConstants.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = AVConstants.h; sourceTree = "<group>"; };
+		D6386A9CB4FAAD244E3B816FC76C1153 /* AVCloud.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = AVCloud.h; sourceTree = "<group>"; };
+		DAF25DF4A8F648485F5AF56D0433D73A /* AVFile.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = AVFile.h; sourceTree = "<group>"; };
+		DBB855D93054E1834B20ACD9713DD72A /* AVIMLocationMessage.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = AVIMLocationMessage.h; sourceTree = "<group>"; };
+		DF2C07D7440A7974F309384700353A9E /* RongCloud.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = RongCloud.bundle; path = Rong_Cloud_iOS_IMKit_SDK_v2_4_8_stable/RongCloud.bundle; sourceTree = "<group>"; };
+		ED0B3CD365A1F9D5E1B3069EEBBCE823 /* AVIMCommon.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = AVIMCommon.h; sourceTree = "<group>"; };
+		EDD78CAC9778A6CC5773C4FC68100459 /* AVIMImageMessage.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = AVIMImageMessage.h; sourceTree = "<group>"; };
+		F35D397A5C44DA5B4D1113D5895C8696 /* AVOSCloud.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = AVOSCloud.h; sourceTree = "<group>"; };
+		F97F9D59E30459764B21760AAC34DB01 /* AVIMMessage.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = AVIMMessage.h; sourceTree = "<group>"; };
+		FE958AB138CFD37008D2202DC9CEF295 /* AVSubclassing.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = AVSubclassing.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		2E78C4AC537A1782BCFD134B2B8940E0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6E579FF358AF2261C8682A7FA383EAA6 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		037C0CA694176A3C0915F62C9D20B3E6 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				B3D1D13E0C6553800746CB8FD61CF946 /* Pods */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		03963CF3478C04285D52C54FB26B91B1 /* AVOSCloudIM */ = {
+			isa = PBXGroup;
+			children = (
+				489DFF1898262C62D9F298FBB709C003 /* AVIMAudioMessage.h */,
+				34740F1951D07E39779BFDACA65EE6F9 /* AVIMAvailability.h */,
+				527379C34BD60F318922B227D0F0A468 /* AVIMClient.h */,
+				C7F345E906050DBFA596B98487AC9A12 /* AVIMClientOpenOption.h */,
+				ED0B3CD365A1F9D5E1B3069EEBBCE823 /* AVIMCommon.h */,
+				29985D11B3590D9A4F8C2F8803180670 /* AVIMConversation.h */,
+				0697E976AD73658A183A3382A643EFF5 /* AVIMConversationQuery.h */,
+				ADDBD88A62100ECAEF5590F72D897C57 /* AVIMConversationUpdateBuilder.h */,
+				877E2AE29F79F18EC52B29798F58B3EC /* AVIMFileMessage.h */,
+				EDD78CAC9778A6CC5773C4FC68100459 /* AVIMImageMessage.h */,
+				3B8861613BB2F1B57DA76E2D9792BFC6 /* AVIMKeyedConversation.h */,
+				DBB855D93054E1834B20ACD9713DD72A /* AVIMLocationMessage.h */,
+				F97F9D59E30459764B21760AAC34DB01 /* AVIMMessage.h */,
+				B1CA6EEA34790DF19BF57EE5F701E28B /* AVIMSignature.h */,
+				0A8786DE3BE8CBF21F260D2DD30B9C85 /* AVIMTextMessage.h */,
+				01CE04BC4F92442C303D85687E27FAEE /* AVIMTypedMessage.h */,
+				83004543ADA5AB1C033CA3806A074B0A /* AVIMUserOptions.h */,
+				C592B011645260766618304B15AB9710 /* AVIMVideoMessage.h */,
+				5569895ABCF3152D2E9414772113F77E /* AVOSCloudIM.h */,
+				8B3A8F9640ABA902E8CF5617A72A3886 /* Frameworks */,
+			);
+			path = AVOSCloudIM;
+			sourceTree = "<group>";
+		};
+		110B6A2D616AF6FF5AC3CA19DC2BB04F /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				2C163AD15CB4B69F8B7273EEEED2E9FC /* Emoji.plist */,
+				96410F8C7C14B165785BA04581E904DC /* en.lproj */,
+				DF2C07D7440A7974F309384700353A9E /* RongCloud.bundle */,
+				0BE6FECA879D682B1E9079D701A00243 /* zh-Hans.lproj */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		1AE69B33ADE8512AF7595C978DEBAF59 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0B3AC3397978AC751E21AD9D27B64F5F /* libAVOSCloud.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		1F0B9F713A13B4F29BE0C0E7483B187B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BFDCEDF11CC5329E8A2F6885DA7FBE21 /* libPods.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		37F24D6EA7F4FF0B07D8E8048CB77F1B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7EA49D007934CAACD0B3C5EB9D917AAC /* libopencore-amrnb.a */,
+				B4709824BF94311CF261FE5116587B9B /* RongIMKit.framework */,
+				9866D1E0569A5BE8A1C49B9BED6CB446 /* RongIMLib.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		62DA7E0ECCA00D9D00E366BCCE056438 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				98AF54958020F7B02C0B243748B61481 /* AVOSCloud */,
+				03963CF3478C04285D52C54FB26B91B1 /* AVOSCloudIM */,
+				DA1BD994AFDA3BEEA1069D24005FF3C6 /* RongCloudIMKit */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		7DB346D0F39D3F0E887471402A8071AB = {
+			isa = PBXGroup;
+			children = (
+				BA6428E9F66FD5A23C0A2E06ED26CD2F /* Podfile */,
+				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
+				62DA7E0ECCA00D9D00E366BCCE056438 /* Pods */,
+				1F0B9F713A13B4F29BE0C0E7483B187B /* Products */,
+				037C0CA694176A3C0915F62C9D20B3E6 /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		8B3A8F9640ABA902E8CF5617A72A3886 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				80E15FD977478CFDC374CE45648DE7C2 /* libAVOSCloudIM.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		98AF54958020F7B02C0B243748B61481 /* AVOSCloud */ = {
+			isa = PBXGroup;
+			children = (
+				5BFE9887B8DEA9B376BE5CD42CAEAC51 /* AVACL.h */,
+				5088BCA0D6F4B6DAB6D810ACDFB87878 /* AVAnalytics.h */,
+				5C14CA3F5A06C7CC1697639BF1DCA36D /* AVAnonymousUtils.h */,
+				1E2A0B9EF55177F583C9895E193079BE /* AVAvailability.h */,
+				D6386A9CB4FAAD244E3B816FC76C1153 /* AVCloud.h */,
+				A768F167FD0653BAEE20B24DFCAA6698 /* AVCloudQueryResult.h */,
+				D18FD797DA2E683EF1C75520256B34CF /* AVConstants.h */,
+				DAF25DF4A8F648485F5AF56D0433D73A /* AVFile.h */,
+				90D26A4621CC5508D0A31674778730D3 /* AVFileQuery.h */,
+				53E7EEBE989E77BDBB367D5168555980 /* AVGeoPoint.h */,
+				111670CFB151C48DE473F2CF40DB1954 /* AVGroup.h */,
+				CB835F25D749FA21CF04B65D3C5DB308 /* AVHistoryMessage.h */,
+				896F7AC8E4E017FC0AC7FEA7A33D640E /* AVHistoryMessageQuery.h */,
+				138D872D4B48513007B937E4DD8F03EF /* AVInstallation.h */,
+				43E4F71C027E33C5DA0CDE4BD5088DD1 /* AVLogger.h */,
+				2EF6DE6645A9ACE38DF2F18EFBB21BA3 /* AVMessage.h */,
+				367A8CAF73D7B60A63A0B0B37870E2B1 /* AVObject.h */,
+				A3BC75EC1CDCDA76A16DA8354372F685 /* AVObject+Subclass.h */,
+				F35D397A5C44DA5B4D1113D5895C8696 /* AVOSCloud.h */,
+				8FFD8E269CF08532E096C05D18D8545D /* AVPush.h */,
+				987C4C0080B70C57C409BBFC826B32B3 /* AVQuery.h */,
+				C13A5D6BFC23F0733933CC90B974B99C /* AVRelation.h */,
+				8212ACD6FF1A22867945A31424A7F509 /* AVRole.h */,
+				529C5AE70C86A202848A5AC520F86F45 /* AVSaveOption.h */,
+				477C8D61B380E102BCEA321CBB090E6B /* AVSearchQuery.h */,
+				1E01D5AC0E9056BC88065EC2DBA96A48 /* AVSearchSortBuilder.h */,
+				8E6057A81C9DA85BC0FFE0DC62E1B9FF /* AVSession.h */,
+				32B7A589D117E4E8A5666BB635EECBAE /* AVSignature.h */,
+				2664A2670838ECB4D1D39FDFF62E2AE1 /* AVStatus.h */,
+				FE958AB138CFD37008D2202DC9CEF295 /* AVSubclassing.h */,
+				04E3C9808D12FA0230E77EE7DA5621CF /* AVUser.h */,
+				1AE69B33ADE8512AF7595C978DEBAF59 /* Frameworks */,
+			);
+			path = AVOSCloud;
+			sourceTree = "<group>";
+		};
+		B3D1D13E0C6553800746CB8FD61CF946 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				37DB56D75062CC75FCB0966E1C6E8A8E /* Pods-acknowledgements.markdown */,
+				10834806BD7B412BC24F347361FA2C8E /* Pods-acknowledgements.plist */,
+				272643F56613CA0D336AE3DBF19DC404 /* Pods-dummy.m */,
+				6911BECA35E7518D864239B7E898EEF3 /* Pods-frameworks.sh */,
+				A1A36D34413696BE466E2CA0AFF194DA /* Pods-resources.sh */,
+				4E762F23EC34ED4A6FF3312D84E33A40 /* Pods.debug.xcconfig */,
+				98C98CDFB3F20F2925F6CD1F141BB14F /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			path = "Target Support Files/Pods";
+			sourceTree = "<group>";
+		};
+		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BF6342C8B29F4CEEA088EFF7AB4DE362 /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BF6342C8B29F4CEEA088EFF7AB4DE362 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				3E4E89230EF59BC255123B67864ACF77 /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		DA1BD994AFDA3BEEA1069D24005FF3C6 /* RongCloudIMKit */ = {
+			isa = PBXGroup;
+			children = (
+				37F24D6EA7F4FF0B07D8E8048CB77F1B /* Frameworks */,
+				110B6A2D616AF6FF5AC3CA19DC2BB04F /* Resources */,
+			);
+			path = RongCloudIMKit;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1469924FC52F60B0068FA24EEFCB3EFC /* Pods */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5C358AA8BB91700063133597D41C4E0E /* Build configuration list for PBXNativeTarget "Pods" */;
+			buildPhases = (
+				60DB2522D6809309FA2F3B04848E7536 /* Sources */,
+				2E78C4AC537A1782BCFD134B2B8940E0 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Pods;
+			productName = Pods;
+			productReference = BFDCEDF11CC5329E8A2F6885DA7FBE21 /* libPods.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D41D8CD98F00B204E9800998ECF8427E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0700;
+				LastUpgradeCheck = 0700;
+			};
+			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
+			productRefGroup = 1F0B9F713A13B4F29BE0C0E7483B187B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1469924FC52F60B0068FA24EEFCB3EFC /* Pods */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		60DB2522D6809309FA2F3B04848E7536 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B991A49F4C12A4F8462C02B69D83DB11 /* Pods-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		2EEF68B3E0CE4CEE8BCA3D3FB593AB70 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 98C98CDFB3F20F2925F6CD1F141BB14F /* Pods.release.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MACH_O_TYPE = staticlib;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		3F5D9018D9C883FC14D3D5D1074912AD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4E762F23EC34ED4A6FF3312D84E33A40 /* Pods.debug.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MACH_O_TYPE = staticlib;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		8D1534490D941DCA47C62AC4314182AF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				ONLY_ACTIVE_ARCH = YES;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		C5A18280E9321A9268D1C80B7DA43967 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PREPROCESSOR_DEFINITIONS = "RELEASE=1";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8D1534490D941DCA47C62AC4314182AF /* Debug */,
+				C5A18280E9321A9268D1C80B7DA43967 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5C358AA8BB91700063133597D41C4E0E /* Build configuration list for PBXNativeTarget "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3F5D9018D9C883FC14D3D5D1074912AD /* Debug */,
+				2EEF68B3E0CE4CEE8BCA3D3FB593AB70 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+}
