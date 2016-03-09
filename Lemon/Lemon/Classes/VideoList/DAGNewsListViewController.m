@@ -16,7 +16,7 @@
 #import "DAGSearchNewsViewController.h"
 #import "Reachability.h"
 #import "MBProgressHUD.h"
-@interface DAGNewsListViewController ()<UITableViewDataSource,UITableViewDelegate>
+@interface DAGNewsListViewController ()<UITableViewDataSource,UITableViewDelegate,DAGNewsDetailDelegate>
 
 @property (nonatomic, strong)NSMutableArray *NewsListArray; // 标题数组
 
@@ -34,10 +34,6 @@
        self.view = self.dlv;
 }
 
-- (void)viewDidAppear:(BOOL)animated {
-       [self loadData];
-       [_hud removeFromSuperview];
-}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -49,8 +45,15 @@
        self.dlv.table.delegate = self;
 
        [self p_setupProgressHud];
+       [self loadData];
        
-    // Do any additional setup after loading the view.
+       dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 5.0 *NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+          
+              [self.hud removeFromSuperview];
+              
+       });
+       
+       // Do any additional setup after loading the view.
 }
 
 // 小菊花.

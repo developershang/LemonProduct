@@ -8,6 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+@class DAGNewsDetailList;
+
+@protocol DAGNewsDetailDelegate <NSObject>
+
+- (void)modelIsCellDelegateWith:(UITableViewCell *)cell;
+
+@end
+
 @interface NewsListTableViewCell : UITableViewCell
 
 
@@ -17,5 +25,10 @@
 @property (weak, nonatomic) IBOutlet UILabel *TitleLab;
 
 @property (weak, nonatomic) IBOutlet UILabel *UpdateTimeLab;
+
+@property (nonatomic, copy)id<DAGNewsDetailDelegate>delegate;
+
+// 图片加载
+- (void)setimageWithModel:(DAGNewsDetailList *)model;
 
 @end

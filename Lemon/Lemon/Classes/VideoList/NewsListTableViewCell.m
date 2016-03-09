@@ -7,12 +7,30 @@
 //
 
 #import "NewsListTableViewCell.h"
+#import "UIImageView+WebCache.h"
+#import "DAGNewsDetailList.h"
 
 @implementation NewsListTableViewCell
 
 - (void)awakeFromNib {
     // Initialization code
 }
+
+
+- (void)setimageWithModel:(DAGNewsDetailList *)model {
+       
+       if (model) {
+              [self.PhotoView sd_setImageWithURL:[NSURL URLWithString:model.url] placeholderImage:[UIImage imageNamed:@"placeholder"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+                     [self.delegate modelIsCellDelegateWith:self];
+              }];
+       } else {
+              [self.PhotoView setImage:[UIImage imageNamed:@"placeholder"]];
+       }
+       
+}
+
+
+
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
