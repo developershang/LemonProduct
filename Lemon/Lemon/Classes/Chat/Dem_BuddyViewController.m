@@ -93,7 +93,7 @@
     [self.navigationController popToRootViewControllerAnimated:YES];
        
        
-       
+       /*
        RCMessage *message = [[RCMessage alloc] initWithType:ConversationType_SYSTEM targetId:self.user.username direction:MessageDirection_SEND messageId:1 content:[RCContactNotificationMessage notificationWithOperation:ContactNotificationMessage_ContactOperationRequest sourceUserId:[Dem_UserData shareInstance].user.username targetUserId:self.user.username message:@"可以添加你为好友吗？" extra:@""]];
        
        message.objectName = RCContactNotificationMessageIdentifier;
@@ -105,7 +105,8 @@
       } error:^(RCErrorCode nErrorCode, long messageId) {
              
       }];
-       
+       */
+    
        
 }
 
