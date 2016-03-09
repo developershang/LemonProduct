@@ -12,7 +12,11 @@
   },
   "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "17F47600-0885-465A-8889-5BDB13C62361",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+
     "8D6D2E5D839978015A23F5230C07F5E08F408C04" : "LemonProduct\/",
+
+    "8D6D2E5D839978015A23F5230C07F5E08F408C04" : "B%20new\/",
+
     "9567E378095B29FB931A6EDABA117C6B81A0FDCF" : "project\/",
     "3ae940f3-8410-4859-82cb-97a2b19ad8f4++3340" : "project\/Lemon\/Lemon\/Classes\/ThirdParties\/MBProgressHUD\/"
   },
