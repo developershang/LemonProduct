@@ -81,6 +81,7 @@ static DAG_JokeManager *manager = nil;
               for (NSDictionary *dic1 in dict[@"data"]) {
                      DAGFunPicModel *model = [DAGFunPicModel new];
                      [model setValuesForKeysWithDictionary:dic1];
+                     model.isLoading = NO;
                      [self.FunPicArray addObject:model];
               }
               dispatch_async(dispatch_get_main_queue(), ^{

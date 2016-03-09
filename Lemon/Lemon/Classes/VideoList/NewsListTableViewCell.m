@@ -20,7 +20,7 @@
 - (void)setimageWithModel:(DAGNewsDetailList *)model {
        
        if (model) {
-              [self.PhotoView sd_setImageWithURL:[NSURL URLWithString:model.url] placeholderImage:[UIImage imageNamed:@"placeholder"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+              [self.PhotoView sd_setImageWithURL:[NSURL URLWithString:model.img] placeholderImage:[UIImage imageNamed:@"placeholder"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
                      [self.delegate modelIsCellDelegateWith:self];
               }];
        } else {

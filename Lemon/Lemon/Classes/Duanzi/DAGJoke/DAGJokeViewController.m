@@ -21,7 +21,7 @@
 #import "DAGJokeDetailViewController.h"
 #import "CommentDetailViewController.h"
 #import "DAGImageManager.h"
-@interface DAGJokeViewController ()<UITableViewDataSource, UITableViewDelegate>
+@interface DAGJokeViewController ()<UITableViewDataSource, UITableViewDelegate,DAGFunPicModelDelegate>
 
 @property (nonatomic, strong)UITableView *JoketableView;
 
@@ -114,7 +114,6 @@ static NSInteger i = 1;
                      self.FunPicArray = [NSMutableArray array];
                      self.FunPicArray = [DAG_JokeManager shareInstance].FunPicArray;
                      [self.FunPicTableView reloadData];
-                     
               }];
               
               [self.FunPicTableView footerEndRefreshing];
@@ -145,6 +144,45 @@ static NSInteger i = 1;
        }
 }
 
+//加载已经显示出来的CELL
+-(void)loadShowCells{
+       //返回可见的行数
+       //拿到下标
+       NSArray *indexArray = [self.FunPicTableView indexPathsForVisibleRows];
+       //便利数组拿到所有下标
+       for (NSIndexPath *indexPath in indexArray) {
+              //根据下标创建cell
+              DAGJokeTableViewCell *cell = [self.FunPicTableView cellForRowAtIndexPath:indexPath];
+              //赋值
+              DAGFunPicModel *model = self.FunPicArray[indexPath.row];
+              //加载图片
+              [cell setimageWithModel:model];
+       }
+
+}
+
+//滑动结束加载图片
+-(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+       [self loadShowCells];
+}
+//滑动进行时不加载图片
+-(void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
+{
+       if (!decelerate) {
+              [self loadShowCells];
+       }
+}
+
+#pragma mark===celldelegate========
+
+-(void)modelIsCellDeletageWith:(UITableViewCell *)cell{
+       //获取当前点击按钮的NSIndexPath
+       NSIndexPath *indexpath = [self.FunPicTableView indexPathForCell:cell];
+       DAGFunPicModel *model = self.FunPicArray[indexpath.row];
+       [model setIsLoading:YES];
+}
+
 #pragma mark  数据的加载
 - (void)loadData {
        
@@ -159,22 +197,14 @@ static NSInteger i = 1;
                      
                      self.JokeArray = [DAG_JokeManager shareInstance].JokeArray;
                      [self.JoketableView reloadData];
-                     
               }];
-              
        }
-       
-       
-       
               [[DAG_JokeManager shareInstance] requestFunPicWithUrl:[NSString stringWithFormat:kFunPicURL,i] finish:^{
-
                      [self.FunPicTableView registerNib:[UINib nibWithNibName:@"DAGJokeTableViewCell" bundle:nil] forCellReuseIdentifier:reuseIdentifier];
-                     
                      self.FunPicArray = [DAG_JokeManager shareInstance].FunPicArray;
                      
                      [self.FunPicTableView reloadData];
               }];
-
 }
 
 
@@ -208,56 +238,22 @@ static NSInteger i = 1;
        }
               
               DAGJokeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifier forIndexPath:indexPath];
+              cell.delegate = self;
               cell.selectionStyle = UITableViewCellSelectionStyleNone;
               DAGFunPicModel *model = self.FunPicArray[indexPath.row];
               cell.updateLab.text = model.updatetime;
               cell.contentLab.text = model.content;
-              [cell.photoView sd_setImageWithURL:[NSURL URLWithString:model.url] placeholderImage:[UIImage imageNamed:@"placeholder"]];
-//              UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction)];
-//              cell.photoView.userInteractionEnabled = YES;
-//              [cell.photoView addGestureRecognizer:tap];
-//              self.photo = cell.photoView;
- 
+              if (model.isLoading) {
+              [cell setimageWithModel:model];
+              } else {
+              [cell setimageWithModel:nil];
+              }
               self.imageSize = [XU_ImageTools getImageSizeWithURL:model.url];
               cell.model = model;
               return cell;
   
 }
 
-/*
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-       
-       if (self.segment.selectedSegmentIndex == 0) {
-              
-              DAGJokeTableViewCell2 *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifier2 forIndexPath:indexPath];
-              cell.selectionStyle = UITableViewCellSelectionStyleNone;
-              DAGJokeModel *model = self.JokeArray[indexPath.row];
-              cell.updateLab.text = model.updatetime;
-              cell.contentLab.text = model.content;
-              cell.model = model;
-              [cell.ClickBtn addTarget:self action:@selector(clickAction) forControlEvents:UIControlEventTouchUpInside];
-              [cell.CommmentBtn addTarget:self action:@selector(commentAction) forControlEvents:UIControlEventTouchUpInside];
-              [cell.shareBtn addTarget:self action:@selector(shareAction) forControlEvents:UIControlEventTouchUpInside];
-       } else if (self.segment.selectedSegmentIndex == 1) {
-
-       
-       DAGJokeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifier forIndexPath:indexPath];
-       cell.selectionStyle = UITableViewCellSelectionStyleNone;
-       DAGFunPicModel *model = self.FunPicArray[indexPath.row];
-       cell.updateLab.text = model.updatetime;
-       cell.contentLab.text = model.content;
-       [cell.photoView sd_setImageWithURL:[NSURL URLWithString:model.url] placeholderImage:[UIImage imageNamed:@"placeholder"]];
-       UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction)];
-       cell.photoView.userInteractionEnabled = YES;
-       [cell.photoView addGestureRecognizer:tap];
-       self.photo = cell.photoView;
-       self.imageSize = [XU_ImageTools getImageSizeWithURL:model.url];
-       cell.model = model;
-       
-       NSLog(@"%ld",(long)indexPath.row);
-       }
-}
-*/
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -265,9 +261,7 @@ static NSInteger i = 1;
        self.model = self.JokeArray[indexPath.row];
        
        if ([Dem_UserData shareInstance].isLog != YES) {
-      
-              
-                     
+
                      UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"您还没有登录" message:@"登录后才能查看详情" preferredStyle:UIAlertControllerStyleAlert];
                      UIAlertAction *dAction = [UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
                             
@@ -292,7 +286,6 @@ static NSInteger i = 1;
                      [self.navigationController pushViewController:ddvc animated:YES];
               }
               
-              
        DAGJokeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifier forIndexPath:indexPath];
        cell.selectionStyle = UITableViewCellSelectionStyleNone;
        DAGFunPicModel *model = self.FunPicArray[indexPath.row];
@@ -309,14 +302,11 @@ static NSInteger i = 1;
 }
 
 - (void)tapAction {
-//       [XU_ImageTools showImage:self.photo];
        [DAGImageManager viewWithImage:self.photo.image];
 }
 
 - (void)clickAction {
-       
        if ([Dem_UserData shareInstance].isLog != YES) {
-              
               UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"您还没有注册" message:@"注册后才能点赞" preferredStyle:UIAlertControllerStyleAlert];
               UIAlertAction *dAction = [UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
                      
@@ -334,10 +324,8 @@ static NSInteger i = 1;
               
               [self submitData];
        }
-       
-       
+   
 }
-
 
 - (void)submitData {
        static int i = 1;
@@ -355,13 +343,9 @@ static NSInteger i = 1;
                      [Submit setObject:@"1" forKey:@"click"];
                      [Submit setObject:@"content" forKey:@"comment"];
                      [Submit setObject:self.model.hashId forKey:@"hashId"];
-//                     [Submit incrementKey:@"click"];
                      [Submit save];
                      [self getPraise];
-  
               }
-              
-              
        }];
 
 }
@@ -375,16 +359,12 @@ static NSInteger i = 1;
               if (objects.count != 0) {
                      // 找到了这条记录.
                      self.clickNum = [NSString stringWithFormat:@"点赞：%@", [objects[0] valueForKey:@"click"]];
-                     
-                     
               } else {
                      // 没有找到该条记录.
                      self.clickNum = @"点赞：0";
               }
        }];
 }
-
-
 
 - (void)commentAction {
        if ([Dem_UserData shareInstance].isLog != YES) {
@@ -430,10 +410,6 @@ static NSInteger i = 1;
        CGRect rect = [text boundingRectWithSize:size options:NSStringDrawingUsesFontLeading|NSStringDrawingUsesLineFragmentOrigin attributes:dic context:nil];
        return rect.size.height + 21;
 }
-
-
-
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 @class DAGJokeModel;
+
 @interface DAGJokeTableViewCell2 : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *updateLab;
 
@@ -20,5 +21,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *shareBtn;
 
 @property (nonatomic, strong)DAGJokeModel *model;
+
 
 @end
