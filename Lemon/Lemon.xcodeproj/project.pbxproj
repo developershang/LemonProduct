@@ -281,6 +281,8 @@
 		C2F056891C8FBEA800918256 /* PostViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2F056821C8FBEA800918256 /* PostViewController.xib */; };
 		C2F0568A1C8FBEA800918256 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2F056841C8FBEA800918256 /* SearchViewController.m */; };
 		C2F0568B1C8FBEA800918256 /* SearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2F056851C8FBEA800918256 /* SearchViewController.xib */; };
+		C2F0568F1C90024B00918256 /* RequsetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2F0568D1C90024B00918256 /* RequsetViewController.m */; };
+		C2F056901C90024B00918256 /* RequsetViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2F0568E1C90024B00918256 /* RequsetViewController.xib */; };
 		FB934B9229C3398109C09466 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 07F427A90B2FA9BEBB7AAB3B /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -702,6 +704,9 @@
 		C2F056831C8FBEA800918256 /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
 		C2F056841C8FBEA800918256 /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
 		C2F056851C8FBEA800918256 /* SearchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchViewController.xib; sourceTree = "<group>"; };
+		C2F0568C1C90024B00918256 /* RequsetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequsetViewController.h; sourceTree = "<group>"; };
+		C2F0568D1C90024B00918256 /* RequsetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RequsetViewController.m; sourceTree = "<group>"; };
+		C2F0568E1C90024B00918256 /* RequsetViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RequsetViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1584,6 +1589,9 @@
 				C2ACFADD1C8A6B7900023A99 /* DAGMyViewController.m */,
 				C2ACFADF1C8A743500023A99 /* DAGDownLoadViewController.h */,
 				C2ACFAE01C8A743500023A99 /* DAGDownLoadViewController.m */,
+				C2F0568C1C90024B00918256 /* RequsetViewController.h */,
+				C2F0568D1C90024B00918256 /* RequsetViewController.m */,
+				C2F0568E1C90024B00918256 /* RequsetViewController.xib */,
 			);
 			path = reserve;
 			sourceTree = "<group>";
@@ -1734,6 +1742,7 @@
 				C215A64C1C8592FA00C5487A /* 98-palette.png in Resources */,
 				C215A6201C8592FA00C5487A /* 54-lock.png in Resources */,
 				C2B138331C85CA9900A4DC88 /* placeholder.png in Resources */,
+				C2F056901C90024B00918256 /* RequsetViewController.xib in Resources */,
 				C215A5E21C8592FA00C5487A /* 03-loopback.png in Resources */,
 				C215A5F91C8592FA00C5487A /* 15-tags.png in Resources */,
 				C215A5E11C8592FA00C5487A /* 02-redo.png in Resources */,
@@ -1922,6 +1931,7 @@
 				C2B4E0D61C8EA20600047D46 /* MBProgressHUD.m in Sources */,
 				C20940D21C869CCD0049AC25 /* Dem_LeanCloudData.m in Sources */,
 				C215A6501C859FF500C5487A /* DHSlideMenuController.m in Sources */,
+				C2F0568F1C90024B00918256 /* RequsetViewController.m in Sources */,
 				C23F74051C869BEF00C1475E /* enjoyViewController.m in Sources */,
 				C215A56A1C852D5100C5487A /* Dem_ChatViewController.m in Sources */,
 				C2CF9EF61C84707C00031C10 /* UIImage+WebP.m in Sources */,
