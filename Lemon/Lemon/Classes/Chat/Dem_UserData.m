@@ -85,6 +85,7 @@ static Dem_UserData *handle = nil;
     self.isLog = NO;
     self.user = nil;
     [AVUser logOut];
+    [[RCIM sharedRCIM]disconnect:YES];
     [AVUser currentUser];
 }
 

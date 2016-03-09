@@ -7,7 +7,9 @@
 //
 
 #import "PostViewController.h"
-
+#import "Dem_LeanMethod.h"
+#import "Dem_Fpuser.h"
+#import "Dem_UserData.h"
 @interface PostViewController ()
 
 @end
@@ -35,6 +37,13 @@
 - (void)DoneAction:(UIBarButtonItem *)sender{
     NSLog(@"发表");
     
+    Dem_Fpuser * user = [[Dem_Fpuser alloc] init];
+    user.content  = self.postContentTextField.text;
+    user.img = [UIImage imageNamed:@"Duanzi.png"];
+    AVUser *auser = [Dem_UserData shareInstance].user;
+    
+    [Dem_LeanMethod addFpuserWithUser:auser fpuser:user];
+    NSLog(@"-----%@--- %@",user.content,auser);
 }
 
 

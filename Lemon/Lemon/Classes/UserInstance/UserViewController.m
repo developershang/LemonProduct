@@ -10,6 +10,7 @@
 #import "Dem_UserData.h"
 #import <AVOSCloud/AVOSCloud.h>
 #import "DHSlideMenuController.h"
+#import "LoginViewController.h"
 @interface UserViewController ()<UITableViewDataSource,UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *photo;
 @property (weak, nonatomic) IBOutlet UILabel *name;
@@ -71,6 +72,12 @@
     else if(indexPath.section == 1){
         
         if (indexPath.row == 0) {
+            
+                LoginViewController *lvc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil]instantiateViewControllerWithIdentifier:@"lvc"];
+                [self presentViewController:lvc animated:YES completion:^{
+                    [Dem_UserData shareInstance].reLoad = YES;
+                }];
+            
             NSLog(@"更换用户");
         }
         else if (indexPath.row == 1){
@@ -81,6 +88,9 @@
         }
     }
 }
+
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
