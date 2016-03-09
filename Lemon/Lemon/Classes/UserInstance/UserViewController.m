@@ -84,6 +84,8 @@
             NSLog(@"zhuxiao");
             [[Dem_UserData shareInstance]logoutUser];
             [Dem_UserData shareInstance].reLoad = YES;
+            [[DHSlideMenuController sharedInstance]hideSlideMenuViewController:NO];
+            [DHSlideMenuController sharedInstance].leftViewController = nil;
             
         }
     }
