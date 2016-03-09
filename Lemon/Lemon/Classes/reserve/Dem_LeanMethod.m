@@ -25,7 +25,7 @@
         if (succeeded == 1) {
             [file deleteInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                 NSLog(@"%@ // %d",error,succeeded);
-               // block(succeeded);
+                block(succeeded);
             }];
         }
     } progressBlock:^(NSInteger percentDone) {

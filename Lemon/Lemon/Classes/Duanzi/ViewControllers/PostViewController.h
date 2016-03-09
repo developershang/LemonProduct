@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AVConstants.h"
 
 @interface PostViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UITextField *postContentTextField;
