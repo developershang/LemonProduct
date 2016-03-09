@@ -10,6 +10,7 @@
 #import "Dem_LeanMethod.h"
 #import "Dem_Fpuser.h"
 #import "Dem_UserData.h"
+#import "LoginViewController.h"
 @interface PostViewController ()
 
 @end
@@ -36,14 +37,45 @@
 
 - (void)DoneAction:(UIBarButtonItem *)sender{
     NSLog(@"发表");
+    if ([Dem_UserData shareInstance].user == nil) {
+        
+        LoginViewController *lvc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil]instantiateViewControllerWithIdentifier:@"lvc"];
+        [self presentViewController:lvc animated:YES completion:^{
+            [Dem_UserData shareInstance].reLoad = YES;
+        }];
+        
+    }else{
     
     Dem_Fpuser * user = [[Dem_Fpuser alloc] init];
     user.content  = self.postContentTextField.text;
     user.img = [UIImage imageNamed:@"Duanzi.png"];
     AVUser *auser = [Dem_UserData shareInstance].user;
     
+
 //    [Dem_LeanMethod addFpuserWithUser:auser fpuser:user];
+
+    
+    [Dem_LeanMethod addFpuserWithUser:auser fpuser:user block:^(BOOL save) {
+        
+        NSString *string = nil;
+        if (save == YES) {
+            
+            string = @"发贴成功";
+        }else{
+            string = @"发贴失败,重新发表";
+            
+        }
+        UIAlertController *alert =  [UIAlertController alertControllerWithTitle:@"提醒" message:string preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction *action = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:nil];
+        [alert addAction:action];
+        
+        [self presentViewController:alert animated:YES completion:nil];
+        
+    }];
+
     NSLog(@"-----%@--- %@",user.content,auser);
+}
 }
 
 

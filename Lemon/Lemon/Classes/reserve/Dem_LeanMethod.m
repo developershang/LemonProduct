@@ -25,7 +25,7 @@
         if (succeeded == 1) {
             [file deleteInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                 NSLog(@"%@ // %d",error,succeeded);
-                block(succeeded);
+               // block(succeeded);
             }];
         }
     } progressBlock:^(NSInteger percentDone) {
@@ -35,6 +35,7 @@
     NSError *error1 = nil;
     [text save:&error1];
 }
+
 
 +(NSArray<AVObject*>*)theFpuserWithPage:(NSInteger)page {
     AVQuery *query =[AVQuery queryWithClassName:@"Fpuser"];

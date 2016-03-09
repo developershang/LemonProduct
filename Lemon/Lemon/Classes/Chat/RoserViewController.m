@@ -28,6 +28,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(NSNotificationAction) name:@"reload" object:@"refresh"];
+    
+    
     self.table = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height-49) style:UITableViewStylePlain];
     [self.view addSubview:self.table];
     [self.table registerClass:[UITableViewCell class] forCellReuseIdentifier:@"list_cell"];
@@ -46,6 +51,11 @@
     // Do any additional setup after loading the view.
 }
 
+-(void)NSNotificationAction{
+    [self viewWillAppear:YES];
+    [self viewDidAppear:YES];
+}
+
 -(void)viewWillAppear:(BOOL)animated{
     
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -56,8 +66,6 @@
     [button setTitle:@"会话列表" forState:UIControlStateNormal];
     self.navigationItem.titleView = button;
     [button addTarget:self action:@selector(TextChatAction) forControlEvents:UIControlEventTouchUpInside];
-    
-    
     if ([Dem_UserData shareInstance].user ==nil) {
         button.hidden = YES;
         UIBarButtonItem *left = [[UIBarButtonItem alloc]initWithTitle:@"登陆" style:UIBarButtonItemStyleDone target:self action:@selector(loginAction)];
@@ -85,7 +93,6 @@
         [self.data removeAllObjects];
         [self.table reloadData];
         dispatch_async(dispatch_get_global_queue(0, 0), ^{
-            
             [self loadData];
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self.table reloadData];

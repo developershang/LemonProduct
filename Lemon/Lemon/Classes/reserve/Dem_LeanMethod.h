@@ -12,7 +12,7 @@
 @class AVObject;
 @class Dem_UserModel;
 @interface Dem_LeanMethod : NSObject
-
+@property (nonatomic, strong)NSString *str;
 /**
  *@param
  *@return 添加帖子
