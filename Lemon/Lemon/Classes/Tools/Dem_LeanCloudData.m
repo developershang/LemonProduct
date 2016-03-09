@@ -22,11 +22,8 @@
     [Users setObject:u forKey:@"user"];
     [Users setObject:user.token forKey:@"token"];
     [Users setObject:user.username forKey:@"nid"];
-    
     NSData *data = UIImagePNGRepresentation(user.photo);
     AVFile *file = [AVFile fileWithName:[NSString stringWithFormat:@"%@.png",user.username] data:data];
-    
-       
        UIView *view = [[UIView alloc] initWithFrame:[UIScreen mainScreen].bounds];
        [view setTag:108];
        [view setBackgroundColor:[UIColor redColor]];
@@ -39,11 +36,7 @@
        [act setCenter:view.center];//设置旋转菊花的中心位置
        [act setActivityIndicatorViewStyle:UIActivityIndicatorViewStyleWhiteLarge];//设置菊花的样式
        [view addSubview: act];
-       
        [act startAnimating];
-       
-       
-
     [file saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         NSLog(@"%d",succeeded);
         if (succeeded == 1) {
@@ -53,10 +46,6 @@
                    [act stopAnimating];
                    [view removeFromSuperview];
                    [vc removeFromParentViewController];
-                   
-                   
-                   
-                   
             }];
         }
     } progressBlock:^(NSInteger percentDone) {
@@ -71,16 +60,13 @@
         
         NSLog(@"%@",error);
     }
-    
     AVObject *Group = [AVObject objectWithClassName:@"Group"];
     NSArray *array = @[@"我的好友",@"其他"];
     [Group setObject:array forKey:@"groupName"];
     [Group setObject:u forKey:@"user"];
     NSError *error1 = nil;
     [Group save:&error1];
-    
     if (error1) {
-        
         NSLog(@"%@",error1);
     }
     [Users saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {

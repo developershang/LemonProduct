@@ -11,7 +11,7 @@
 #import "Dem_Fpuser.h"
 @implementation Dem_LeanMethod
 
-+(void)addFpuserWithUser:(AVUser *)user fpuser:(Dem_Fpuser*)fpuser {
++(void)addFpuserWithUser:(AVUser *)user fpuser:(Dem_Fpuser*)fpuser block:(void(^)(BOOL save))block{
     AVObject *text = [AVObject objectWithClassName:@"Fpuser"];
     [text setObject:fpuser.content forKey:@"content"];
     [text setObject:user forKey:@"user"];
@@ -22,6 +22,7 @@
         if (succeeded == 1) {
             [file deleteInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                 NSLog(@"%@ // %d",error,succeeded);
+                block(succeeded);
             }];
         }
     } progressBlock:^(NSInteger percentDone) {

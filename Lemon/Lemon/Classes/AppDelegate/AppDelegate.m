@@ -13,6 +13,9 @@
 #import "UserViewController.h"
 #import "DHSlideMenuController.h"
 #import "HTTPServer.h"
+#import "Dem_LeanCloudData.h"
+
+
 @interface AppDelegate ()<RCIMUserInfoDataSource,RCIMGroupInfoDataSource,RCIMConnectionStatusDelegate>
 
 @end
@@ -90,6 +93,15 @@
 - (void)getUserInfoWithUserId:(NSString *)userId completion:(void (^)(RCUserInfo *))completion{
     RCUserInfo *user = [[RCUserInfo alloc]init];
     user.userId = userId;
+    AVUser *users = [[Dem_LeanCloudData searchUserWithUserName:userId]firstObject];
+    [Dem_LeanCloudData intermationWithUser:users block:^(AVObject *users) {
+        user.name = [users objectForKey:@"nid"];
+        AVFile *file =[users objectForKey:@"photo"];
+        NSString *fileid = [file objectId];
+        AVQuery *query = [AVQuery queryWithClassName:@"_File"];
+        AVObject *img = [query getObjectWithId:fileid];
+        user.portraitUri =[img objectForKey:@"url"];
+    }];
     return completion(user);
 }
 

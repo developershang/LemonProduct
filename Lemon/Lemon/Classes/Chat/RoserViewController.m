@@ -33,14 +33,8 @@
     [self.table registerClass:[UITableViewCell class] forCellReuseIdentifier:@"list_cell"];
     self.table.delegate = self;
     self.table.dataSource = self;
-    
-    
-    UIButton *button = [UIButton buttonWithType:UIButtonTypeSystem];
-    button.frame = CGRectMake(150, 60, 100, 30);
-    [button setTitle:@"会话列表" forState:UIControlStateNormal];
-    self.navigationItem.titleView = button;
-    [button addTarget:self action:@selector(TextChatAction) forControlEvents:UIControlEventTouchUpInside];
-    
+    [RCIM sharedRCIM].globalConversationAvatarStyle =RC_USER_AVATAR_CYCLE;
+    [RCIM sharedRCIM].globalMessageAvatarStyle=RC_USER_AVATAR_CYCLE;
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
         
         [self loadData];
@@ -53,13 +47,25 @@
 }
 
 -(void)viewWillAppear:(BOOL)animated{
+    
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
     btn.frame =CGRectMake(0, 0, 40, 40);
+    
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeSystem];
+    button.frame = CGRectMake(150, 60, 100, 30);
+    [button setTitle:@"会话列表" forState:UIControlStateNormal];
+    self.navigationItem.titleView = button;
+    [button addTarget:self action:@selector(TextChatAction) forControlEvents:UIControlEventTouchUpInside];
+    
+    
     if ([Dem_UserData shareInstance].user ==nil) {
+        button.hidden = YES;
         UIBarButtonItem *left = [[UIBarButtonItem alloc]initWithTitle:@"登陆" style:UIBarButtonItemStyleDone target:self action:@selector(loginAction)];
         self.navigationItem.leftBarButtonItem = left;
+        self.navigationItem.rightBarButtonItem = nil;
     }
     else{
+        button.hidden = NO;
         UIBarButtonItem *right = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(rightAction)];
         self.navigationItem.rightBarButtonItem = right;
         DHSlideMenuController *mainVC = [DHSlideMenuController sharedInstance];
@@ -71,20 +77,6 @@
         btn.layer.masksToBounds = YES;
         btn.layer.cornerRadius = 20;
         [btn addTarget:self action:@selector(leftAction) forControlEvents:UIControlEventTouchUpInside];
-//        if ([Dem_UserData shareInstance].isLog == NO) {
-//            //连接服务器
-//            [[RCIM sharedRCIM] connectWithToken:[Dem_UserData shareInstance].model.token success:^(NSString *userId) {
-//                NSLog(@"登陆成功。当前登录的用户ID：%@", userId);
-//                [Dem_UserData shareInstance].isLog = YES;
-//            } error:^(RCConnectErrorCode status) {
-//                NSLog(@"登陆的错误码为:%ld", (long)status);
-//            } tokenIncorrect:^{
-//                //token过期或者不正确。
-//                //如果设置了token有效期并且token过期，请重新请求您的服务器获取新的token
-//                //如果没有设置token有效期却提示token错误，请检查您客户端和服务器的appkey是否匹配，还有检查您获取token的流程。
-//                NSLog(@"token错误");
-//            }];
-//        }
     }
 }
 
@@ -133,7 +125,7 @@
             [dict setObject:array[i] forKey:@"groupname"];
             NSMutableArray *arr = [[NSMutableArray alloc] initWithCapacity : 2];
             NSArray * group = [Dem_LeanCloudData groupByUser:[Dem_UserData shareInstance].user group:array[i]];
-
+            
             if (group.count !=0) {
                 for (int i = 0; i < group.count; i++) {
                     AVObject *buddy = group[i];
@@ -149,7 +141,7 @@
             [dict setObject:arr forKey:@"users"];
             [_data addObject:dict];
         }
-
+        
     }];
     
 }
@@ -222,7 +214,7 @@
     AVFile *file = [fri objectForKey:@"photo"];
     NSData *data = [file getData];
     cell.imageView.image = [UIImage imageWithData:data];
-//    cell.imageView.image = [UIImage imageNamed:@"mod_user.png"];
+    //    cell.imageView.image = [UIImage imageNamed:@"mod_user.png"];
     //选中行时灰色
     cell.selectionStyle = UITableViewCellSelectionStyleGray;
     [cell setAccessoryType: UITableViewCellAccessoryDisclosureIndicator];
