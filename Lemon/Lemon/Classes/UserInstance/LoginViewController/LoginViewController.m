@@ -30,6 +30,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.loginButton addTarget:self action:@selector(loginAction) forControlEvents:UIControlEventTouchUpInside];
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"reload" object:@"refresh"];
     // Do any additional setup after loading the view.
 }
 
