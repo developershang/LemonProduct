@@ -42,7 +42,7 @@
     user.img = [UIImage imageNamed:@"Duanzi.png"];
     AVUser *auser = [Dem_UserData shareInstance].user;
     
-    [Dem_LeanMethod addFpuserWithUser:auser fpuser:user];
+//    [Dem_LeanMethod addFpuserWithUser:auser fpuser:user];
     NSLog(@"-----%@--- %@",user.content,auser);
 }
 

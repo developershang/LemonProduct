@@ -142,6 +142,7 @@
 		C21628921C885E350012FFC1 /* Dem_SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C21628911C885E350012FFC1 /* Dem_SearchViewController.m */; };
 		C21628951C88655B0012FFC1 /* Dem_BuddyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C21628941C88655B0012FFC1 /* Dem_BuddyViewController.m */; };
 		C2172DBB1C8925AB00939D9B /* Dem_GroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2172DBA1C8925AB00939D9B /* Dem_GroupViewController.m */; };
+		C228DFF91C902492004566C3 /* 742565.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C228DFF81C902492004566C3 /* 742565.jpg */; };
 		C23A405B1C8EA07600EDEE7B /* Dem_Fpuser.m in Sources */ = {isa = PBXBuildFile; fileRef = C23A40581C8EA07600EDEE7B /* Dem_Fpuser.m */; };
 		C23A405C1C8EA07600EDEE7B /* Dem_LeanMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = C23A405A1C8EA07600EDEE7B /* Dem_LeanMethod.m */; };
 		C23F73FE1C86921000C1475E /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C23F73FD1C86921000C1475E /* LoginViewController.m */; };
@@ -445,6 +446,7 @@
 		C21628941C88655B0012FFC1 /* Dem_BuddyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Dem_BuddyViewController.m; sourceTree = "<group>"; };
 		C2172DB91C8925AB00939D9B /* Dem_GroupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Dem_GroupViewController.h; sourceTree = "<group>"; };
 		C2172DBA1C8925AB00939D9B /* Dem_GroupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Dem_GroupViewController.m; sourceTree = "<group>"; };
+		C228DFF81C902492004566C3 /* 742565.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 742565.jpg; sourceTree = "<group>"; };
 		C23A40571C8EA07600EDEE7B /* Dem_Fpuser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Dem_Fpuser.h; sourceTree = "<group>"; };
 		C23A40581C8EA07600EDEE7B /* Dem_Fpuser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Dem_Fpuser.m; sourceTree = "<group>"; };
 		C23A40591C8EA07600EDEE7B /* Dem_LeanMethod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Dem_LeanMethod.h; sourceTree = "<group>"; };
@@ -1421,6 +1423,7 @@
 			children = (
 				C23F73F71C8691D000C1475E /* LoginViewController */,
 				C23F73F81C8691D000C1475E /* RegisterViewController */,
+				C228DFF81C902492004566C3 /* 742565.jpg */,
 				C2CF9F0E1C84749600031C10 /* icon_sponsor_blue.png */,
 				C215A6571C85CF5D00C5487A /* UserViewController.h */,
 				C215A6581C85CF5D00C5487A /* UserViewController.m */,
@@ -1786,6 +1789,7 @@
 				C215A63A1C8592FA00C5487A /* 80-shopping-cart.png in Resources */,
 				C215A60C1C8592FA00C5487A /* 34-coffee.png in Resources */,
 				C215A5FE1C8592FA00C5487A /* 20-gear2.png in Resources */,
+				C228DFF91C902492004566C3 /* 742565.jpg in Resources */,
 				C215A6241C8592FA00C5487A /* 58-bookmark.png in Resources */,
 				C215A6321C8592FA00C5487A /* 72-pin.png in Resources */,
 				C215A6171C8592FA00C5487A /* 45-movie1.png in Resources */,
