@@ -172,6 +172,12 @@
     return arr;
 }
 
++(AVUser *)searchWithUser:(NSString *)name{
+     AVQuery *userQuery = [AVQuery queryWithClassName:@"_User"];
+    [userQuery whereKey:@"username" equalTo:name];
+    AVUser *user = [[userQuery findObjects]firstObject];
+    return user;
+}
 
 
 

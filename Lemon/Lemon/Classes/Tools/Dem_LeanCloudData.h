@@ -64,5 +64,10 @@
  **/
 +(NSArray <AVObject *>*)groupByUser:(AVUser *)user group:(NSString *)group;
 
+/**
+ *@param
+ *@return 根据用户名查询
+ **/
++(AVUser *)searchWithUser:(NSString *)name;
 
 @end

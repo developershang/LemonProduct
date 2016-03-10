@@ -70,6 +70,7 @@
     [button setTitle:@"会话列表" forState:UIControlStateNormal];
     self.navigationItem.titleView = button;
     [button addTarget:self action:@selector(TextChatAction) forControlEvents:UIControlEventTouchUpInside];
+    //接收消息
     [self ReceiveMessageWithUser:[Dem_UserData shareInstance].user.username];
     if ([Dem_UserData shareInstance].user ==nil) {
         button.hidden = YES;
@@ -130,7 +131,10 @@
 
 // 接收消息的回调函数
 - (void)conversation:(AVIMConversation *)conversation didReceiveTypedMessage:(AVIMTypedMessage *)message {
-    NSLog(@"%@", message.text); // 耗子，起床！
+    NSLog(@"%@", message.text);
+    AVUser *user = [Dem_LeanCloudData searchWithUser:message.text];
+    [Dem_LeanCloudData addBuddyWithUser:[Dem_UserData shareInstance].user buddy:user group:@"我的好友"];
+    [self NSNotificationAction];
 }
 
 
