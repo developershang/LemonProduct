@@ -33,8 +33,10 @@
     
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(NSNotificationAction) name:@"reload" object:@"refresh"];
     
-    
     self.table = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height-49) style:UITableViewStylePlain];
+       UIImageView *image = [[UIImageView alloc] initWithFrame:[UIScreen mainScreen].bounds];
+       image.image = [UIImage imageNamed:@"chat.jpg"];
+       self.table.backgroundView = image;
     [self.view addSubview:self.table];
     [self.table registerClass:[UITableViewCell class] forCellReuseIdentifier:@"list_cell"];
     self.table.delegate = self;
@@ -242,6 +244,7 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
+       
     NSDictionary* m= (NSDictionary*)[_data objectAtIndex: indexPath.section];
     NSArray *d = (NSArray*)[m objectForKey:@"users"];
     if (d == nil) {
@@ -249,6 +252,7 @@
     }
     //显示联系人名称
     AVObject *fri = d[indexPath.row];
+       cell.textLabel.textColor = [UIColor whiteColor];
     cell.textLabel.text =[fri objectForKey:@"nid"];
     cell.textLabel.backgroundColor = [UIColor clearColor];
     cell.backgroundColor = [UIColor colorWithRed:0.991 green:0.205 blue:0.000 alpha:0];
@@ -300,7 +304,7 @@
     //设置按钮显示颜色
     eButton.backgroundColor = [UIColor colorWithWhite:0.658 alpha:0];
     [eButton setTitle:[[_data objectAtIndex:section] objectForKey:@"groupname"] forState:UIControlStateNormal];
-    [eButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [eButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [eButton setTitleShadowColor:[UIColor colorWithWhite:0.1 alpha:1] forState:UIControlStateNormal];
     [eButton.titleLabel setShadowOffset:CGSizeMake(1, 1)];
     [hView addSubview: eButton];

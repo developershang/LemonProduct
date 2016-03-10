@@ -33,13 +33,11 @@
     AVFile *file = [AVFile fileWithName:[NSString stringWithFormat:@"%@.png",user.username] data:data];
        UIView *view = [[UIView alloc] initWithFrame:[UIScreen mainScreen].bounds];
        [view setTag:108];
-       [view setBackgroundColor:[UIColor redColor]];
+       [view setBackgroundColor:[UIColor colorWithRed:0.546 green:0.541 blue:0.539 alpha:1.000]];
        [view setAlpha:0.5];
        UIViewController *vc = [UIApplication sharedApplication].windows[2].rootViewController;
        [vc.view addSubview:view];
-       //
        UIActivityIndicatorView *act = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 32.0f, 32.0f)];
-       //    [act setCenter:CGPointMake(10, 200)];
        [act setCenter:view.center];//设置旋转菊花的中心位置
        [act setActivityIndicatorViewStyle:UIActivityIndicatorViewStyleWhiteLarge];//设置菊花的样式
        [view addSubview: act];

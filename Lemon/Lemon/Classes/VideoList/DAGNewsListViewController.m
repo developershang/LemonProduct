@@ -38,6 +38,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
        self.view.backgroundColor = [UIColor clearColor];
+       UIImageView *image = [[UIImageView alloc] initWithFrame:[UIScreen mainScreen].bounds];
+       image.image = [UIImage imageNamed:@"sky.jpg"];
+       self.dlv.table.backgroundView = image;
        self.navigationItem.title = @"实时热点";
        
        UIBarButtonItem *right = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"06-magnifying-glass"] style:UIBarButtonItemStyleDone target:self action:@selector(searchAction)];
@@ -149,7 +152,7 @@
        NewsListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"NewsListCell" forIndexPath:indexPath];
        cell.backgroundColor = [UIColor clearColor];
        [cell setDelegate:self];
-       
+       cell.selectionStyle = UITableViewCellSelectionStyleNone;
               DAGNewsDetailList *model = self.DetailArray[indexPath.row];
               cell.TitleLab.text = model.full_title;
               cell.UpdateTimeLab.text = model.pdate_src;

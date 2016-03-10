@@ -21,7 +21,7 @@
 #define kDetailUrl @"http://op.juhe.cn/onebox/news/query?q=%@&dtype=&key=c054c35b7452fc801973cf1d06c9998e"
 
 // 最新趣图URL
-#define kFunPicURL @"http://japi.juhe.cn/joke/img/text.from?page=%ld&pagesize=5&key=f33173f37b13d9b9227577e7d8e87433"
+#define kFunPicURL @"http://japi.juhe.cn/joke/img/text.from?page=%ld&pagesize=10&key=f33173f37b13d9b9227577e7d8e87433"
 
 // 最新笑话URL
 #define kJokeUrl @"http://japi.juhe.cn/joke/content/text.from?page=%ld&pagesize=20&key=f33173f37b13d9b9227577e7d8e87433"
