@@ -48,7 +48,7 @@
             [self.table reloadData];
         });
     });
-     [self ReceiveMessageWithUser:[Dem_UserData shareInstance].user.username];
+    
     // Do any additional setup after loading the view.
 }
 
@@ -67,6 +67,7 @@
     [button setTitle:@"会话列表" forState:UIControlStateNormal];
     self.navigationItem.titleView = button;
     [button addTarget:self action:@selector(TextChatAction) forControlEvents:UIControlEventTouchUpInside];
+    [self ReceiveMessageWithUser:[Dem_UserData shareInstance].user.username];
     if ([Dem_UserData shareInstance].user ==nil) {
         button.hidden = YES;
         UIBarButtonItem *left = [[UIBarButtonItem alloc]initWithTitle:@"登陆" style:UIBarButtonItemStyleDone target:self action:@selector(loginAction)];
