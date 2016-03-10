@@ -18,11 +18,13 @@
 #import "LoginViewController.h"
 #import "PostViewController.h"
 #import "SearchViewController.h"
-#import "Dem_LeanCloudData.h"
-#import "Dem_LeanMethod.h"
-#import "Dem_Fpuser.h"
-#import "Dem_UserModel.h"
+#import "XU_ImageTools.h"
+#import "DAGImageManager.h"
+#import "DAGJokeViewController.h"
 @interface RootViewController ()<UITableViewDataSource ,UITableViewDelegate>
+
+@property (nonatomic, strong)UIImageView *photo;
+
 
 @end
 
@@ -160,15 +162,8 @@
             break;
         case 2:{
             
-            AVObject *obj = [AVObject objectWithClassName:@"Fpuser"];
-            
-            [Dem_LeanMethod theContentWithFpuser:obj fpus:nil mo:^(Dem_UserModel *user) {
-                
-                
-            }];
-            
-           
-            
+ 
+
             
         }
             
@@ -202,7 +197,7 @@
       
        TextTableViewCell *textCell  = [tableView dequeueReusableCellWithIdentifier:@"TextCell" forIndexPath:indexPath];
        
-        [textCell.userPhotoView sd_setImageWithURL:[NSURL URLWithString:model.profile_image]];
+       [textCell.userPhotoView sd_setImageWithURL:[NSURL URLWithString:model.profile_image]];
         textCell.userNameLabel.text = model.name;
         textCell.ContentsLabel.text = nil;
         textCell.ContentsLabel.text = model.text ;
@@ -210,22 +205,46 @@
  
         cell = textCell;
 
- 
     }else{
         
         PicTableViewCell *picCell = [tableView dequeueReusableCellWithIdentifier:@"PicCell" forIndexPath:indexPath];
         [picCell.userPhotoView sd_setImageWithURL:[NSURL URLWithString:model.profile_image]];
         picCell.userNameLabel.text =model.name;
-        [picCell.contentImageView sd_setImageWithURL:[NSURL URLWithString:model.image0] placeholderImage:[UIImage imageNamed:@"placeholder"]];
+        
+        
+        UIActivityIndicatorView *act = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+        [act setCenter:CGPointMake(picCell.contentImageView.frame.size.width *0.5, picCell.contentImageView.frame.size.height *0.5)];
+        [picCell.contentImageView addSubview:act];
+        [act startAnimating];
+        
+        [picCell.contentImageView sd_setImageWithURL:[NSURL URLWithString:model.image0] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+            [act stopAnimating];
+        }];
+        
         picCell.contentDetailLabel.text = model.text;
         picCell.checkDetailLabel.text = [NSString stringWithFormat:@"赞:%@    踩:%@    分享:%@", model.love,model.hate,model.comment];
+       
+        self.photo = picCell.contentImageView;
+        [picCell.contentImageView addGestureRecognizer: [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction)]];
+         picCell.contentImageView.userInteractionEnabled = YES;
+        
         cell = picCell;
     }
 
     
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;    
     return cell;
 
+}
+
+
+- (void)tapAction{
+    
+
+    
+    
+    [XU_ImageTools showImage:self.photo];
+    
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -234,18 +253,12 @@
     
     if (model.image0 == nil) {
         
-        return [[DataHandel shareInstance] heightForCell:model.text] +5+35+5+5+20+5+20+5+35 +50;
+        return [[DataHandel shareInstance] heightForCell:model.text] +5+35+5+5+20+5+20+5+35 ;
         
         
-    }else if(self.rv.table.frame.size.width*[model.height intValue]/[model.width intValue]  > self.view.frame.size.height *0.6) {
-        
-      
-        return [[DataHandel shareInstance]heightForCell:model.text]+5+35+5+5+20+5+20+5+35 +50+self.rv.table.frame.size.width*[model.height intValue] *0.6/[model.width intValue] ;
-        
-    }
-        else{
+    }else{
     
-         return [[DataHandel shareInstance]heightForCell:model.text]+5+35+5+5+20+5+20+5+35 +50+self.rv.table.frame.size.width*[model.height intValue]/[model.width intValue] ;
+         return [[DataHandel shareInstance]heightForCell:model.text]+5+35+5+5+20+5+20+5+35 +50+self.rv.table.frame.size.width*[model.height floatValue]/[model.width floatValue] ;
     }
 
     
@@ -261,6 +274,7 @@
             [self.rv.table reloadData];
             
         }]; }break;
+            
         case 1: {
         [[DataHandel shareInstance] requestDuanziDataWithUrl:PicURL finshed:^{
             
@@ -268,18 +282,18 @@
         }];
         
         }break;
+
         case 2: {
             UIViewController *vc = [[UIViewController alloc] init];
             vc.view.backgroundColor = [UIColor cyanColor];
-            [self.navigationController pushViewController:vc
-                                                 animated:YES];
-        
-        
+            [self.navigationController pushViewController:vc animated:YES];
         
         }break;
         case 3: {
             
-
+            DAGJokeViewController *da = [[DAGJokeViewController alloc] init];
+            
+            [self.navigationController pushViewController:da animated:YES];
             
             
             

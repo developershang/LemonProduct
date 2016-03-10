@@ -71,13 +71,6 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XNY-ZL-0fq">
-                                <rect key="frame" x="117" y="59" width="46" height="30"/>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <segue destination="tQW-3d-VWj" kind="presentation" id="m1b-ws-0Gd"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -98,7 +91,6 @@
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
-                        <outlet property="loadButton" destination="XNY-ZL-0fq" id="Pw4-3m-IIU"/>
                         <outlet property="name" destination="Imc-fn-fNa" id="UzB-hf-c3e"/>
                         <outlet property="photo" destination="BL7-yM-o3l" id="b24-iC-ssv"/>
                         <outlet property="table" destination="D78-Mj-nCb" id="Oot-fl-HH8"/>
@@ -325,7 +317,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="tVY-h5-jhR" firstAttribute="leading" secondItem="6Qd-ya-WwL" secondAttribute="leading" id="1aA-2D-K5X"/>
                             <constraint firstItem="6Qd-ya-WwL" firstAttribute="height" secondItem="sFc-Kk-nJ1" secondAttribute="height" id="2X4-hb-bZ3"/>
@@ -338,6 +330,7 @@
                             <constraint firstItem="6Qd-ya-WwL" firstAttribute="top" secondItem="Cnt-DY-dbs" secondAttribute="bottom" constant="10" id="AxO-IW-g6w"/>
                             <constraint firstItem="6jK-BF-9Rt" firstAttribute="top" secondItem="Cnt-DY-dbs" secondAttribute="bottom" constant="10" id="ClA-Ls-9Ag"/>
                             <constraint firstItem="ulK-PT-Pch" firstAttribute="centerX" secondItem="Xsf-1g-c4T" secondAttribute="centerX" id="DSy-Sj-sfx"/>
+                            <constraint firstItem="dAs-C7-mGv" firstAttribute="top" secondItem="ImD-G3-2Hn" secondAttribute="bottom" id="Ext-lO-dEK"/>
                             <constraint firstItem="Cnt-DY-dbs" firstAttribute="width" secondItem="sFc-Kk-nJ1" secondAttribute="width" multiplier="0.4" id="GVC-B1-7YO"/>
                             <constraint firstItem="VV5-Vj-71e" firstAttribute="top" secondItem="doD-bt-1x6" secondAttribute="bottom" constant="10" id="Hkb-pD-5K5"/>
                             <constraint firstItem="tVY-h5-jhR" firstAttribute="trailing" secondItem="6Qd-ya-WwL" secondAttribute="trailing" id="Ile-rW-cEG"/>
@@ -350,7 +343,6 @@
                             <constraint firstItem="sFc-Kk-nJ1" firstAttribute="leading" secondItem="8It-sY-lzM" secondAttribute="leading" id="R4S-aC-0Sj"/>
                             <constraint firstItem="8It-sY-lzM" firstAttribute="leading" secondItem="VV5-Vj-71e" secondAttribute="leading" id="Swu-N0-F5c"/>
                             <constraint firstItem="dAs-C7-mGv" firstAttribute="leading" secondItem="Xsf-1g-c4T" secondAttribute="leading" id="TNd-nc-bKs"/>
-                            <constraint firstItem="dAs-C7-mGv" firstAttribute="top" secondItem="ImD-G3-2Hn" secondAttribute="bottom" id="Vlm-qE-CLd"/>
                             <constraint firstItem="doD-bt-1x6" firstAttribute="top" secondItem="ulK-PT-Pch" secondAttribute="bottom" constant="20" id="W67-qv-7dP"/>
                             <constraint firstItem="6jK-BF-9Rt" firstAttribute="leading" secondItem="Cnt-DY-dbs" secondAttribute="leading" id="Z5T-Bj-NJJ"/>
                             <constraint firstItem="tVY-h5-jhR" firstAttribute="top" secondItem="6Qd-ya-WwL" secondAttribute="bottom" constant="10" id="amF-vJ-ZUG"/>

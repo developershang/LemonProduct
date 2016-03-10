@@ -68,6 +68,21 @@ static DataHandel *datahandel;
     
     [SG_NetTools SessionDataWith:url httpmethod:@"GET" httpbody:nil revokeBlock:^(NSData *data) {
         
+        if (data == nil) {
+            
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提示" message:@"当前没有网络，请检查网络是否连接" preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction *action = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                
+            }];
+            
+            [alert addAction:action];
+            UIViewController *vc = [UIApplication sharedApplication].windows[1].rootViewController;
+            [vc presentViewController:alert animated:YES completion:nil];
+            
+            return ;
+        }
+        
+        
         [self.DataArray removeAllObjects];
         [self.infoDAtaArray removeAllObjects];
         
@@ -104,7 +119,19 @@ static DataHandel *datahandel;
     
     
     [SG_NetTools SessionDataWith:url httpmethod:@"GET" httpbody:nil revokeBlock:^(NSData *data) {
-        
+        if (data == nil) {
+            
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提示" message:@"当前没有网络，请检查网络是否连接" preferredStyle:UIAlertControllerStyleAlert];
+           UIAlertAction *action = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+               
+           }];
+            
+            [alert addAction:action];
+            UIViewController *vc = [UIApplication sharedApplication].windows[1].rootViewController;
+            [vc presentViewController:alert animated:YES completion:nil];
+            
+            return ;
+        }
 
         
         NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
