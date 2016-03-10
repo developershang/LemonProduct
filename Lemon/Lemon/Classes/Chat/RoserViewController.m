@@ -48,7 +48,7 @@
             [self.table reloadData];
         });
     });
-    
+     [self ReceiveMessageWithUser:[Dem_UserData shareInstance].user.username];
     // Do any additional setup after loading the view.
 }
 
@@ -74,9 +74,6 @@
         self.navigationItem.rightBarButtonItem = nil;
     }
     else{
-        
-        [self ReceiveMessageWithUser:[Dem_UserData shareInstance].user.username];
-        
         
         button.hidden = NO;
         UIBarButtonItem *right = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(rightAction)];
