@@ -17,6 +17,7 @@
 #import "Dem_LeanCloudData.h"
 #import "Dem_SearchViewController.h"
 #import "Dem_ChatViewController.h"
+
 @interface RoserViewController ()<UITableViewDataSource,UITableViewDelegate>
 @property(nonatomic,strong)UITableView *table;
 @property(nonatomic,strong)NSMutableArray *data;
