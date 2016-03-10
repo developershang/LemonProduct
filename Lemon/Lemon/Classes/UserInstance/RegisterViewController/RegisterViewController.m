@@ -11,6 +11,7 @@
 #import "Dem_UserModel.h"
 #import "Dem_RongData.h"
 #import "DAGAuthCodeView.h"
+
 @interface RegisterViewController ()<UINavigationControllerDelegate,UIImagePickerControllerDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *photoView;
 
@@ -67,14 +68,20 @@
        
        [alert addAction:action];
        
+       UIAlertController *alert1 = [UIAlertController alertControllerWithTitle:@"提示信息" message:@"注册成功" preferredStyle:UIAlertControllerStyleAlert];
+       UIAlertAction *action1 = [UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+              [self dismissViewControllerAnimated:YES completion:nil];
+       }];
+       [alert1 addAction:action1];
+       
        if ([self.userNameTextfield.text isEqualToString:@""] || [self.passWordTextField.text isEqualToString:@""] || [self.makeSurePassWordTextField.text isEqualToString:@""]) {
               alert.message = @"信息填写不完整";
-              [self showDetailViewController:alert sender:nil];
+              [self presentViewController:alert animated:YES completion:nil];
               return;
        }
        if ([self.passWordTextField.text isEqualToString:self.makeSurePassWordTextField.text] == NO) {
               alert.message = @"前后密码不一致";
-              [self showDetailViewController:alert sender:nil];
+              [self presentViewController:alert animated:YES completion:nil];
               return;
        }
        
@@ -93,16 +100,16 @@
                             if ([value.userInfo[@"error"] isEqualToString:@"Username has already been taken"]) {
                                    NSLog(@"此用户已存在");
                             }else{
-                                   NSLog(@"%@",value.userInfo[@"error"]);
+                                   
+                                   [self presentViewController:alert1 animated:YES completion:nil];
                             }
-                            alert.message = @"注册成功";
-                             [self showDetailViewController:alert sender:nil];
+                          
                      }];
               }];
        }
        else {
               alert.message = @"验证码错误";
-              [self showDetailViewController:alert sender:nil];
+              [self presentViewController:alert animated:YES completion:nil];
        }
        
        

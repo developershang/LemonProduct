@@ -10,6 +10,8 @@
 #import <UIKit/UIKit.h>
 @interface SG_Model : NSObject
 
+
+#pragma mark 建立Json数据model
 @property (nonatomic, strong)NSString *profile_image;
 @property (nonatomic, strong)NSString *name;
 @property (nonatomic, strong)NSString *text;

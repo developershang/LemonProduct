@@ -20,7 +20,7 @@ static DataHandel *datahandel;
 
 @implementation DataHandel
 
-
+#pragma mark 懒加载model数组
 - (NSMutableArray *)DataArray{
     
     if (_DataArray == nil) {
@@ -29,6 +29,7 @@ static DataHandel *datahandel;
     return _DataArray;
 }
 
+#pragma mark 懒加载maxtime数组
 - (NSMutableArray *)infoDAtaArray{
     if (_infoDAtaArray == nil) {
         _infoDAtaArray = [NSMutableArray array];
@@ -36,6 +37,7 @@ static DataHandel *datahandel;
     return _infoDAtaArray;
 }
 
+#pragma mark 初始化单例
 +(instancetype)shareInstance{
     
     static dispatch_once_t onceToken;
@@ -47,6 +49,7 @@ static DataHandel *datahandel;
 }
 
 
+#pragma mark 根据text 返回一个高度
 - (CGFloat)heightForCell:(NSString *)text{
     //    计算1： 给准备工作
     CGSize size = CGSizeMake(CGRectGetWidth([UIScreen mainScreen].bounds) -10, 20000);
@@ -58,7 +61,7 @@ static DataHandel *datahandel;
 }
 
 
-//根据网址请求数据
+#pragma mark根据网址请求数据
 - (void)requestDuanziDataWithUrl:(NSString *)url
                          finshed:(void(^)())finsh{
    
@@ -68,6 +71,21 @@ static DataHandel *datahandel;
        }
     
     [SG_NetTools SessionDataWith:url httpmethod:@"GET" httpbody:nil revokeBlock:^(NSData *data) {
+        
+        if (data == nil) {
+            
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提示" message:@"当前没有网络，请检查网络是否连接" preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction *action = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                
+            }];
+            
+            [alert addAction:action];
+            UIViewController *vc = [UIApplication sharedApplication].windows[1].rootViewController;
+            [vc presentViewController:alert animated:YES completion:nil];
+            
+            return ;
+        }
+        
         
         [self.DataArray removeAllObjects];
         [self.infoDAtaArray removeAllObjects];
@@ -98,7 +116,7 @@ static DataHandel *datahandel;
 
 
 
-//根据网址请求数据
+#pragma mark刷新请求数据
 - (void)requestUpDataWithUrl:(NSString *)url
                          finshed:(void(^)())finsh{
     
@@ -108,7 +126,19 @@ static DataHandel *datahandel;
        }
     
     [SG_NetTools SessionDataWith:url httpmethod:@"GET" httpbody:nil revokeBlock:^(NSData *data) {
-        
+        if (data == nil) {
+            
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提示" message:@"当前没有网络，请检查网络是否连接" preferredStyle:UIAlertControllerStyleAlert];
+           UIAlertAction *action = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+               
+           }];
+            
+            [alert addAction:action];
+            UIViewController *vc = [UIApplication sharedApplication].windows[1].rootViewController;
+            [vc presentViewController:alert animated:YES completion:nil];
+            
+            return ;
+        }
 
         
         NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
@@ -139,8 +169,7 @@ static DataHandel *datahandel;
 }
 
 
-
-//返回数组个数
+#pragma mark返回数组个数
 - (NSInteger)countOfDataArray{
     
     return self.DataArray.count;
@@ -148,7 +177,7 @@ static DataHandel *datahandel;
 }
 
 
-//根据索引获取model
+#pragma mark根据索引获取model
 - (SG_Model *)modelAtIndexPath:(NSIndexPath*)indexPath{
     
     
@@ -156,6 +185,8 @@ static DataHandel *datahandel;
     return model;
     
 }
+
+
 
 
 

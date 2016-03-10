@@ -25,7 +25,7 @@
               UIAlertAction *action = [UIAlertAction actionWithTitle:@"知道了" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
                      
               }];
-              UIViewController *vc = [UIApplication sharedApplication].windows[1].rootViewController; 
+              UIViewController *vc = [UIApplication sharedApplication].windows[1].rootViewController;
               [alert addAction:action];
               [vc presentViewController:alert animated:YES completion:nil];
               return nil;

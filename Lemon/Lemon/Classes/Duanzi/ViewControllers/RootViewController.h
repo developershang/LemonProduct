@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #include "RootView.h"
+#import "Dem_UserData.h"
 @interface RootViewController : UIViewController
 
 @property (nonatomic, strong)RootView *rv;
