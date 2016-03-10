@@ -24,6 +24,15 @@
     u.username =user.username;
     u.password = user.password;
     u.email = user.email;
+    
+    NSError *error = nil;
+    [u signUp:&error];
+    
+    if (error) {
+        
+        NSLog(@"%@",error);
+        return;
+    }
     //    u.mobilePhoneNumber = user.mobilePhoneNumber;
     AVObject *Users = [AVObject objectWithClassName:@"Users"];
     [Users setObject:u forKey:@"user"];
@@ -45,37 +54,33 @@
     [file saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         NSLog(@"%d",succeeded);
         if (succeeded == 1) {
-            [file deleteInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-                NSLog(@"%@ // %d",error,succeeded);
-                   UIActivityIndicatorView *act = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 32.0f, 32.0f)];
-                   [act stopAnimating];
-                   [view removeFromSuperview];
-                   [vc removeFromParentViewController];
+//            [file deleteInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+//                NSLog(@"%@ // %d",error,succeeded);
+//                             }];
+            [Users setObject:file forKey:@"photo"];
+            
+            AVObject *Group = [AVObject objectWithClassName:@"Group"];
+            NSArray *array = @[@"我的好友",@"其他"];
+            [Group setObject:array forKey:@"groupName"];
+            [Group setObject:u forKey:@"user"];
+            NSError *error1 = nil;
+            [Group save:&error1];
+            if (error1) {
+                NSLog(@"%@",error1);
+            }
+            [Users saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                NSLog(@"%d",succeeded);
+                if (succeeded == 1) {
+                    UIActivityIndicatorView *act = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 32.0f, 32.0f)];
+                    [act stopAnimating];
+                    [view removeFromSuperview];
+                    [vc removeFromParentViewController];
+                }
             }];
         }
     } progressBlock:^(NSInteger percentDone) {
-           
-                  NSLog(@"%ld",percentDone);
-    }];
-    [Users setObject:file forKey:@"photo"];
-    NSError *error = nil;
-    [u signUp:&error];
-    
-    if (error) {
         
-        NSLog(@"%@",error);
-    }
-    AVObject *Group = [AVObject objectWithClassName:@"Group"];
-    NSArray *array = @[@"我的好友",@"其他"];
-    [Group setObject:array forKey:@"groupName"];
-    [Group setObject:u forKey:@"user"];
-    NSError *error1 = nil;
-    [Group save:&error1];
-    if (error1) {
-        NSLog(@"%@",error1);
-    }
-    [Users saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-        NSLog(@"%d",succeeded);
+                  NSLog(@"%ld",percentDone);
     }];
 }
 
@@ -126,8 +131,8 @@
     [Bud setObject:buddy forKey:@"friend"];
     [Bud setObject:group forKey:@"group"];
     [Bud saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-        NSLog(@" ==%d==",succeeded);
-        NSLog(@"error==%@",error);
+//        NSLog(@" ==%d==",succeeded);
+//        NSLog(@"error==%@",error);
     }];
 }
 
@@ -167,28 +172,7 @@
     return arr;
 }
 
-#pragma markh好友发送通知
-+(void)chatWithUser:(NSString *)user andFriend:(NSString *)friends{
-    AVIMClient *client = [[AVIMClient alloc] init];
-    // Tom 创建了一个 client，用自己的名字作为 clientId
-    client = [[AVIMClient alloc] initWithClientId:user];
-    
-    // Tom 打开 client
-    [client openWithCallback:^(BOOL succeeded, NSError *error) {
-        // Tom 建立了与 Jerry 的会话
-        [client createConversationWithName:[NSString stringWithFormat:@"%@ add %@",user,friends] clientIds:@[friends] callback:^(AVIMConversation *conversation, NSError *error) {
-            // Tom 发了一条消息给 Jerry
-            [conversation sendMessage:[AVIMTextMessage messageWithText:[NSString stringWithFormat:@"add%@",friends] attributes:nil] callback:^(BOOL succeeded, NSError *error) {
-                if (succeeded) {
-                    NSLog(@"发送成功！");
-                }
-                else{
-                    NSLog(@"%@",error);
-                }
-            }];
-        }];
-    }];
-}
+
 
 
 @end

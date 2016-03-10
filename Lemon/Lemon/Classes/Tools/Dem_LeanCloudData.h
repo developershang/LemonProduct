@@ -64,10 +64,5 @@
  **/
 +(NSArray <AVObject *>*)groupByUser:(AVUser *)user group:(NSString *)group;
 
-/**
- *@param
- *@return 好友发送通知
- **/
-+(void)chatWithUser:(NSString *)user andFriend:(NSString *)friends;
 
 @end
