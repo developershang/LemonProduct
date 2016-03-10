@@ -56,7 +56,8 @@ static NSInteger i = 1;
     [super viewDidLoad];
        self.navigationItem.title = @"最新笑话";
        self.imageSize = CGSizeMake(self.view.frame.size.width, 10);
-       // 设置segment
+       
+             // 设置segment
        self.segment = [[UISegmentedControl alloc] initWithItems:@[@"纯文字", @"图文结合"]];
        self.segment.frame = CGRectMake(0, 64, self.view.frame.size.width, 40);
        self.segment.selectedSegmentIndex = 0;
@@ -72,12 +73,20 @@ static NSInteger i = 1;
        
        self.JoketableView.dataSource = self;
        self.JoketableView.delegate = self;
-//       self.FunPicTableView.dataSource = self;
-//       self.FunPicTableView.delegate = self;
        [self loadData];
         [self.JoketableView addFooterWithTarget:self action:@selector(JokeLoadRefresh)];
        // 下拉刷新
        
+}
+
+#pragma mark - 清除缓存
+- (void)clearAction {
+              [[SDImageCache sharedImageCache] clearDisk];
+           [[SDImageCache sharedImageCache] clearMemory];
+              float tmpSize = [[SDImageCache sharedImageCache] getSize];
+              NSString *clearCacheName = tmpSize >= 1 ? [NSString stringWithFormat:@"清理缓存(%.2fM)",tmpSize] : [NSString stringWithFormat:@"清理缓存(%.2fK)",tmpSize * 1024];
+//       NSLog(@"%f", tmpSize);
+              [self.FunPicTableView reloadData];
 }
 
 #pragma mark - 笑话的上拉刷新
@@ -102,12 +111,8 @@ static NSInteger i = 1;
               [[DAG_JokeManager shareInstance] requestFunPicWithUrl:url finish:^{
                      self.FunPicArray = [NSMutableArray array];
                      self.FunPicArray = [DAG_JokeManager shareInstance].FunPicArray;
-                     // 如果刷新的数量大于两次后 删除第一次加载的数据 以减少内存
-                     if (i > 3) {
-                            for (int j = 0; j < 5; j++) {
-                                   [self.FunPicArray removeObjectAtIndex:0];
-                            }
-                     }
+                    NSUInteger size = [[SDImageCache sharedImageCache] getSize];
+                     NSLog(@"%lu",(unsigned long)size);
                      [self.FunPicTableView reloadData];
               }];
               
@@ -117,11 +122,11 @@ static NSInteger i = 1;
 
 }
 
-// 趣图的上拉刷新
+// 趣图的下拉刷新
 - (void)FunPicRefresh {
        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 3.0 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
-              i = 1;
-              NSString *url = [NSString stringWithFormat:kFunPicURL, i];
+              NSInteger a = 1;
+              NSString *url = [NSString stringWithFormat:kFunPicURL, a];
               [[DAG_JokeManager shareInstance] requestFunPicWithUrl:url finish:^{
                  
                      self.FunPicArray = [NSMutableArray array];
@@ -147,9 +152,9 @@ static NSInteger i = 1;
                      break;
               case 1:
                      if (self.FunPicTableView.superview == nil) {
-                            [self.JoketableView removeFromSuperview];
                             self.FunPicTableView.delegate = self;
                             self.FunPicTableView.dataSource = self;
+                            [self.JoketableView removeFromSuperview];
                             [self.view addSubview:self.FunPicTableView];
                              [self.FunPicTableView addFooterWithTarget:self action:@selector(FunPicLoadRefresh)];
                             [self.FunPicTableView addHeaderWithTarget:self action:@selector(FunPicRefresh)];
@@ -398,12 +403,12 @@ static NSInteger i = 1;
 #pragma mark - 分享事件
 - (void)shareAction {
        NSLog(@"分享");
-       if ([Dem_UserData shareInstance].isLog) {
+       if ([Dem_UserData shareInstance].isLog != YES) {
               [self alertController];
-       } 
-       
-       
+       }
 }
+
+
 
 #pragma mark -定义cell的高度
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
