@@ -278,7 +278,7 @@ static NSInteger i = 1;
               ddvc.contentText = self.model.content;
               ddvc.clickText = self.clickNum;
               ddvc.indexPath = indexPath;
-              [self.navigationController pushViewController:ddvc animated:YES];
+                     [self.navigationController pushViewController:ddvc animated:YES];
               } else {
               
        DAGJokeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifier forIndexPath:indexPath];
