@@ -17,8 +17,8 @@
 #import "Dem_LeanCloudData.h"
 #import "Dem_SearchViewController.h"
 #import "Dem_ChatViewController.h"
-
-@interface RoserViewController ()<UITableViewDataSource,UITableViewDelegate>
+#import <AVOSCloudIM/AVOSCloudIM.h>
+@interface RoserViewController ()<UITableViewDataSource,UITableViewDelegate,AVIMClientDelegate>
 @property(nonatomic,strong)UITableView *table;
 @property(nonatomic,strong)NSMutableArray *data;
 @property(nonatomic,strong)AVObject *inter;
@@ -74,6 +74,10 @@
         self.navigationItem.rightBarButtonItem = nil;
     }
     else{
+        
+        [self ReceiveMessageWithUser:[Dem_UserData shareInstance].user.username];
+        
+        
         button.hidden = NO;
         UIBarButtonItem *right = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(rightAction)];
         self.navigationItem.rightBarButtonItem = right;
@@ -100,9 +104,38 @@
                 [Dem_UserData shareInstance].reLoad = NO;
             });
         });
-        
     }
+    
 }
+
+#pragma mark好友接收通知
+-(void)ReceiveMessageWithUser:(NSString *)user {
+    AVIMClient *client = [[AVIMClient alloc] init];
+    
+    // Jerry 创建了一个 client，用自己的名字作为 clientId
+    client = [[AVIMClient alloc] initWithClientId:user];
+    
+    // 设置 client 的 delegate，并实现 delegate 方法
+    client.delegate = self;
+    
+    // Jerry 打开 client
+    [client openWithCallback:^(BOOL succeeded, NSError *error) {
+        // ...
+        NSLog(@"suce = %d ,error = %@",succeeded,error);
+    }];
+}
+
+#pragma mark - AVIMClientDelegate
+
+// 接收消息的回调函数
+- (void)conversation:(AVIMConversation *)conversation didReceiveTypedMessage:(AVIMTypedMessage *)message {
+    NSLog(@"%@", message.text); // 耗子，起床！
+}
+
+
+
+
+
 
 #pragma mark添加好友
 -(void)rightAction{
