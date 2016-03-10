@@ -22,6 +22,7 @@
 @property(nonatomic,strong)UITableView *table;
 @property(nonatomic,strong)NSMutableArray *data;
 @property(nonatomic,strong)AVObject *inter;
+@property (nonatomic, strong) AVIMClient *client;
 
 @end
 
@@ -110,16 +111,16 @@
 
 #pragma mark好友接收通知
 -(void)ReceiveMessageWithUser:(NSString *)user {
-    AVIMClient *client = [[AVIMClient alloc] init];
+    self.client = [[AVIMClient alloc] init];
     
     // Jerry 创建了一个 client，用自己的名字作为 clientId
-    client = [[AVIMClient alloc] initWithClientId:user];
+    self.client = [[AVIMClient alloc] initWithClientId:user];
     
     // 设置 client 的 delegate，并实现 delegate 方法
-    client.delegate = self;
+    self.client.delegate = self;
     
     // Jerry 打开 client
-    [client openWithCallback:^(BOOL succeeded, NSError *error) {
+    [self.client openWithCallback:^(BOOL succeeded, NSError *error) {
         // ...
         NSLog(@"suce = %d ,error = %@",succeeded,error);
     }];

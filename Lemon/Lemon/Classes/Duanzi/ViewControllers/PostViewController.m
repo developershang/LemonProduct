@@ -11,7 +11,7 @@
 #import "Dem_Fpuser.h"
 #import "Dem_UserData.h"
 #import "LoginViewController.h"
-
+#import "Dem_LeanCloudData.h"
 @class AVObject;
 @interface PostViewController ()
 
@@ -53,10 +53,6 @@
     user.img = [UIImage imageNamed:@"Duanzi.png"];
     AVUser *auser = [Dem_UserData shareInstance].user;
     
-
-//    [Dem_LeanMethod addFpuserWithUser:auser fpuser:user];
-
-    
     [Dem_LeanMethod addFpuserWithUser:auser fpuser:user block:^(BOOL save) {
         
         NSString *string = nil;
@@ -77,8 +73,10 @@
     }];
 
     NSLog(@"-----%@--- %@",user.content,auser);
+    }
 }
-}
+
+
 
 
 

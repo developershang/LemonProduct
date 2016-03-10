@@ -20,7 +20,6 @@
 @property (weak, nonatomic) IBOutlet UIImageView *photo;
 @property (weak, nonatomic) IBOutlet UILabel *name;
 @property (weak, nonatomic) IBOutlet UITableView *table;
-@property (weak, nonatomic) IBOutlet UIButton *loadButton;
 @property(nonatomic,strong)NSMutableArray *array;
 
 @end
@@ -35,13 +34,9 @@
     [self.array addObject:arr1];
     [self.array addObject:arr2];
     self.table.separatorStyle = UITableViewCellSeparatorStyleNone;
-    [self.loadButton addTarget:self action:@selector(loginAction) forControlEvents:UIControlEventTouchUpInside];
     // Do any additional setup after loading the view.
 }
 
--(void)loginAction{
-
-}
 
 
 -(void)viewWillAppear:(BOOL)animated{

@@ -10,9 +10,9 @@
 
 @implementation SG_Model
 
+//放在走错
 - (void)setValue:(id)value forUndefinedKey:(NSString *)key{
-    
-    
+        
 }
 
 @end
