@@ -159,8 +159,9 @@
     
     AVQuery *query = [AVQuery andQueryWithSubqueries:[NSArray arrayWithObjects:statusQuery,priorityQuery,nil]];
     NSArray *arr = [query findObjects];
-//    NSLog(@"%@",arr);
     return arr;
 }
+
+#pragma markh好友发送通知
 
 @end
