@@ -71,11 +71,12 @@
             [Users saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                 NSLog(@"%d",succeeded);
                 if (succeeded == 1) {
-                    UIActivityIndicatorView *act = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 32.0f, 32.0f)];
-                    [act stopAnimating];
-                    [view removeFromSuperview];
-                    [vc removeFromParentViewController];
+                       UIActivityIndicatorView *act = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 32.0f, 32.0f)];
+                       [act stopAnimating];
+                       [view removeFromSuperview];
+                       [vc removeFromParentViewController];
                 }
+                   block(error);
             }];
         }
     } progressBlock:^(NSInteger percentDone) {

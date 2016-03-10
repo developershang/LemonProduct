@@ -156,6 +156,7 @@
 		C28B97091C914A6D0018CD34 /* sky.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C28B97081C914A6D0018CD34 /* sky.jpg */; };
 		C28B970D1C914E310018CD34 /* chat.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C28B970C1C914E310018CD34 /* chat.jpg */; };
 		C28B970F1C91508A0018CD34 /* set.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C28B970E1C91508A0018CD34 /* set.jpg */; };
+		C28B97131C9156AC0018CD34 /* screenShot.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = C28B97121C9156AC0018CD34 /* screenShot.jpeg */; };
 		C2A0CFE61C8D19DF00E5A614 /* DAGAuthCodeView.m in Sources */ = {isa = PBXBuildFile; fileRef = C2A0CFE51C8D19DF00E5A614 /* DAGAuthCodeView.m */; };
 		C2A54D6B1C86EF4C00C7F4E4 /* RootView.m in Sources */ = {isa = PBXBuildFile; fileRef = C2A54D6A1C86EF4C00C7F4E4 /* RootView.m */; };
 		C2A54D801C8703DC00C7F4E4 /* TextTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C2A54D7C1C8703DC00C7F4E4 /* TextTableViewCell.m */; };
@@ -472,6 +473,7 @@
 		C28B97081C914A6D0018CD34 /* sky.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sky.jpg; sourceTree = "<group>"; };
 		C28B970C1C914E310018CD34 /* chat.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = chat.jpg; sourceTree = "<group>"; };
 		C28B970E1C91508A0018CD34 /* set.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = set.jpg; sourceTree = "<group>"; };
+		C28B97121C9156AC0018CD34 /* screenShot.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = screenShot.jpeg; sourceTree = "<group>"; };
 		C2A0CFE41C8D19DF00E5A614 /* DAGAuthCodeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAGAuthCodeView.h; sourceTree = "<group>"; };
 		C2A0CFE51C8D19DF00E5A614 /* DAGAuthCodeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAGAuthCodeView.m; sourceTree = "<group>"; };
 		C2A54D691C86EF4C00C7F4E4 /* RootView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootView.h; sourceTree = "<group>"; };
@@ -1475,6 +1477,7 @@
 			children = (
 				C215A5711C8592FA00C5487A /* icons */,
 				C2CF9F101C84752600031C10 /* IMG_0011.jpg */,
+				C28B97121C9156AC0018CD34 /* screenShot.jpeg */,
 				C2CF9E621C846B7000031C10 /* Main.storyboard */,
 				C2CF9E651C846B7000031C10 /* Assets.xcassets */,
 				C2CF9E671C846B7000031C10 /* LaunchScreen.storyboard */,
@@ -1745,6 +1748,7 @@
 				C215A60B1C8592FA00C5487A /* 33-cabinet.png in Resources */,
 				C215A61C1C8592FA00C5487A /* 50-beaker.png in Resources */,
 				C2CF9F0F1C84749600031C10 /* icon_sponsor_blue.png in Resources */,
+				C28B97131C9156AC0018CD34 /* screenShot.jpeg in Resources */,
 				C215A6351C8592FA00C5487A /* 75-phone.png in Resources */,
 				C215A6421C8592FA00C5487A /* 88-beermug.png in Resources */,
 				C2CF9F0D1C84746D00031C10 /* movie.png in Resources */,
