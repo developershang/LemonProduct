@@ -11,6 +11,8 @@
 #import "Dem_Fpuser.h"
 #import "Dem_UserData.h"
 #import "LoginViewController.h"
+
+@class AVObject;
 @interface PostViewController ()
 
 @end
@@ -77,6 +79,8 @@
     NSLog(@"-----%@--- %@",user.content,auser);
 }
 }
+
+
 
 
 - (void)didReceiveMemoryWarning {
