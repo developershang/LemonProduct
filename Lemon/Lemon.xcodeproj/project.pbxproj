@@ -155,7 +155,6 @@
 		C28B97071C911E2F0018CD34 /* cat.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C28B97061C911E2F0018CD34 /* cat.jpg */; };
 		C28B97091C914A6D0018CD34 /* sky.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C28B97081C914A6D0018CD34 /* sky.jpg */; };
 		C28B970D1C914E310018CD34 /* chat.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C28B970C1C914E310018CD34 /* chat.jpg */; };
-		C28B970F1C91508A0018CD34 /* set.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C28B970E1C91508A0018CD34 /* set.jpg */; };
 		C28B97131C9156AC0018CD34 /* screenShot.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = C28B97121C9156AC0018CD34 /* screenShot.jpeg */; };
 		C2A0CFE61C8D19DF00E5A614 /* DAGAuthCodeView.m in Sources */ = {isa = PBXBuildFile; fileRef = C2A0CFE51C8D19DF00E5A614 /* DAGAuthCodeView.m */; };
 		C2A54D6B1C86EF4C00C7F4E4 /* RootView.m in Sources */ = {isa = PBXBuildFile; fileRef = C2A54D6A1C86EF4C00C7F4E4 /* RootView.m */; };
@@ -472,7 +471,6 @@
 		C28B97061C911E2F0018CD34 /* cat.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cat.jpg; sourceTree = "<group>"; };
 		C28B97081C914A6D0018CD34 /* sky.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sky.jpg; sourceTree = "<group>"; };
 		C28B970C1C914E310018CD34 /* chat.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = chat.jpg; sourceTree = "<group>"; };
-		C28B970E1C91508A0018CD34 /* set.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = set.jpg; sourceTree = "<group>"; };
 		C28B97121C9156AC0018CD34 /* screenShot.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = screenShot.jpeg; sourceTree = "<group>"; };
 		C2A0CFE41C8D19DF00E5A614 /* DAGAuthCodeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAGAuthCodeView.h; sourceTree = "<group>"; };
 		C2A0CFE51C8D19DF00E5A614 /* DAGAuthCodeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAGAuthCodeView.m; sourceTree = "<group>"; };
@@ -1599,7 +1597,6 @@
 		C2E7E7C01C8541EC000E94C5 /* reserve */ = {
 			isa = PBXGroup;
 			children = (
-				C28B970E1C91508A0018CD34 /* set.jpg */,
 				C23A40571C8EA07600EDEE7B /* Dem_Fpuser.h */,
 				C23A40581C8EA07600EDEE7B /* Dem_Fpuser.m */,
 				C23A40591C8EA07600EDEE7B /* Dem_LeanMethod.h */,
@@ -1771,7 +1768,6 @@
 				C215A5E21C8592FA00C5487A /* 03-loopback.png in Resources */,
 				C215A5F91C8592FA00C5487A /* 15-tags.png in Resources */,
 				C215A5E11C8592FA00C5487A /* 02-redo.png in Resources */,
-				C28B970F1C91508A0018CD34 /* set.jpg in Resources */,
 				C20895091C87D33600053772 /* DAGJokeTableViewCell.xib in Resources */,
 				C23F74071C869C2A00C1475E /* Duanzi.png in Resources */,
 				C215A6081C8592FA00C5487A /* 30-key.png in Resources */,

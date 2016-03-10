@@ -51,10 +51,6 @@
        [self.codeView addGestureRecognizer:authcodeTap];
        [self.identifyCodeMakeTextField addSubview:self.codeView];
        
-       
-       
-       
-    // Do any additional setup after loading the view.
 }
 
 

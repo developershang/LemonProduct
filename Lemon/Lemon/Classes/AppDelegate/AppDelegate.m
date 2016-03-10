@@ -104,7 +104,7 @@
         user.portraitUri =[img objectForKey:@"url"];
     }];
     return completion(user);
-}
+}  
 
 #pragma mark 网络状况代理
 -(void)onRCIMConnectionStatusChanged:(RCConnectionStatus)status{
