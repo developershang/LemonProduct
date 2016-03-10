@@ -20,16 +20,17 @@
 @interface DAGJokeTableViewCell : UITableViewCell
 
 
-@property (weak, nonatomic) IBOutlet UILabel *updateLab;
+@property (weak, nonatomic) IBOutlet UILabel *updateLab; // 更新时间标签
 
-@property (weak, nonatomic) IBOutlet UILabel *contentLab;
+@property (weak, nonatomic) IBOutlet UILabel *contentLab; // 内容标签
 
-@property (weak, nonatomic) IBOutlet UIImageView *photoView;
+@property (weak, nonatomic) IBOutlet UIImageView *photoView; // 图像标签
 
 @property (nonatomic, strong)DAGFunPicModel *model;
 
 @property (nonatomic, weak)id<DAGFunPicModelDelegate>delegate;
 
+// 图片加载
 - (void)setimageWithModel:(DAGFunPicModel *)model;
 
 @end

@@ -39,6 +39,9 @@
 //       [self.DetailTableView reloadData];
 }
 
+
+#pragma mark - 数据源方法
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
        return self.commentArray.count + 1;
 }
@@ -73,7 +76,7 @@
        return 50;
 }
 
-
+#pragma mark - 从leancloud请求评论
 - (void)commentCount {
        
        AVQuery *query = [AVQuery queryWithClassName:@"Submit"];
@@ -92,7 +95,7 @@
        
 }
 
-
+#pragma mark - cell的自适应
 - (CGFloat)heightForLab:(NSString *)text {
        // 计算1 准备工作
        CGSize size = CGSizeMake(CGRectGetWidth([UIScreen mainScreen].bounds) - 20, 20000);

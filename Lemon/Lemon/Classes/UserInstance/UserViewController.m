@@ -70,12 +70,9 @@
             NSLog(@"xiugai");
         }
         else if (indexPath.row == 1){
-            NSLog(@"关于我们");
-               
                DAGRegardingViewController *drvc = [[DAGRegardingViewController alloc] init];
                UINavigationController *ndrvc = [[UINavigationController alloc] initWithRootViewController:drvc];
                [self presentViewController:ndrvc animated:YES completion:nil];
-               
         }
     }
     else if(indexPath.section == 1){
@@ -92,7 +89,6 @@
             [Dem_UserData shareInstance].reLoad = YES;
             [[DHSlideMenuController sharedInstance]hideSlideMenuViewController:NO];
             [DHSlideMenuController sharedInstance].leftViewController = nil;
-            
             [[NSNotificationCenter defaultCenter]postNotificationName:@"reload" object:@"refresh"];
             
         }

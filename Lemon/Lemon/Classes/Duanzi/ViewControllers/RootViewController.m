@@ -18,6 +18,7 @@
 #import "LoginViewController.h"
 #import "PostViewController.h"
 #import "SearchViewController.h"
+#import "DAGJokeViewController.h"
 @interface RootViewController ()<UITableViewDataSource ,UITableViewDelegate>
 
 @end
@@ -252,7 +253,10 @@
         }];
         
         }break;
-        case 2: {}break;
+        case 2: {
+               DAGJokeViewController *djvc = [[DAGJokeViewController alloc] init];
+               [self.navigationController pushViewController:djvc animated:YES];
+        }break;
         case 3: {}break;
             
             

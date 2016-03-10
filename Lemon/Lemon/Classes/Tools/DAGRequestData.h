@@ -10,6 +10,7 @@
 
 @interface DAGRequestData : NSObject
 
+// 通过请求数据 判断网络是否可用
 + (NSDictionary *)requestDatawithUrl:(NSString *)aurl;
 
 @end

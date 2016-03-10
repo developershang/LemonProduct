@@ -48,15 +48,12 @@ static DAG_NewsListManager *manager = nil;
        }
        
        [XU_NetTools newSolveDataWithUrl:url httpMethod:@"GET" httpBody:nil revokeBloc:^(NSData *data) {
-              
-              
-              
+
               NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
               
               if (dic[@"result"] == nil) {
                      return ;
               }
-              
               
               for (NSString *str in dic[@"result"]) {
                      DAGNewsLiatModel *model = [DAGNewsLiatModel new];
@@ -70,6 +67,7 @@ static DAG_NewsListManager *manager = nil;
            
 }
 
+#pragma mark - 根据热点新闻获取详细内容
 - (void)requestWithDetailUrl:(NSString *)url finish:(void (^)())finish {
        
        NSDictionary * dataDict = nil;
@@ -78,30 +76,22 @@ static DAG_NewsListManager *manager = nil;
        }
        
        [XU_NetTools newSolveDataWithUrl:url httpMethod:@"GET" httpBody:nil revokeBloc:^(NSData *data) {
-          
               NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
               
               if (dic[@"result"] == [NSNull null]) {
                      return ;
               }
-
-              
               for (NSDictionary *dict in dic[@"result"]) {
-                  
                      DAGNewsDetailList *model = [DAGNewsDetailList new];
                      [model setValuesForKeysWithDictionary:dict];
                      if ([model.img isEqualToString:@""]) {
                             continue;
                      }
-                
                      [self.NewsDetailArray addObject:model];
               }
-              
               dispatch_async(dispatch_get_main_queue(), ^{
                      finish();
               });
-              
-              
        }];
 }
 

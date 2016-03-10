@@ -33,15 +33,14 @@
        self.tableView.delegate = self;
        
        [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"searchCell"];
-       
-    // Do any additional setup after loading the view.
 }
 
+
+#pragma mark - 搜索的事件
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
        if ([searchBar.text isEqualToString:@""]) {
               return;
        }
-       
        self.titleArray = [NSMutableArray array];
        NSArray *array = [DAG_NewsListManager shareInstance].NewsDetailArray;
        for (DAGNewsDetailList *model in array) {
@@ -50,12 +49,10 @@
                      NSLog(@"%@",model.full_title);
               }
        }
-       
        [self.tableView reloadData];
-       
-       
 }
 
+#pragma mark - tableView的数据源方法
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
        return self.titleArray.count;
 }
@@ -67,6 +64,7 @@
        return cell;
 }
 
+#pragma mark - tableViewcell的点击事件
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
        DAGNewsDeatilViewController *ddvc = [[DAGNewsDeatilViewController alloc] init];
        DAGNewsDetailList *model = self.titleArray[indexPath.row];

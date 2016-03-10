@@ -71,6 +71,7 @@
        [_hud show:YES];
 }
 
+// 加载当前显示的cell
 - (void)loadShowCells {
        
        NSArray *indexArray = [self.dlv.table indexPathsForVisibleRows];
@@ -84,30 +85,32 @@
        
 }
 
+// 结束滑动时候的事件
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
        [self loadShowCells];
 }
 
+
+// 结束拖曳的时候的事件
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
        if (!decelerate) {
               [self loadShowCells];
        }
 }
 
+// 滑动不加载的代理的方法实现
 - (void)modelIsCellDelegateWith:(UITableViewCell *)cell {
        NSIndexPath *indexPath = [self.dlv.table indexPathForCell:cell];
        DAGNewsDetailList *model = self.DetailArray[indexPath.row];
        [model setIsLoading:YES];
 }
 
-
+// 加载数据
 - (void)loadData {
        [[DAG_NewsListManager shareInstance] requestWithUrl:kHotUrl finish:^{
               self.NewsListArray = [NSMutableArray array];
               
               self.NewsListArray = [DAG_NewsListManager shareInstance].NewsTitleArray;
-              
-              
               
               [self.dlv.table registerNib:[UINib nibWithNibName:@"NewsListTableViewCell" bundle:nil] forCellReuseIdentifier:@"NewsListCell"];
               self.DetailArray = [NSMutableArray array];
@@ -128,7 +131,7 @@
        }];
 }
 
-
+// 搜索按钮的点击事件
 - (void)searchAction {
        
        DAGSearchNewsViewController *dsvc = [[DAGSearchNewsViewController alloc] init];
@@ -136,6 +139,7 @@
        
 }
 
+#pragma mark - tableView的数据源方法
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
        return self.DetailArray.count;
 }
@@ -158,10 +162,12 @@
        return cell;
 }
 
+#pragma mark - 指定cell的高度
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
        return 140;
 }
 
+#pragma mark - tableViewcell的点击事件
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
        
        DAGNewsDeatilViewController *dvc = [[DAGNewsDeatilViewController alloc] init];
