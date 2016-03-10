@@ -17,10 +17,12 @@
 #import "Dem_LeanCloudData.h"
 #import "Dem_SearchViewController.h"
 #import "Dem_ChatViewController.h"
-@interface RoserViewController ()<UITableViewDataSource,UITableViewDelegate>
+#import <AVOSCloudIM/AVOSCloudIM.h>
+@interface RoserViewController ()<UITableViewDataSource,UITableViewDelegate,AVIMClientDelegate>
 @property(nonatomic,strong)UITableView *table;
 @property(nonatomic,strong)NSMutableArray *data;
 @property(nonatomic,strong)AVObject *inter;
+@property (nonatomic, strong) AVIMClient *client;
 
 @end
 
@@ -32,8 +34,10 @@
     
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(NSNotificationAction) name:@"reload" object:@"refresh"];
     
-    
     self.table = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height-49) style:UITableViewStylePlain];
+       UIImageView *image = [[UIImageView alloc] initWithFrame:[UIScreen mainScreen].bounds];
+       image.image = [UIImage imageNamed:@"chat.jpg"];
+       self.table.backgroundView = image;
     [self.view addSubview:self.table];
     [self.table registerClass:[UITableViewCell class] forCellReuseIdentifier:@"list_cell"];
     self.table.delegate = self;
@@ -66,6 +70,7 @@
     [button setTitle:@"会话列表" forState:UIControlStateNormal];
     self.navigationItem.titleView = button;
     [button addTarget:self action:@selector(TextChatAction) forControlEvents:UIControlEventTouchUpInside];
+    [self ReceiveMessageWithUser:[Dem_UserData shareInstance].user.username];
     if ([Dem_UserData shareInstance].user ==nil) {
         button.hidden = YES;
         UIBarButtonItem *left = [[UIBarButtonItem alloc]initWithTitle:@"登陆" style:UIBarButtonItemStyleDone target:self action:@selector(loginAction)];
@@ -73,6 +78,7 @@
         self.navigationItem.rightBarButtonItem = nil;
     }
     else{
+        
         button.hidden = NO;
         UIBarButtonItem *right = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(rightAction)];
         self.navigationItem.rightBarButtonItem = right;
@@ -99,9 +105,38 @@
                 [Dem_UserData shareInstance].reLoad = NO;
             });
         });
-        
     }
+    
 }
+
+#pragma mark好友接收通知
+-(void)ReceiveMessageWithUser:(NSString *)user {
+    self.client = [[AVIMClient alloc] init];
+    
+    // Jerry 创建了一个 client，用自己的名字作为 clientId
+    self.client = [[AVIMClient alloc] initWithClientId:user];
+    
+    // 设置 client 的 delegate，并实现 delegate 方法
+    self.client.delegate = self;
+    
+    // Jerry 打开 client
+    [self.client openWithCallback:^(BOOL succeeded, NSError *error) {
+        // ...
+        NSLog(@"suce = %d ,error = %@",succeeded,error);
+    }];
+}
+
+#pragma mark - AVIMClientDelegate
+
+// 接收消息的回调函数
+- (void)conversation:(AVIMConversation *)conversation didReceiveTypedMessage:(AVIMTypedMessage *)message {
+    NSLog(@"%@", message.text); // 耗子，起床！
+}
+
+
+
+
+
 
 #pragma mark添加好友
 -(void)rightAction{
@@ -208,6 +243,7 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
+       
     NSDictionary* m= (NSDictionary*)[_data objectAtIndex: indexPath.section];
     NSArray *d = (NSArray*)[m objectForKey:@"users"];
     if (d == nil) {
@@ -215,6 +251,7 @@
     }
     //显示联系人名称
     AVObject *fri = d[indexPath.row];
+       cell.textLabel.textColor = [UIColor whiteColor];
     cell.textLabel.text =[fri objectForKey:@"nid"];
     cell.textLabel.backgroundColor = [UIColor clearColor];
     cell.backgroundColor = [UIColor colorWithRed:0.991 green:0.205 blue:0.000 alpha:0];
@@ -266,7 +303,7 @@
     //设置按钮显示颜色
     eButton.backgroundColor = [UIColor colorWithWhite:0.658 alpha:0];
     [eButton setTitle:[[_data objectAtIndex:section] objectForKey:@"groupname"] forState:UIControlStateNormal];
-    [eButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [eButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [eButton setTitleShadowColor:[UIColor colorWithWhite:0.1 alpha:1] forState:UIControlStateNormal];
     [eButton.titleLabel setShadowOffset:CGSizeMake(1, 1)];
     [hView addSubview: eButton];

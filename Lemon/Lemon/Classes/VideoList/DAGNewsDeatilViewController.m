@@ -26,55 +26,38 @@ static BOOL isLoading = NO;
        NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:self.detailUrl]];
        NSLog(@"%@", self.detailUrl);
        self.dnd.webView.delegate = self;
+       // webView的 自带方法  请求数据
        [self.dnd.webView loadRequest:request];
-       
-       
-    // Do any additional setup after loading the view.
 }
-
-
-
 
 //实现协议
 //开始加载的时候调用
 - (void)webViewDidStartLoad:(UIWebView *)webView {
-       NSLog(@"开始加载");
-       
        if (isLoading == NO) {
-              
-       
-       
        //创建UIActivityIndicatorView背底半透明View
        UIView *view = [[UIView alloc] initWithFrame:[UIScreen mainScreen].bounds];
        [view setTag:108];
        [view setBackgroundColor:[UIColor blackColor]];
        [view setAlpha:0.5];
        [self.view addSubview:view];
-       //
+       // 创建菊花
        UIActivityIndicatorView *act = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 32.0f, 32.0f)];
-       //    [act setCenter:CGPointMake(10, 200)];
        [act setCenter:view.center];//设置旋转菊花的中心位置
        [act setActivityIndicatorViewStyle:UIActivityIndicatorViewStyleWhiteLarge];//设置菊花的样式
        [view addSubview: act];
-       
        [act startAnimating];
-              
-              NSLog(@"123");
-              isLoading = YES;
+       isLoading = YES;
        }
        
 }
 
 //加载失败的时候调用
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
-       
        //    取消view
        UIActivityIndicatorView *act = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 32.0f, 32.0f)];
        [act stopAnimating];
        UIView *view = (UIView*)[self.view viewWithTag:108];
        [view removeFromSuperview];
-       
-       NSLog(@"加载失败");
 }
 
 //加载完成的时候调用
@@ -84,8 +67,6 @@ static BOOL isLoading = NO;
        [act stopAnimating];
        UIView *view = (UIView*)[self.view viewWithTag:108];
        [view removeFromSuperview];
-       
-       NSLog(@"加载完成");
 }
 
 

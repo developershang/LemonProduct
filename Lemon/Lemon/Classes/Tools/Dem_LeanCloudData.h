@@ -64,4 +64,5 @@
  **/
 +(NSArray <AVObject *>*)groupByUser:(AVUser *)user group:(NSString *)group;
 
+
 @end

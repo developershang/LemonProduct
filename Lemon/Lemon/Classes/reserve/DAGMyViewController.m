@@ -11,7 +11,6 @@
 #import "DAGDownLoadViewController.h"
 #import "DKNightVersion.h"
 
-
 @interface DAGMyViewController ()<UITableViewDataSource,UITableViewDelegate>
 
 @property (nonatomic, strong)UITableView *tableView;
@@ -60,6 +59,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath  {
        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MyCell" forIndexPath:indexPath];
+       cell.selectionStyle = UITableViewCellSelectionStyleNone;
        cell.backgroundColor = [UIColor colorWithWhite:1.000 alpha:0.000];
        if (indexPath.section == 0) {
               

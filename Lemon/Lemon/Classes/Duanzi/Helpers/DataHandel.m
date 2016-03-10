@@ -9,6 +9,7 @@
 #import "DataHandel.h"
 #import "SG_NetTools.h"
 #import "SG_Model.h"
+#import "DAGRequestData.h"
 @interface DataHandel ()
 
 
@@ -64,7 +65,10 @@ static DataHandel *datahandel;
 - (void)requestDuanziDataWithUrl:(NSString *)url
                          finshed:(void(^)())finsh{
    
-
+       NSDictionary * dataDict = nil;
+       if ( (dataDict = [DAGRequestData requestDatawithUrl:url]) == nil) {
+              return;
+       }
     
     [SG_NetTools SessionDataWith:url httpmethod:@"GET" httpbody:nil revokeBlock:^(NSData *data) {
         
@@ -116,7 +120,10 @@ static DataHandel *datahandel;
 - (void)requestUpDataWithUrl:(NSString *)url
                          finshed:(void(^)())finsh{
     
-    
+       NSDictionary * dataDict = nil;
+       if ( (dataDict = [DAGRequestData requestDatawithUrl:url]) == nil) {
+              return;
+       }
     
     [SG_NetTools SessionDataWith:url httpmethod:@"GET" httpbody:nil revokeBlock:^(NSData *data) {
         if (data == nil) {

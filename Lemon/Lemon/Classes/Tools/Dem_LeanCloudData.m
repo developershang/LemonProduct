@@ -9,6 +9,13 @@
 #import "Dem_LeanCloudData.h"
 #import <AVOSCloud/AVOSCloud.h>
 #import "Dem_UserModel.h"
+#import <AVOSCloudIM/AVOSCloudIM.h>
+
+@interface Dem_LeanCloudData ()<AVIMClientDelegate>
+
+@end
+
+
 @implementation Dem_LeanCloudData
 
 #pragma 用户注册
@@ -17,6 +24,15 @@
     u.username =user.username;
     u.password = user.password;
     u.email = user.email;
+    
+    NSError *error = nil;
+    [u signUp:&error];
+    
+    if (error) {
+        
+        NSLog(@"%@",error);
+        return;
+    }
     //    u.mobilePhoneNumber = user.mobilePhoneNumber;
     AVObject *Users = [AVObject objectWithClassName:@"Users"];
     [Users setObject:u forKey:@"user"];
@@ -26,13 +42,11 @@
     AVFile *file = [AVFile fileWithName:[NSString stringWithFormat:@"%@.png",user.username] data:data];
        UIView *view = [[UIView alloc] initWithFrame:[UIScreen mainScreen].bounds];
        [view setTag:108];
-       [view setBackgroundColor:[UIColor redColor]];
+       [view setBackgroundColor:[UIColor colorWithRed:0.546 green:0.541 blue:0.539 alpha:1.000]];
        [view setAlpha:0.5];
        UIViewController *vc = [UIApplication sharedApplication].windows[2].rootViewController;
        [vc.view addSubview:view];
-       //
        UIActivityIndicatorView *act = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 32.0f, 32.0f)];
-       //    [act setCenter:CGPointMake(10, 200)];
        [act setCenter:view.center];//设置旋转菊花的中心位置
        [act setActivityIndicatorViewStyle:UIActivityIndicatorViewStyleWhiteLarge];//设置菊花的样式
        [view addSubview: act];
@@ -40,37 +54,33 @@
     [file saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         NSLog(@"%d",succeeded);
         if (succeeded == 1) {
-            [file deleteInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-                NSLog(@"%@ // %d",error,succeeded);
-                   UIActivityIndicatorView *act = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 32.0f, 32.0f)];
-                   [act stopAnimating];
-                   [view removeFromSuperview];
-                   [vc removeFromParentViewController];
+//            [file deleteInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+//                NSLog(@"%@ // %d",error,succeeded);
+//                             }];
+            [Users setObject:file forKey:@"photo"];
+            
+            AVObject *Group = [AVObject objectWithClassName:@"Group"];
+            NSArray *array = @[@"我的好友",@"其他"];
+            [Group setObject:array forKey:@"groupName"];
+            [Group setObject:u forKey:@"user"];
+            NSError *error1 = nil;
+            [Group save:&error1];
+            if (error1) {
+                NSLog(@"%@",error1);
+            }
+            [Users saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                NSLog(@"%d",succeeded);
+                if (succeeded == 1) {
+                    UIActivityIndicatorView *act = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 32.0f, 32.0f)];
+                    [act stopAnimating];
+                    [view removeFromSuperview];
+                    [vc removeFromParentViewController];
+                }
             }];
         }
     } progressBlock:^(NSInteger percentDone) {
-           
-                  NSLog(@"%ld",percentDone);
-    }];
-    [Users setObject:file forKey:@"photo"];
-    NSError *error = nil;
-    [u signUp:&error];
-    
-    if (error) {
         
-        NSLog(@"%@",error);
-    }
-    AVObject *Group = [AVObject objectWithClassName:@"Group"];
-    NSArray *array = @[@"我的好友",@"其他"];
-    [Group setObject:array forKey:@"groupName"];
-    [Group setObject:u forKey:@"user"];
-    NSError *error1 = nil;
-    [Group save:&error1];
-    if (error1) {
-        NSLog(@"%@",error1);
-    }
-    [Users saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-        NSLog(@"%d",succeeded);
+                  NSLog(@"%ld",percentDone);
     }];
 }
 
@@ -121,8 +131,8 @@
     [Bud setObject:buddy forKey:@"friend"];
     [Bud setObject:group forKey:@"group"];
     [Bud saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-        NSLog(@" ==%d==",succeeded);
-        NSLog(@"error==%@",error);
+//        NSLog(@" ==%d==",succeeded);
+//        NSLog(@"error==%@",error);
     }];
 }
 
@@ -159,8 +169,10 @@
     
     AVQuery *query = [AVQuery andQueryWithSubqueries:[NSArray arrayWithObjects:statusQuery,priorityQuery,nil]];
     NSArray *arr = [query findObjects];
-//    NSLog(@"%@",arr);
     return arr;
 }
+
+
+
 
 @end

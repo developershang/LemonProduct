@@ -29,8 +29,11 @@
     [self addSubview:self.segement];
     
     self.table = [[UITableView alloc] initWithFrame:CGRectMake(0, 64+30, self.frame.size.width, self.frame.size.height - 94 - 49 ) style:UITableViewStylePlain];
-    self.table.backgroundColor = [UIColor cyanColor];
-    
+//    self.table.backgroundColor = [UIColor cyanColor];
+       UIImageView *imageView = [[UIImageView alloc] initWithFrame:[UIScreen mainScreen].bounds];
+       imageView.image = [UIImage imageNamed:@"cat.jpg"];
+       self.table.backgroundView = imageView;
+   // self.table.tableHeaderView = self.sv;
     [self addSubview:self.table];
 
 

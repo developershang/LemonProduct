@@ -25,7 +25,7 @@
        self = [super initWithFrame:frame];
        if (self) {
               self.backgroundColor = [UIColor colorWithRed:arc4random()%256/255.0 green:arc4random()%256/255.0 blue:arc4random()%256/255.0 alpha:0];
-              _array = [[NSArray alloc] initWithObjects:@"0",@"1",@"2",@"3",@"4",@"5",@"6",@"7",@"8",@"9",@"A",@"B",@"C",@"D",@"E",@"F",@"G",@"H",@"I",@"J",@"K",@"L",@"M",@"N",@"O",@"P",@"Q",@"R",@"S",@"T",@"U",@"V",@"W",@"X",@"Y",@"Z",@"a",@"b",@"c",@"d",@"e",@"f",@"g",@"h",@"i",@"j",@"k",@"l",@"m",@"n",@"o",@"p",@"q",@"r",@"s",@"t",@"u",@"v",@"w",@"x",@"y",@"z",nil];
+              _array = [[NSArray alloc] initWithObjects:@"0",@"1",@"2",@"3",@"4",@"5",@"6",@"7",@"8",@"9",@"A",@"B",@"C",@"D",@"E",@"F",@"G",@"H",@"I",@"J",@"K",@"L",@"M",@"N",@"O",@"P",@"Q",@"R",@"S",@"T",@"U",@"V",@"W",@"X",@"Y",@"Z",nil];
        }
        return self;
 }
@@ -51,8 +51,7 @@
        CGContextRef context = UIGraphicsGetCurrentContext();
        for (int i = 0; i < 4; i++) {
               CGContextSetLineWidth(context, 1);  // 线条宽度
-              UIColor *randomColor = DAGRandomColor;
-             CGContextSetStrokeColorWithColor(context, [UIColor colorWithRed:0.000 green:1.000 blue:1.000 alpha:0.4].CGColor);  // 线条颜色
+             CGContextSetStrokeColorWithColor(context, [UIColor colorWithRed:0.000 green:1.000 blue:1.000 alpha:0.5].CGColor);  // 线条颜色
               
               // 设置起点
               CGFloat x = arc4random() % (int)rect.size.width;

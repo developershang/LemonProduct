@@ -16,12 +16,16 @@
        UIButton *_collectionButton;
 }
 
+// 显示图片
 - (void)showImage;
 
+// 隐藏图片
 - (void)hideImage;
 
 - (void)setImage:(UIImage *)image;
 
+
+// 点击后图片的响应事件
 + (void)viewWithImage:(UIImage *)image;
 
 

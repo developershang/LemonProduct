@@ -151,6 +151,11 @@
 		C23F74071C869C2A00C1475E /* Duanzi.png in Resources */ = {isa = PBXBuildFile; fileRef = C23F74061C869C2A00C1475E /* Duanzi.png */; };
 		C250FF731C8688BF0044BBD4 /* DAGNewsDeatilViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C250FF721C8688BF0044BBD4 /* DAGNewsDeatilViewController.m */; };
 		C250FF761C86990F0044BBD4 /* DAGSearchNewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C250FF751C86990F0044BBD4 /* DAGSearchNewsViewController.m */; };
+		C28B97051C91180E0018CD34 /* dog.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C28B97041C91180E0018CD34 /* dog.jpg */; };
+		C28B97071C911E2F0018CD34 /* cat.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C28B97061C911E2F0018CD34 /* cat.jpg */; };
+		C28B97091C914A6D0018CD34 /* sky.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C28B97081C914A6D0018CD34 /* sky.jpg */; };
+		C28B970D1C914E310018CD34 /* chat.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C28B970C1C914E310018CD34 /* chat.jpg */; };
+		C28B970F1C91508A0018CD34 /* set.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C28B970E1C91508A0018CD34 /* set.jpg */; };
 		C2A0CFE61C8D19DF00E5A614 /* DAGAuthCodeView.m in Sources */ = {isa = PBXBuildFile; fileRef = C2A0CFE51C8D19DF00E5A614 /* DAGAuthCodeView.m */; };
 		C2A54D6B1C86EF4C00C7F4E4 /* RootView.m in Sources */ = {isa = PBXBuildFile; fileRef = C2A54D6A1C86EF4C00C7F4E4 /* RootView.m */; };
 		C2A54D801C8703DC00C7F4E4 /* TextTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C2A54D7C1C8703DC00C7F4E4 /* TextTableViewCell.m */; };
@@ -462,6 +467,11 @@
 		C250FF721C8688BF0044BBD4 /* DAGNewsDeatilViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAGNewsDeatilViewController.m; sourceTree = "<group>"; };
 		C250FF741C86990F0044BBD4 /* DAGSearchNewsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAGSearchNewsViewController.h; sourceTree = "<group>"; };
 		C250FF751C86990F0044BBD4 /* DAGSearchNewsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAGSearchNewsViewController.m; sourceTree = "<group>"; };
+		C28B97041C91180E0018CD34 /* dog.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = dog.jpg; sourceTree = "<group>"; };
+		C28B97061C911E2F0018CD34 /* cat.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cat.jpg; sourceTree = "<group>"; };
+		C28B97081C914A6D0018CD34 /* sky.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sky.jpg; sourceTree = "<group>"; };
+		C28B970C1C914E310018CD34 /* chat.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = chat.jpg; sourceTree = "<group>"; };
+		C28B970E1C91508A0018CD34 /* set.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = set.jpg; sourceTree = "<group>"; };
 		C2A0CFE41C8D19DF00E5A614 /* DAGAuthCodeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAGAuthCodeView.h; sourceTree = "<group>"; };
 		C2A0CFE51C8D19DF00E5A614 /* DAGAuthCodeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAGAuthCodeView.m; sourceTree = "<group>"; };
 		C2A54D691C86EF4C00C7F4E4 /* RootView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootView.h; sourceTree = "<group>"; };
@@ -888,6 +898,7 @@
 		C23F73F71C8691D000C1475E /* LoginViewController */ = {
 			isa = PBXGroup;
 			children = (
+				C28B97041C91180E0018CD34 /* dog.jpg */,
 				C23F73FC1C86921000C1475E /* LoginViewController.h */,
 				C23F73FD1C86921000C1475E /* LoginViewController.m */,
 			);
@@ -917,6 +928,7 @@
 			isa = PBXGroup;
 			children = (
 				C2DAC4371C87EAD000FE961A /* 123.jpg */,
+				C28B97061C911E2F0018CD34 /* cat.jpg */,
 				C2A54D691C86EF4C00C7F4E4 /* RootView.h */,
 				C2A54D6A1C86EF4C00C7F4E4 /* RootView.m */,
 				C2A0CFE41C8D19DF00E5A614 /* DAGAuthCodeView.h */,
@@ -1323,6 +1335,7 @@
 		C2CF9E7A1C846F5800031C10 /* Chat */ = {
 			isa = PBXGroup;
 			children = (
+				C28B970C1C914E310018CD34 /* chat.jpg */,
 				C2E7E7C41C8544C0000E94C5 /* iconfont-comments.png */,
 				C2CF9F121C84779200031C10 /* Chat.png */,
 				C21628881C87E0520012FFC1 /* mod_user.png */,
@@ -1437,6 +1450,7 @@
 			isa = PBXGroup;
 			children = (
 				C2CF9F0C1C84746D00031C10 /* movie.png */,
+				C28B97081C914A6D0018CD34 /* sky.jpg */,
 				C2B138321C85CA9900A4DC88 /* placeholder.png */,
 				C2B1381E1C8580CF00A4DC88 /* DAGNewsListViewController.h */,
 				C2B1381F1C8580CF00A4DC88 /* DAGNewsListViewController.m */,
@@ -1582,6 +1596,7 @@
 		C2E7E7C01C8541EC000E94C5 /* reserve */ = {
 			isa = PBXGroup;
 			children = (
+				C28B970E1C91508A0018CD34 /* set.jpg */,
 				C23A40571C8EA07600EDEE7B /* Dem_Fpuser.h */,
 				C23A40581C8EA07600EDEE7B /* Dem_Fpuser.m */,
 				C23A40591C8EA07600EDEE7B /* Dem_LeanMethod.h */,
@@ -1707,11 +1722,13 @@
 				C215A5EE1C8592FA00C5487A /* 104-index-cards.png in Resources */,
 				C215A6251C8592FA00C5487A /* 59-flag.png in Resources */,
 				C215A6381C8592FA00C5487A /* 78-stopwatch.png in Resources */,
+				C28B97071C911E2F0018CD34 /* cat.jpg in Resources */,
 				C215A6471C8592FA00C5487A /* 93-thermometer.png in Resources */,
 				C215A5FA1C8592FA00C5487A /* 16-line-chart.png in Resources */,
 				C215A5EA1C8592FA00C5487A /* 100-coffee.png in Resources */,
 				C215A6131C8592FA00C5487A /* 41-picture-frame.png in Resources */,
 				C2AFDA561C893C4700D64594 /* DAGJokeDetailTableViewCell.xib in Resources */,
+				C28B97091C914A6D0018CD34 /* sky.jpg in Resources */,
 				C2AFDAB71C89AB6E00D64594 /* README.txt in Resources */,
 				C215A5E91C8592FA00C5487A /* 10-medical.png in Resources */,
 				C215A61F1C8592FA00C5487A /* 53-house.png in Resources */,
@@ -1719,6 +1736,7 @@
 				C215A6411C8592FA00C5487A /* 87-wineglass.png in Resources */,
 				C215A6231C8592FA00C5487A /* 57-download.png in Resources */,
 				C215A5EB1C8592FA00C5487A /* 101-gameplan.png in Resources */,
+				C28B97051C91180E0018CD34 /* dog.jpg in Resources */,
 				C215A5EF1C8592FA00C5487A /* 105-piano.png in Resources */,
 				C215A5F71C8592FA00C5487A /* 13-target.png in Resources */,
 				C215A6461C8592FA00C5487A /* 92-testtube.png in Resources */,
@@ -1749,6 +1767,7 @@
 				C215A5E21C8592FA00C5487A /* 03-loopback.png in Resources */,
 				C215A5F91C8592FA00C5487A /* 15-tags.png in Resources */,
 				C215A5E11C8592FA00C5487A /* 02-redo.png in Resources */,
+				C28B970F1C91508A0018CD34 /* set.jpg in Resources */,
 				C20895091C87D33600053772 /* DAGJokeTableViewCell.xib in Resources */,
 				C23F74071C869C2A00C1475E /* Duanzi.png in Resources */,
 				C215A6081C8592FA00C5487A /* 30-key.png in Resources */,
@@ -1757,6 +1776,7 @@
 				C215A6041C8592FA00C5487A /* 26-bandaid.png in Resources */,
 				C215A6111C8592FA00C5487A /* 39-spraycan.png in Resources */,
 				C2F056871C8FBEA800918256 /* CommentViewController.xib in Resources */,
+				C28B970D1C914E310018CD34 /* chat.jpg in Resources */,
 				C215A6311C8592FA00C5487A /* 71-compass.png in Resources */,
 				C2CF9E661C846B7000031C10 /* Assets.xcassets in Resources */,
 				C215A60D1C8592FA00C5487A /* 35-shopping-bag.png in Resources */,

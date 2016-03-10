@@ -293,9 +293,6 @@
             
             DAGJokeViewController *da = [[DAGJokeViewController alloc] init];
             
-            [self.navigationController pushViewController:da animated:YES];
-            
-            
             
         }
          

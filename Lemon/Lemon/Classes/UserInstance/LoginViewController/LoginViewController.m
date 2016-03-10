@@ -12,7 +12,7 @@
 #import "Dem_UserData.h"
 #import <RongIMKit/RongIMKit.h>
 #import <AVOSCloud/AVOSCloud.h>
-
+#import "RegisterViewController.h"
 @interface LoginViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *photoView;
 
@@ -29,8 +29,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+       
     [self.loginButton addTarget:self action:@selector(loginAction) forControlEvents:UIControlEventTouchUpInside];
     [[NSNotificationCenter defaultCenter]postNotificationName:@"reload" object:@"refresh"];
+       
+       self.photoView.image = [UIImage imageNamed:@"dog.jpg"];
+       
     // Do any additional setup after loading the view.
 }
 
@@ -43,6 +47,7 @@
         if (user !=nil) {
                [[Dem_UserData shareInstance]loginWithUser:user];
                [Dem_UserData shareInstance].isLog = YES;
+             [[NSNotificationCenter defaultCenter]postNotificationName:@"reload" object:@"refresh"];
             [self dismissViewControllerAnimated:YES completion:^{
                 [AVUser changeCurrentUser:user save:YES];
             }];
@@ -51,6 +56,15 @@
         NSLog(@"%@",err);
     }];
 }
+
+
+- (IBAction)RegisterAction:(UIButton *)sender {
+       RegisterViewController *rvc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"rvc"];
+       [self presentViewController:rvc animated:YES completion:nil];
+}
+
+
+
 
 #pragma mark 点击结束第一响应者
 -(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
