@@ -159,7 +159,7 @@
                                     <color key="titleColor" red="1" green="0.1030470114" blue="0.1137164443" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="dzD-VV-Qas" kind="show" id="adI-YP-cY9"/>
+                                    <action selector="RegisterAction:" destination="tQW-3d-VWj" eventType="touchUpInside" id="Fe5-3K-W7h"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -197,7 +197,7 @@
         <!--Register View Controller-->
         <scene sceneID="73n-hw-NPO">
             <objects>
-                <viewController id="dzD-VV-Qas" customClass="RegisterViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="rvc" id="dzD-VV-Qas" customClass="RegisterViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ImD-G3-2Hn"/>
                         <viewControllerLayoutGuide type="bottom" id="nt9-ml-qYP"/>
@@ -325,7 +325,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="tVY-h5-jhR" firstAttribute="leading" secondItem="6Qd-ya-WwL" secondAttribute="leading" id="1aA-2D-K5X"/>
                             <constraint firstItem="6Qd-ya-WwL" firstAttribute="height" secondItem="sFc-Kk-nJ1" secondAttribute="height" id="2X4-hb-bZ3"/>
