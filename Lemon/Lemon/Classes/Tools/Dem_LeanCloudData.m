@@ -9,6 +9,13 @@
 #import "Dem_LeanCloudData.h"
 #import <AVOSCloud/AVOSCloud.h>
 #import "Dem_UserModel.h"
+#import <AVOSCloudIM/AVOSCloudIM.h>
+
+@interface Dem_LeanCloudData ()<AVIMClientDelegate>
+
+@end
+
+
 @implementation Dem_LeanCloudData
 
 #pragma 用户注册
@@ -163,5 +170,27 @@
 }
 
 #pragma markh好友发送通知
++(void)chatWithUser:(NSString *)user andFriend:(NSString *)friends{
+    AVIMClient *client = [[AVIMClient alloc] init];
+    // Tom 创建了一个 client，用自己的名字作为 clientId
+    client = [[AVIMClient alloc] initWithClientId:user];
+    
+    // Tom 打开 client
+    [client openWithCallback:^(BOOL succeeded, NSError *error) {
+        // Tom 建立了与 Jerry 的会话
+        [client createConversationWithName:[NSString stringWithFormat:@"%@ add %@",user,friends] clientIds:@[friends] callback:^(AVIMConversation *conversation, NSError *error) {
+            // Tom 发了一条消息给 Jerry
+            [conversation sendMessage:[AVIMTextMessage messageWithText:[NSString stringWithFormat:@"add%@",friends] attributes:nil] callback:^(BOOL succeeded, NSError *error) {
+                if (succeeded) {
+                    NSLog(@"发送成功！");
+                }
+                else{
+                    NSLog(@"%@",error);
+                }
+            }];
+        }];
+    }];
+}
+
 
 @end

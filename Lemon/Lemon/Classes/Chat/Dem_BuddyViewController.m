@@ -91,8 +91,8 @@
 -(void)addAction{
     [Dem_LeanCloudData addBuddyWithUser:[Dem_UserData shareInstance].user buddy:self.user group:self.array[_num]];
     [self.navigationController popToRootViewControllerAnimated:YES];
-       
-       
+    [Dem_LeanCloudData chatWithUser:[Dem_UserData shareInstance].user.username andFriend:self.user.username];
+    
        /*
        RCMessage *message = [[RCMessage alloc] initWithType:ConversationType_SYSTEM targetId:self.user.username direction:MessageDirection_SEND messageId:1 content:[RCContactNotificationMessage notificationWithOperation:ContactNotificationMessage_ContactOperationRequest sourceUserId:[Dem_UserData shareInstance].user.username targetUserId:self.user.username message:@"可以添加你为好友吗？" extra:@""]];
        
