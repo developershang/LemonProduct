@@ -76,6 +76,7 @@
 #pragma mark 删除好友
 -(void)delAction{
     [Dem_LeanCloudData delectWithUser:[Dem_UserData shareInstance].user buddy:self.user];
+    [Dem_LeanCloudData delectWithUser:self.user buddy:[Dem_UserData shareInstance].user];
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
 #pragma mark 选择组

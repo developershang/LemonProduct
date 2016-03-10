@@ -7,9 +7,9 @@
 //
 
 #import "Dem_ChatViewController.h"
-
-
-
+#import "Dem_BuddyViewController.h"
+#import "Dem_LeanCloudData.h"
+#import "Dem_UserData.h"
 @interface Dem_ChatViewController ()
 
 @end
@@ -20,7 +20,18 @@
     [super viewDidLoad];
     UIBarButtonItem *left = [[UIBarButtonItem alloc]initWithTitle:@"返回" style:UIBarButtonItemStyleDone target:self action:@selector(returnAction)];
     self.navigationItem.leftBarButtonItem = left;
+    
+    UIBarButtonItem *right = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"icon_sponsor_blue"] style:UIBarButtonItemStyleDone target:self action:@selector(rightAction)];
+    self.navigationItem.rightBarButtonItem = right;
     // Do any additional setup after loading the view.
+}
+
+-(void)rightAction{
+    Dem_BuddyViewController *bud = [[UIStoryboard storyboardWithName:@"Main" bundle:nil]instantiateViewControllerWithIdentifier:@"bvc"];
+    AVUser *user = [Dem_LeanCloudData searchWithUser:self.name];
+    bud.user = user;
+    [Dem_UserData shareInstance].reLoad = YES;
+    [self.navigationController pushViewController:bud animated:YES];
 }
 
 -(void)returnAction{

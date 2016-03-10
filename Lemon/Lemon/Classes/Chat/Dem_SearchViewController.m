@@ -100,6 +100,14 @@
         NSArray *username= [Dem_LeanCloudData searchUserWithUserName:self.search.text];
         if (username.count == 0) {
             NSLog(@"无此用户");
+            dispatch_async(dispatch_get_main_queue(), ^{
+                UIAlertAction *action = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+                    
+                }];
+                UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"错误" message:@"无此用户" preferredStyle:UIAlertControllerStyleAlert];
+                [alert addAction:action];
+                [self presentViewController:alert animated:YES completion:nil];
+            });
             return ;
         }
         NSArray *array = @[username];
