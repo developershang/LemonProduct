@@ -45,6 +45,12 @@
     [NSURLConnection connectionWithRequest:request delegate:self];
     
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse * _Nullable response, NSData * _Nullable data, NSError * _Nullable connectionError) {
+           
+           
+           if (data == nil) {
+                  return ;
+           }
+           
         NSDictionary *dic = [NSJSONSerialization  JSONObjectWithData:data options:NSJSONReadingAllowFragments|NSJSONReadingMutableContainers error:nil];
         NSString *Token = dic[@"token"];
         block(Token);

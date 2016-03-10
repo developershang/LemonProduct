@@ -69,11 +69,13 @@ static NSInteger i = 1;
        
        self.FunPicTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 104, self.view.frame.size.width, self.view.frame.size.height - 153) style:UITableViewStylePlain];
 
+       
        self.JoketableView.dataSource = self;
        self.JoketableView.delegate = self;
-       self.FunPicTableView.dataSource = self;
-       self.FunPicTableView.delegate = self;
+//       self.FunPicTableView.dataSource = self;
+//       self.FunPicTableView.delegate = self;
        [self loadData];
+        [self.JoketableView addFooterWithTarget:self action:@selector(JokeLoadRefresh)];
        // 下拉刷新
        
 }
@@ -137,14 +139,17 @@ static NSInteger i = 1;
        switch (sender.selectedSegmentIndex) {
               case 0:
                      if (self.JoketableView.superview == nil) {
+                            
+                            
                             [self.FunPicTableView removeFromSuperview];
                             [self.view addSubview:self.JoketableView];
-                            [self.JoketableView addFooterWithTarget:self action:@selector(JokeLoadRefresh)];
                      }
                      break;
               case 1:
                      if (self.FunPicTableView.superview == nil) {
                             [self.JoketableView removeFromSuperview];
+                            self.FunPicTableView.delegate = self;
+                            self.FunPicTableView.dataSource = self;
                             [self.view addSubview:self.FunPicTableView];
                              [self.FunPicTableView addFooterWithTarget:self action:@selector(FunPicLoadRefresh)];
                             [self.FunPicTableView addHeaderWithTarget:self action:@selector(FunPicRefresh)];
@@ -160,7 +165,8 @@ static NSInteger i = 1;
        //返回可见的行数
        //拿到下标
        NSArray *indexArray = [self.FunPicTableView indexPathsForVisibleRows];
-       //便利数组拿到所有下标
+       
+              //便利数组拿到所有下标
        for (NSIndexPath *indexPath in indexArray) {
               //根据下标创建cell
               DAGJokeTableViewCell *cell = [self.FunPicTableView cellForRowAtIndexPath:indexPath];
@@ -202,7 +208,9 @@ static NSInteger i = 1;
        if (self.segment.selectedSegmentIndex == 0) {
            // 笑话数据的加载
               [[DAG_JokeManager shareInstance] requestJokeWithUrl:[NSString stringWithFormat:kJokeUrl,i] finish:^{
+                    
                      [self.JoketableView registerNib:[UINib nibWithNibName:@"DAGJokeTableViewCell2" bundle:nil] forCellReuseIdentifier:reuseIdentifier2];
+
                      self.JokeArray = [DAG_JokeManager shareInstance].JokeArray;
                      [self.JoketableView reloadData];
               }];
@@ -228,7 +236,7 @@ static NSInteger i = 1;
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
        
        self.indexPath = indexPath;
-       if (self.segment.selectedSegmentIndex == 0) {
+       if (tableView == self.JoketableView && self.segment.selectedSegmentIndex == 0) {
               // 笑话cell
               DAGJokeTableViewCell2 *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifier2 forIndexPath:indexPath];
               cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -240,7 +248,7 @@ static NSInteger i = 1;
               [cell.CommmentBtn addTarget:self action:@selector(commentAction) forControlEvents:UIControlEventTouchUpInside];
               [cell.shareBtn addTarget:self action:@selector(shareAction) forControlEvents:UIControlEventTouchUpInside];
               return cell;
-       }
+       }else if (tableView == self.FunPicTableView && self.segment.selectedSegmentIndex == 1){
               // 趣图 cell
               DAGJokeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifier forIndexPath:indexPath];
               cell.delegate = self;
@@ -257,7 +265,9 @@ static NSInteger i = 1;
               self.imageSize = [XU_ImageTools getImageSizeWithURL:model.url];
               cell.model = model;
               return cell;
+       }
   
+       return nil;
 }
 
 
