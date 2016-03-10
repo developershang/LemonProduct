@@ -78,6 +78,7 @@
     else if(indexPath.section == 1){
         if (indexPath.row == 0) {
                 LoginViewController *lvc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil]instantiateViewControllerWithIdentifier:@"lvc"];
+            [[DHSlideMenuController sharedInstance]hideSlideMenuViewController:YES];
                 [self presentViewController:lvc animated:YES completion:^{
                     [Dem_UserData shareInstance].reLoad = YES;
                 }];

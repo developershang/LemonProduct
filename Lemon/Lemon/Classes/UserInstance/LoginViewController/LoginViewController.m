@@ -47,6 +47,7 @@
         if (user !=nil) {
                [[Dem_UserData shareInstance]loginWithUser:user];
                [Dem_UserData shareInstance].isLog = YES;
+             [[NSNotificationCenter defaultCenter]postNotificationName:@"reload" object:@"refresh"];
             [self dismissViewControllerAnimated:YES completion:^{
                 [AVUser changeCurrentUser:user save:YES];
             }];

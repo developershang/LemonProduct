@@ -94,6 +94,7 @@
     RCUserInfo *user = [[RCUserInfo alloc]init];
     user.userId = userId;
     AVUser *users = [[Dem_LeanCloudData searchUserWithUserName:userId]firstObject];
+    
     [Dem_LeanCloudData intermationWithUser:users block:^(AVObject *users) {
         user.name = [users objectForKey:@"nid"];
         AVFile *file =[users objectForKey:@"photo"];
