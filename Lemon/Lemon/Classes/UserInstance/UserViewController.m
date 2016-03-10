@@ -63,6 +63,8 @@
     if (indexPath.section == 0) {
         if (indexPath.row == 0) {
             NSLog(@"xiugai");
+            [Dem_UserData shareInstance].reLoad = YES;
+            
         }
         else if (indexPath.row == 1){
                DAGRegardingViewController *drvc = [[DAGRegardingViewController alloc] init];
@@ -77,10 +79,8 @@
                 [self presentViewController:lvc animated:YES completion:^{
                     [Dem_UserData shareInstance].reLoad = YES;
                 }];
-            NSLog(@"更换用户");
         }
         else if (indexPath.row == 1){
-            NSLog(@"zhuxiao");
             [[Dem_UserData shareInstance]logoutUser];
             [Dem_UserData shareInstance].reLoad = YES;
             [[DHSlideMenuController sharedInstance]hideSlideMenuViewController:NO];
