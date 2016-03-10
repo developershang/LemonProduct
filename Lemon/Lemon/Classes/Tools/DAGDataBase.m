@@ -66,6 +66,7 @@ static sqlite3 *db = nil;
        
 }
 
+// 添加数据
 - (void)addImage:(NSString *)image user:(NSString *)name {
        [self createTable];
        
@@ -82,6 +83,7 @@ static sqlite3 *db = nil;
        
 }
 
+// 查询所有数据
 - (NSArray<DAGImageDownLoad *> *)selectAll {
        [self openDB];
        NSMutableArray *arr = [NSMutableArray array];

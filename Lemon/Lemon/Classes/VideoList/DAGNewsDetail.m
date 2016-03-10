@@ -23,6 +23,7 @@
        self.backgroundColor = [UIColor cyanColor];
        self.webView = [[UIWebView alloc] initWithFrame:[UIScreen mainScreen].bounds];
        self.webView.scrollView.contentSize = CGSizeMake(self.frame.size.width, self.frame.size.height);
+       // webView 适应屏幕
        self.webView.scalesPageToFit = YES;
        [self addSubview:self.webView];
 }

@@ -14,7 +14,6 @@
 
 @property (nonatomic, strong)NSMutableArray *FunPicArray; // 趣图数组
 
-
 // 创建单例
 + (instancetype)shareInstance;
 

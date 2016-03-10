@@ -40,7 +40,7 @@ static DAG_JokeManager *manager = nil;
 
 #pragma mark - 请求笑话数据
 - (void)requestJokeWithUrl:(NSString *)url finish:(void (^)())finish {
-       
+       // 判断当前的网络状态
        NSDictionary * dataDict = nil;
        if ( (dataDict = [DAGRequestData requestDatawithUrl:url]) == nil) {
               return;
@@ -68,6 +68,7 @@ static DAG_JokeManager *manager = nil;
 #pragma mark - 请求趣图数据
 - (void)requestFunPicWithUrl:(NSString *)url finish:(void (^)())finish {
        
+       // 判断当前的网络状态
        NSDictionary * dataDict = nil;
        if ( (dataDict = [DAGRequestData requestDatawithUrl:url]) == nil) {
               return;

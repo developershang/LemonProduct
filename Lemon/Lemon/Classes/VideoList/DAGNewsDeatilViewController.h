@@ -13,5 +13,5 @@
 @property (nonatomic, strong)DAGNewsDetail *dnd;
 
 
-@property (nonatomic, copy)NSString *detailUrl;
+@property (nonatomic, copy)NSString *detailUrl; // 新闻详情的Url
 @end

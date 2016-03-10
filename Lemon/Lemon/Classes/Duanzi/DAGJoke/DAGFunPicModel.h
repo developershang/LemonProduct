@@ -20,6 +20,6 @@
 
 @property (nonatomic, copy)NSString *url;
 
-@property (nonatomic, assign)BOOL isLoading;
+@property (nonatomic, assign)BOOL isLoading; // 判断是否正在加载
 
 @end

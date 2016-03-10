@@ -14,8 +14,11 @@
 // 创建单例
 + (instancetype)shareInstance;
 
+#pragma mark - 根据用户存储图片
 - (void)addImage:(NSString *)image user:(NSString *)name;
 
+
+#pragma mark - 根据当前用户查看已保存的数据
 - (DAGImageDownLoad *)selectByName:(NSString *)name;
 
 @end

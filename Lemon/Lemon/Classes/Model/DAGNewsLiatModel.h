@@ -10,7 +10,7 @@
 
 @interface DAGNewsLiatModel : NSObject
 
-@property (nonatomic, copy)NSString *title;
+@property (nonatomic, copy)NSString *title; // 实时热点的标题
 
 
 @end
