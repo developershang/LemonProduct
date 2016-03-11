@@ -24,7 +24,7 @@
 @interface RootViewController ()<UITableViewDataSource ,UITableViewDelegate>
 
 @property (nonatomic, strong)UIImageView *photo;
-
+@property (nonatomic, strong)NSMutableArray <NSIndexPath *> *Arr;
 
 @end
 
@@ -35,6 +35,7 @@
     self.rv = [[RootView alloc] initWithFrame:[UIScreen mainScreen].bounds];
     self.view = self.rv;
 }
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -71,6 +72,9 @@
     [[DataHandel shareInstance] requestDuanziDataWithUrl:PicURL finshed:^{
        [self.rv.table reloadData];
     }];
+    
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(jumpAtion:) name:@"jump" object:nil];
+    
 }
 
 - (void) addAction:(UIBarButtonItem *)sender{
@@ -101,10 +105,10 @@
     
 
     
-//    CommentViewController *comment = [[CommentViewController alloc] init];
-//    self.tabBarController.tabBar.hidden = YES;
-//    [self.navigationController pushViewController:comment animated:YES];
-//    
+    CommentViewController *comment = [[CommentViewController alloc] init];
+    self.tabBarController.tabBar.hidden = YES;
+    [self.navigationController pushViewController:comment animated:YES];
+    
     
 
 }
@@ -195,7 +199,9 @@
     SG_Model *model = [[DataHandel shareInstance]modelAtIndexPath:indexPath];
    if (model.image0 == nil) {
       
-       TextTableViewCell *textCell  = [tableView dequeueReusableCellWithIdentifier:@"TextCell" forIndexPath:indexPath];
+     TextTableViewCell *textCell  = [tableView dequeueReusableCellWithIdentifier:@"TextCell" forIndexPath:indexPath];
+       
+       
        
        [textCell.userPhotoView sd_setImageWithURL:[NSURL URLWithString:model.profile_image]];
         textCell.userNameLabel.text = model.name;
@@ -208,6 +214,7 @@
     }else{
         
         PicTableViewCell *picCell = [tableView dequeueReusableCellWithIdentifier:@"PicCell" forIndexPath:indexPath];
+        
         [picCell.userPhotoView sd_setImageWithURL:[NSURL URLWithString:model.profile_image]];
         picCell.userNameLabel.text =model.name;
         
@@ -228,6 +235,21 @@
         [picCell.contentImageView addGestureRecognizer: [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction)]];
          picCell.contentImageView.userInteractionEnabled = YES;
         
+        for (NSIndexPath *indexpath in self.Arr) {
+            if (indexpath == indexPath) {
+                
+                NSLog(@"第%ld个点了赞",indexPath.row);
+                picCell.picLikeButton.tintColor = [UIColor redColor];
+            }
+            else{
+                picCell.picLikeButton.tintColor = [UIColor blueColor];
+                
+            }
+        }
+        
+        
+        [picCell.picLikeButton addTarget:self action:@selector(picLikeButtonAction:) forControlEvents:UIControlEventTouchUpInside];
+        
         cell = picCell;
     }
 
@@ -238,10 +260,25 @@
 }
 
 
-- (void)tapAction{
+
+
+- (void)picLikeButtonAction:(UIButton *)sender{
+
+    NSLog(@"点解了button");
+    PicTableViewCell *cell  = (PicTableViewCell *)sender.superview.superview;
+    NSIndexPath *indexpath =[self.rv.table  indexPathForCell:cell];
+    NSLog(@"%ld----%ld",indexpath.section,indexpath.row);
+   cell.picLikeButton.tintColor = [UIColor redColor];
+    SG_Model *model = [[DataHandel shareInstance]modelAtIndexPath:indexpath];
+    NSDictionary *dic = [NSDictionary dictionaryWithObject:@"like"forKey:model.user_id];
     
 
+   
     
+}
+
+
+- (void)tapAction{
     
     [XU_ImageTools showImage:self.photo];
     
@@ -290,8 +327,6 @@
         
         }break;
         case 3: {
-            
-            DAGJokeViewController *da = [[DAGJokeViewController alloc] init];
             
             
         }
@@ -347,25 +382,20 @@
             }
                 
                 break;
-            case 2:
                 
+            case 2:
                 break;
+                
                case 3:
                 break;
+                
             default:
                 break;
         }
-        
-        
-     
-        
+ 
         
     }
-    
-    
-    
-    
-    
+
     
 }
 
@@ -384,5 +414,25 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    NSLog(@"点击了：%ld-- %ld",indexPath.section,indexPath.row);
+    
+}
+
+
+- (void)jumpAtion:(NSNotificationCenter *)notice{
+    
+    
+    NSLog(@"条转过来了%ld",[DataHandel shareInstance].indexPath.row);
+    [self.rv.table scrollToRowAtIndexPath:[DataHandel shareInstance].indexPath atScrollPosition:UITableViewScrollPositionMiddle animated:NO];
+    
+}
+
+
+
+
 
 @end

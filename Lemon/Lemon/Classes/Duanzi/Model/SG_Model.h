@@ -25,6 +25,7 @@
 
 @property (nonatomic, strong)NSString *weixin_url;
 
+@property (nonatomic, strong)NSString* user_id;
 
 
 @end
