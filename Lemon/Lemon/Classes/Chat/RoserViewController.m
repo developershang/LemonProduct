@@ -56,13 +56,13 @@
 }
 
 -(void)NSNotificationAction{
-    [self viewWillAppear:YES];
-    [self viewDidAppear:YES];
-    [[NSNotificationCenter defaultCenter]postNotificationName:@"reload" object:@"refresh"];
+    [self reloadNavitation];
+    [self reloadData];
+
 }
 
--(void)viewWillAppear:(BOOL)animated{
-    
+
+-(void)reloadNavitation{
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
     btn.frame =CGRectMake(0, 0, 40, 40);
     
@@ -72,7 +72,9 @@
     self.navigationItem.titleView = button;
     [button addTarget:self action:@selector(TextChatAction) forControlEvents:UIControlEventTouchUpInside];
     //接收消息
-    [self ReceiveMessageWithUser:[Dem_UserData shareInstance].user.username];
+    if ([Dem_UserData shareInstance].user.username !=nil) {
+        [self ReceiveMessageWithUser:[Dem_UserData shareInstance].user.username];
+    }
     if ([Dem_UserData shareInstance].user ==nil) {
         button.hidden = YES;
         UIBarButtonItem *left = [[UIBarButtonItem alloc]initWithTitle:@"登陆" style:UIBarButtonItemStyleDone target:self action:@selector(loginAction)];
@@ -96,7 +98,7 @@
     }
 }
 
--(void)viewDidAppear:(BOOL)animated{
+-(void)reloadData{
     if ([Dem_UserData shareInstance].reLoad == YES) {
         [self.data removeAllObjects];
         [self.table reloadData];
@@ -108,7 +110,16 @@
             });
         });
     }
+
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    [self reloadNavitation];
     
+}
+
+-(void)viewDidAppear:(BOOL)animated{
+    [self reloadData];
 }
 
 #pragma mark好友接收通知
@@ -134,18 +145,18 @@
 - (void)conversation:(AVIMConversation *)conversation didReceiveTypedMessage:(AVIMTypedMessage *)message {
     NSLog(@"%@", message.text);
    AVUser *user = [Dem_LeanCloudData searchWithUser:message.text];
-    UIAlertAction *add = [UIAlertAction actionWithTitle:@"同意" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-        
+//    UIAlertAction *add = [UIAlertAction actionWithTitle:@"同意" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+//        
         [Dem_LeanCloudData addBuddyWithUser:[Dem_UserData shareInstance].user buddy:user group:@"我的好友"];
-        [self NSNotificationAction];
-    }];
-    UIAlertAction *del = [UIAlertAction actionWithTitle:@"拒接" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-        [Dem_LeanCloudData delectWithUser:user buddy:[Dem_UserData shareInstance].user];
-    }];
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"好友添加" message:@"无此用户" preferredStyle:UIAlertControllerStyleAlert];
-    [alert addAction:add];
-    [alert addAction:del];
-    [self presentViewController:alert animated:YES completion:nil];
+        [self reloadData];
+//    }];
+//    UIAlertAction *del = [UIAlertAction actionWithTitle:@"拒接" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+//        [Dem_LeanCloudData delectWithUser:user buddy:[Dem_UserData shareInstance].user];
+//    }];
+//    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"好友添加" message:[NSString stringWithFormat:@"add%@",message.text] preferredStyle:UIAlertControllerStyleAlert];
+//    [alert addAction:add];
+//    [alert addAction:del];
+//    [self presentViewController:alert animated:YES completion:nil];
     
 }
 

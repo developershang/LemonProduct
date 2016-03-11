@@ -61,6 +61,7 @@ static NSInteger i = 1;
        self.segment = [[UISegmentedControl alloc] initWithItems:@[@"纯文字", @"图文结合"]];
        self.segment.frame = CGRectMake(0, 64, self.view.frame.size.width, 40);
        self.segment.selectedSegmentIndex = 0;
+       self.segment.backgroundColor = [UIColor whiteColor];
        self.segment.tintColor = [UIColor colorWithRed:0.227 green:0.532 blue:1.000 alpha:1.000];
        [self.segment addTarget:self action:@selector(segmentAction:) forControlEvents:UIControlEventValueChanged];
        [self.view addSubview:self.segment];
@@ -77,6 +78,9 @@ static NSInteger i = 1;
         [self.JoketableView addFooterWithTarget:self action:@selector(JokeLoadRefresh)];
        // 下拉刷新
        
+       UIBarButtonItem *right= [[UIBarButtonItem alloc] initWithTitle:@"清缓" style:UIBarButtonItemStyleDone target:self action:@selector(clearAction)];
+       self.navigationItem.rightBarButtonItem = right;
+      
 }
 
 #pragma mark - 清除缓存
@@ -152,9 +156,9 @@ static NSInteger i = 1;
                      break;
               case 1:
                      if (self.FunPicTableView.superview == nil) {
+                            [self.JoketableView removeFromSuperview];
                             self.FunPicTableView.delegate = self;
                             self.FunPicTableView.dataSource = self;
-                            [self.JoketableView removeFromSuperview];
                             [self.view addSubview:self.FunPicTableView];
                              [self.FunPicTableView addFooterWithTarget:self action:@selector(FunPicLoadRefresh)];
                             [self.FunPicTableView addHeaderWithTarget:self action:@selector(FunPicRefresh)];

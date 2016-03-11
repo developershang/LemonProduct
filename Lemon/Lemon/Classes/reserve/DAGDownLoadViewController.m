@@ -47,18 +47,26 @@
        [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"imageCell"];
 
        DAGImageDownLoad *model = [[DAGDataBase shareInstance] selectByName:currentUserName];
+
        [self.imageArray addObject:model];
 
        
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+       
        return self.imageArray.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"imageCell" forIndexPath:indexPath];
-       DAGImageDownLoad *model = self.imageArray[0];
+       DAGImageDownLoad *model = self.imageArray[indexPath.row];
+       
+       if (model.name == nil) {
+              cell.textLabel.text = @"暂时还没有保存的图片";
+              return cell;
+       }
+       
        cell.textLabel.text = model.name;
        NSData *imageData = [[NSData alloc] initWithBase64Encoding:model.imageUrl];
        UIImage *image = [UIImage imageWithData:imageData];

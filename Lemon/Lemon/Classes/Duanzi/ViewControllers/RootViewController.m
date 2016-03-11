@@ -328,6 +328,8 @@
         }break;
         case 3: {
             
+            DAGJokeViewController *dvc = [[DAGJokeViewController alloc] init];
+               [self.navigationController pushViewController:dvc animated:YES];
             
         }
          
