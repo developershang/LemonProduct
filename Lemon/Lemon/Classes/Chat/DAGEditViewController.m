@@ -9,9 +9,12 @@
 #import "DAGEditViewController.h"
 #import "Dem_LeanCloudData.h"
 #import "Dem_UserData.h"
+#import "KeyboardTool.h"
+#import "DHSlideMenuController.h"
+
+@interface DAGEditViewController ()<UITextFieldDelegate,UIPickerViewDataSource, UIPickerViewDelegate,UINavigationControllerDelegate,UIImagePickerControllerDelegate, KeyboardToolDelegate>
 
 
-@interface DAGEditViewController ()<UITextFieldDelegate,UIPickerViewDataSource, UIPickerViewDelegate,UINavigationControllerDelegate,UIImagePickerControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIImageView *HeaderImage;
 
@@ -29,8 +32,13 @@
 
 @property (nonatomic, strong)UITextField *textField;
 
+@property (nonatomic, weak)KeyboardTool *tool;
+
+@property (nonatomic, strong)NSMutableArray *allTextFields;
+
 @end
 
+static BOOL isLoaded;
 @implementation DAGEditViewController
 
 - (void)viewDidLoad {
@@ -39,23 +47,20 @@
        UIDatePicker *picker = [[UIDatePicker alloc] init];
        picker.datePickerMode = UIDatePickerModeDate;
        picker.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"zh_CN"];
+       [picker addTarget:self action:@selector(chooseDate:) forControlEvents:UIControlEventValueChanged];
+       [self chooseDate:picker];
        // 设置键盘的inputView
        self.Datefield.inputView = picker;
-
-       UIButton *button = [UIButton buttonWithType:UIButtonTypeSystem];
-       button.frame = CGRectMake(kScreenWidth - 50, 0, 50, 30);
-       [button setTitle:@"确定" forState:UIControlStateNormal];
-       
-       self.Datefield.inputAccessoryView = button;
-       
-       [self chooseDate:picker];
-       [picker addTarget:self action:@selector(chooseDate:) forControlEvents:UIControlEventValueChanged];
        
        UIBarButtonItem *right = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(rightAction)];
        self.navigationItem.rightBarButtonItem = right;
-       
+    
+    UIBarButtonItem *left = [[UIBarButtonItem alloc] initWithTitle:@"返回" style:UIBarButtonItemStyleDone target:self action:@selector(leftAction)];
+    self.navigationItem.leftBarButtonItem = left;
+
        self.picker = [[UIPickerView alloc] init];
        self.picker.dataSource = self;
+       self.picker.showsSelectionIndicator = YES;
        self.picker.delegate = self;
        
        self.SexField.inputView = self.picker;
@@ -68,8 +73,54 @@
        
        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillAppear:) name:UIKeyboardWillShowNotification object:nil];
        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillDisappear:) name:UIKeyboardWillHideNotification object:nil];
+       
+       self.tool = [KeyboardTool keyboardTool];
+       self.allTextFields = [NSMutableArray array];
+       self.tool.toolDelegate = self;
+       for (UITextField *field in self.view.subviews) {
+              if (![field isKindOfClass:[UITextField class]]) {
+                     continue;
+              }
+              field.inputAccessoryView = self.tool;
+              [self.allTextFields addObject:field];
+              
+              field.delegate = self;
+       }
+       isLoaded = NO;
     
 }
+
+
+#pragma mark - Keytool代理
+- (void)keyboardTool:(KeyboardTool *)tool buttonClick:(KeyboardToolButtonType)type {
+       if (type == kKeyboardToolButtonTypeDone) {
+              [self.textField resignFirstResponder];
+       } else {
+              NSUInteger index = [self.allTextFields indexOfObject:self.textField];
+              if (type == kKeyboardToolButtonTypePrevious) {
+                     index -- ;
+              } else {
+                     index ++;
+              }
+              UITextField *field= self.allTextFields[index];
+              [field becomeFirstResponder];
+       }
+}
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField {
+       NSUInteger index = [self.allTextFields indexOfObject:textField];
+       self.tool.nextBtn.enabled = index != self.allTextFields.count - 1;
+       self.tool.previousBtn.enabled = index != 0;
+       self.textField = textField;
+}
+
+
+
+-(void)leftAction{
+     [self dismissViewControllerAnimated:YES completion:nil];
+    [[DHSlideMenuController sharedInstance]hideSlideMenuViewController:NO];
+}
+
 
 #pragma mark - 计算键盘的高度
 - (CGFloat)keyboardEndFrameHeight:(NSDictionary *)userInfo {
@@ -85,12 +136,13 @@
 
 {
        
+       if (isLoaded == NO) {
        CGRect currentFrame = self.view.frame;
        CGFloat change = [self keyboardEndFrameHeight:[notification userInfo]];
        currentFrame.origin.y = currentFrame.origin.y - change ;
        self.view.frame = currentFrame;
-       
-       
+       isLoaded = YES;
+       }
 }
 
 
@@ -99,10 +151,12 @@
 -(void)keyboardWillDisappear:(NSNotification *)notification
 
 {
+       
        CGRect currentFrame = self.view.frame;
        CGFloat change = [self keyboardEndFrameHeight:[notification userInfo]];
        currentFrame.origin.y = currentFrame.origin.y + change ;
        self.view.frame = currentFrame;
+       isLoaded = NO;
 }
 
 #pragma mark image的点击事件
@@ -173,10 +227,11 @@
 
 
 - (void)rightAction {
-       [self dismissViewControllerAnimated:YES completion:nil];
+    [[DHSlideMenuController sharedInstance]hideSlideMenuViewController:NO];
     NSString *oldpass = [Dem_UserData shareInstance].user.password;
     NSLog(@"%@",oldpass);
     [Dem_LeanCloudData editInformationWithUser:[Dem_UserData shareInstance].user nid:self.UserNameField.text oldPassword:oldpass password:self.PwdField.text photo:self.HeaderImage.image sex:self.SexField.text birthday:self.Datefield.text];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 
@@ -221,23 +276,11 @@
 
 #pragma mark - 键盘的回收和 第一响应者的注销
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
-       self.textField = textField;
-       [textField resignFirstResponder];
+       
+       [self.view endEditing:YES];
        return YES;
 }
 
-- (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-       [self.UserNameField resignFirstResponder];
-       [self.PwdField resignFirstResponder];
-       [self.Datefield resignFirstResponder];
-       [self.SexField resignFirstResponder];
-}
-
-- (BOOL)textFieldShouldEndEditing:(UITextField *)textField {
-       CGRect rect = textField.frame;
-       textField.frame = CGRectMake(0, self.view.frame.size.height - 49 + 10, rect.size.width, rect.size.height);
-       return YES;
-}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
