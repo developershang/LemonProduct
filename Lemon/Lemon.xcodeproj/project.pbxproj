@@ -20,6 +20,8 @@
 		C20940CF1C867AD50049AC25 /* XU_ImageTools.m in Sources */ = {isa = PBXBuildFile; fileRef = C20940CE1C867AD50049AC25 /* XU_ImageTools.m */; };
 		C20940D21C869CCD0049AC25 /* Dem_LeanCloudData.m in Sources */ = {isa = PBXBuildFile; fileRef = C20940D11C869CCD0049AC25 /* Dem_LeanCloudData.m */; };
 		C20F2F121C926D050070AAAB /* DAGEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C20F2F111C926D050070AAAB /* DAGEditViewController.m */; };
+		C20F2F151C92B7150070AAAB /* KeyboardTool.m in Sources */ = {isa = PBXBuildFile; fileRef = C20F2F141C92B7150070AAAB /* KeyboardTool.m */; };
+		C20F2F1D1C92B8890070AAAB /* keyboardTool.xib in Resources */ = {isa = PBXBuildFile; fileRef = C20F2F1C1C92B8890070AAAB /* keyboardTool.xib */; };
 		C215A56A1C852D5100C5487A /* Dem_ChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C215A5691C852D5100C5487A /* Dem_ChatViewController.m */; };
 		C215A56D1C852D9100C5487A /* RoserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C215A56C1C852D9100C5487A /* RoserViewController.m */; };
 		C215A5701C8547A200C5487A /* Dem_RongData.m in Sources */ = {isa = PBXBuildFile; fileRef = C215A56F1C8547A200C5487A /* Dem_RongData.m */; };
@@ -321,6 +323,9 @@
 		C20940D11C869CCD0049AC25 /* Dem_LeanCloudData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Dem_LeanCloudData.m; sourceTree = "<group>"; };
 		C20F2F101C926D050070AAAB /* DAGEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAGEditViewController.h; sourceTree = "<group>"; };
 		C20F2F111C926D050070AAAB /* DAGEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAGEditViewController.m; sourceTree = "<group>"; };
+		C20F2F131C92B7150070AAAB /* KeyboardTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyboardTool.h; sourceTree = "<group>"; };
+		C20F2F141C92B7150070AAAB /* KeyboardTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyboardTool.m; sourceTree = "<group>"; };
+		C20F2F1C1C92B8890070AAAB /* keyboardTool.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = keyboardTool.xib; sourceTree = "<group>"; };
 		C215A5671C852AC600C5487A /* SysPCH.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SysPCH.pch; sourceTree = "<group>"; };
 		C215A5681C852D5100C5487A /* Dem_ChatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Dem_ChatViewController.h; sourceTree = "<group>"; };
 		C215A5691C852D5100C5487A /* Dem_ChatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Dem_ChatViewController.m; sourceTree = "<group>"; };
@@ -1415,6 +1420,9 @@
 			children = (
 				C20895131C87D38900053772 /* DAG_JokeManager.h */,
 				C20895141C87D38900053772 /* DAG_JokeManager.m */,
+				C20F2F131C92B7150070AAAB /* KeyboardTool.h */,
+				C20F2F141C92B7150070AAAB /* KeyboardTool.m */,
+				C20F2F1C1C92B8890070AAAB /* keyboardTool.xib */,
 				C2AFDAB81C89BD8600D64594 /* DAGRequestData.h */,
 				C2AFDAB91C89BD8600D64594 /* DAGRequestData.m */,
 				C20940CD1C867AD50049AC25 /* XU_ImageTools.h */,
@@ -1833,6 +1841,7 @@
 				C215A6181C8592FA00C5487A /* 46-movie2.png in Resources */,
 				C215A5F31C8592FA00C5487A /* 109-chicken.png in Resources */,
 				C215A6431C8592FA00C5487A /* 89-dumbbell.png in Resources */,
+				C20F2F1D1C92B8890070AAAB /* keyboardTool.xib in Resources */,
 				C215A6101C8592FA00C5487A /* 38-airplane.png in Resources */,
 				C215A6141C8592FA00C5487A /* 42-photos.png in Resources */,
 				C215A5F41C8592FA00C5487A /* 11-clock.png in Resources */,
@@ -1998,6 +2007,7 @@
 				C2E7E7B91C853A05000E94C5 /* HomeViewController.m in Sources */,
 				C2AFDA501C89222100D64594 /* DAGJokeDetailViewController.m in Sources */,
 				C250FF731C8688BF0044BBD4 /* DAGNewsDeatilViewController.m in Sources */,
+				C20F2F151C92B7150070AAAB /* KeyboardTool.m in Sources */,
 				C20895111C87D37400053772 /* DAGJokeModel.m in Sources */,
 				C2AFDAB21C89AB6E00D64594 /* DDFileLogger.m in Sources */,
 				C2B4E1261C8ECB8400047D46 /* UITabBar+NightVersion.m in Sources */,
