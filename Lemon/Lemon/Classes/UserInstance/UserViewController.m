@@ -79,6 +79,7 @@
                 [self presentViewController:lvc animated:YES completion:^{
                     [Dem_UserData shareInstance].reLoad = YES;
                 }];
+            
         }
         else if (indexPath.row == 1){
             [[Dem_UserData shareInstance]logoutUser];
@@ -86,7 +87,6 @@
             [[DHSlideMenuController sharedInstance]hideSlideMenuViewController:NO];
             [DHSlideMenuController sharedInstance].leftViewController = nil;
             [[NSNotificationCenter defaultCenter]postNotificationName:@"reload" object:@"refresh"];
-            
         }
     }
 }

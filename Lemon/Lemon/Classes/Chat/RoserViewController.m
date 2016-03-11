@@ -56,13 +56,15 @@
 }
 
 -(void)NSNotificationAction{
-    [self viewWillAppear:YES];
-    [self viewDidAppear:YES];
-    [[NSNotificationCenter defaultCenter]postNotificationName:@"reload" object:@"refresh"];
+    [self reloadNavitation];
+    [self reloadData];
+    
+    NSLog(@"   刷新 ");
+
 }
 
--(void)viewWillAppear:(BOOL)animated{
-    
+
+-(void)reloadNavitation{
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
     btn.frame =CGRectMake(0, 0, 40, 40);
     
@@ -96,7 +98,7 @@
     }
 }
 
--(void)viewDidAppear:(BOOL)animated{
+-(void)reloadData{
     if ([Dem_UserData shareInstance].reLoad == YES) {
         [self.data removeAllObjects];
         [self.table reloadData];
@@ -108,7 +110,16 @@
             });
         });
     }
+
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    [self reloadNavitation];
     
+}
+
+-(void)viewDidAppear:(BOOL)animated{
+    [self reloadData];
 }
 
 #pragma mark好友接收通知
