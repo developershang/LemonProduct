@@ -17,6 +17,8 @@
 //存储model 用于解析cell数据
 @property (nonatomic, strong)NSMutableArray *DataArray;
 
+
+@property (nonatomic, strong)NSIndexPath *indexPath;
 #pragma mark单例的建立
 +(instancetype)shareInstance;
 

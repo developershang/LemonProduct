@@ -108,10 +108,13 @@ static DataHandel *datahandel;
         
          dispatch_async(dispatch_get_main_queue(), ^{
              
-               finsh();
+             finsh();
+             
          });
         
+        
     }];
+    
 }
 
 

@@ -10,8 +10,11 @@
 #import "Dem_LeanCloudData.h"
 #import "Dem_UserData.h"
 #import "KeyboardTool.h"
+#import "DHSlideMenuController.h"
 
 @interface DAGEditViewController ()<UITextFieldDelegate,UIPickerViewDataSource, UIPickerViewDelegate,UINavigationControllerDelegate,UIImagePickerControllerDelegate, KeyboardToolDelegate>
+
+
 
 @property (weak, nonatomic) IBOutlet UIImageView *HeaderImage;
 
@@ -44,18 +47,20 @@ static BOOL isLoaded;
        UIDatePicker *picker = [[UIDatePicker alloc] init];
        picker.datePickerMode = UIDatePickerModeDate;
        picker.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"zh_CN"];
+       [picker addTarget:self action:@selector(chooseDate:) forControlEvents:UIControlEventValueChanged];
+       [self chooseDate:picker];
        // 设置键盘的inputView
        self.Datefield.inputView = picker;
-
-       [self chooseDate:picker];
-       [picker addTarget:self action:@selector(chooseDate:) forControlEvents:UIControlEventValueChanged];
        
        UIBarButtonItem *right = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(rightAction)];
        self.navigationItem.rightBarButtonItem = right;
-       
+    
+    UIBarButtonItem *left = [[UIBarButtonItem alloc] initWithTitle:@"返回" style:UIBarButtonItemStyleDone target:self action:@selector(leftAction)];
+    self.navigationItem.leftBarButtonItem = left;
+
        self.picker = [[UIPickerView alloc] init];
-       self.picker.showsSelectionIndicator = YES;
        self.picker.dataSource = self;
+       self.picker.showsSelectionIndicator = YES;
        self.picker.delegate = self;
        
        self.SexField.inputView = self.picker;
@@ -85,6 +90,7 @@ static BOOL isLoaded;
     
 }
 
+
 #pragma mark - Keytool代理
 - (void)keyboardTool:(KeyboardTool *)tool buttonClick:(KeyboardToolButtonType)type {
        if (type == kKeyboardToolButtonTypeDone) {
@@ -106,6 +112,13 @@ static BOOL isLoaded;
        self.tool.nextBtn.enabled = index != self.allTextFields.count - 1;
        self.tool.previousBtn.enabled = index != 0;
        self.textField = textField;
+}
+
+
+
+-(void)leftAction{
+     [self dismissViewControllerAnimated:YES completion:nil];
+    [[DHSlideMenuController sharedInstance]hideSlideMenuViewController:NO];
 }
 
 
@@ -214,10 +227,11 @@ static BOOL isLoaded;
 
 
 - (void)rightAction {
-       [self dismissViewControllerAnimated:YES completion:nil];
+    [[DHSlideMenuController sharedInstance]hideSlideMenuViewController:NO];
     NSString *oldpass = [Dem_UserData shareInstance].user.password;
     NSLog(@"%@",oldpass);
     [Dem_LeanCloudData editInformationWithUser:[Dem_UserData shareInstance].user nid:self.UserNameField.text oldPassword:oldpass password:self.PwdField.text photo:self.HeaderImage.image sex:self.SexField.text birthday:self.Datefield.text];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 

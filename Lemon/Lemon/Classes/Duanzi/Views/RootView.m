@@ -22,18 +22,19 @@
 
 #pragma mark MVC设计思想设计视图
 - (void)setup{
+    
     self.backgroundColor = [UIColor blackColor];
     self.segement = [[UISegmentedControl alloc] initWithItems:@[@"段子",@"图片",@"笑话",@"动图"]];
     self.segement.frame = CGRectMake(0, 64, self.frame.size.width, 30);
     self.segement.backgroundColor = [UIColor cyanColor];
     [self addSubview:self.segement];
     
+    
+    
     self.table = [[UITableView alloc] initWithFrame:CGRectMake(0, 64+30, self.frame.size.width, self.frame.size.height - 94 - 49 ) style:UITableViewStylePlain];
-//    self.table.backgroundColor = [UIColor cyanColor];
-       UIImageView *imageView = [[UIImageView alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    UIImageView *imageView = [[UIImageView alloc] initWithFrame:[UIScreen mainScreen].bounds];
        imageView.image = [UIImage imageNamed:@"cat.jpg"];
-       self.table.backgroundView = imageView;
-   // self.table.tableHeaderView = self.sv;
+    self.table.backgroundView = imageView;
     [self addSubview:self.table];
 
 
