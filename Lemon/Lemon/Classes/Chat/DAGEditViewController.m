@@ -9,7 +9,7 @@
 #import "DAGEditViewController.h"
 #import "Dem_LeanCloudData.h"
 #import "Dem_UserData.h"
-
+#import "DHSlideMenuController.h"
 
 @interface DAGEditViewController ()<UITextFieldDelegate,UIPickerViewDataSource, UIPickerViewDelegate,UINavigationControllerDelegate,UIImagePickerControllerDelegate>
 
@@ -53,6 +53,11 @@
        
        UIBarButtonItem *right = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(rightAction)];
        self.navigationItem.rightBarButtonItem = right;
+    
+    UIBarButtonItem *left = [[UIBarButtonItem alloc] initWithTitle:@"返回" style:UIBarButtonItemStyleDone target:self action:@selector(leftAction)];
+    self.navigationItem.leftBarButtonItem = left;
+    
+    
        
        self.picker = [[UIPickerView alloc] init];
        self.picker.dataSource = self;
@@ -69,6 +74,11 @@
        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillAppear:) name:UIKeyboardWillShowNotification object:nil];
        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillDisappear:) name:UIKeyboardWillHideNotification object:nil];
     
+}
+
+-(void)leftAction{
+     [self dismissViewControllerAnimated:YES completion:nil];
+    [[DHSlideMenuController sharedInstance]hideSlideMenuViewController:NO];
 }
 
 #pragma mark - 计算键盘的高度
@@ -173,10 +183,11 @@
 
 
 - (void)rightAction {
-       [self dismissViewControllerAnimated:YES completion:nil];
+    [[DHSlideMenuController sharedInstance]hideSlideMenuViewController:NO];
     NSString *oldpass = [Dem_UserData shareInstance].user.password;
     NSLog(@"%@",oldpass);
     [Dem_LeanCloudData editInformationWithUser:[Dem_UserData shareInstance].user nid:self.UserNameField.text oldPassword:oldpass password:self.PwdField.text photo:self.HeaderImage.image sex:self.SexField.text birthday:self.Datefield.text];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 
