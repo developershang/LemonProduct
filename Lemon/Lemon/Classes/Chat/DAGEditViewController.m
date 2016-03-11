@@ -7,9 +7,11 @@
 //
 
 #import "DAGEditViewController.h"
+#import "Dem_LeanCloudData.h"
+#import "Dem_UserData.h"
 
-@interface DAGEditViewController ()<UITextFieldDelegate,UIPickerViewDataSource, UIPickerViewDelegate>
 
+@interface DAGEditViewController ()<UITextFieldDelegate,UIPickerViewDataSource, UIPickerViewDelegate,UINavigationControllerDelegate,UIImagePickerControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIImageView *HeaderImage;
 
@@ -57,7 +59,11 @@
        self.picker.delegate = self;
        
        self.SexField.inputView = self.picker;
-       
+    
+    self.HeaderImage.userInteractionEnabled = YES;
+    //轻拍手势
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapAction)];
+    [self.HeaderImage addGestureRecognizer:tap];
        [self loadData];
        
        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillAppear:) name:UIKeyboardWillShowNotification object:nil];
@@ -87,6 +93,7 @@
        
 }
 
+
 #pragma mark - 键盘消失的时候的响应事件
 
 -(void)keyboardWillDisappear:(NSNotification *)notification
@@ -97,6 +104,62 @@
        currentFrame.origin.y = currentFrame.origin.y + change ;
        self.view.frame = currentFrame;
 }
+
+#pragma mark image的点击事件
+-(void)tapAction{
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"" message:@"" preferredStyle:UIAlertControllerStyleActionSheet];
+    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"返回" style:UIAlertActionStyleCancel handler:nil];
+    UIAlertAction *act1 = [UIAlertAction actionWithTitle:@"相册" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self actPhotoLibrary];
+    }];
+    UIAlertAction *act2 = [UIAlertAction actionWithTitle:@"相机" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self actCamera];
+    }];
+    [alert addAction:cancel];
+    [alert addAction:act1];
+    [alert addAction:act2];
+    [self presentViewController:alert animated:YES completion:nil];
+}
+
+#pragma mark调用相册
+-(void)actPhotoLibrary{
+    UIImagePickerController *picker = [[UIImagePickerController alloc]init];
+    picker.allowsEditing = YES;
+    picker.delegate = self;
+    picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    [self presentViewController:picker animated:YES completion:^{
+        
+    }];
+}
+
+#pragma mark调用相机
+-(void)actCamera{
+    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+        
+        UIImagePickerController *picker = [[UIImagePickerController alloc]init];
+        picker.allowsEditing = YES;
+        picker.delegate = self;
+        picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+        [self presentViewController:picker animated:YES completion:^{
+            
+        }];
+        
+    } else {
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"错误" message:@"找不到相机" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+        [alert addAction:okAction];
+        [self presentViewController:alert animated:YES completion:nil];
+    }
+}
+
+#pragma mark imagePicker代理方法
+-(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingImage:(UIImage *)image editingInfo:(NSDictionary<NSString *,id> *)editingInfo{
+    self.HeaderImage.image = image;
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+
+
 
 #pragma mark -将date类型转换成NSString类型
 - (void)chooseDate:(UIDatePicker *)sender {
@@ -111,6 +174,9 @@
 
 - (void)rightAction {
        [self dismissViewControllerAnimated:YES completion:nil];
+    NSString *oldpass = [Dem_UserData shareInstance].user.password;
+    NSLog(@"%@",oldpass);
+    [Dem_LeanCloudData editInformationWithUser:[Dem_UserData shareInstance].user nid:self.UserNameField.text oldPassword:oldpass password:self.PwdField.text photo:self.HeaderImage.image sex:self.SexField.text birthday:self.Datefield.text];
 }
 
 
@@ -119,6 +185,18 @@
        self.SexArray = [NSMutableArray array];
        
        self.SexArray = @[@"男", @"女", @"保密"].mutableCopy;
+    
+    [Dem_LeanCloudData intermationWithUser:[Dem_UserData shareInstance].user block:^(AVObject *users) {
+        self.UserNameField.text = [users objectForKey:@"nid"];
+        AVFile *file = [users objectForKey:@"photo"];
+        NSData *data = [file getData];
+        self.HeaderImage.image =[UIImage imageWithData:data];
+        self.Datefield.text = [users objectForKey:@"birth"];
+        self.SexField.text = [users objectForKey:@"sex"];
+        if ([self.SexField.text isEqualToString:@""]) {
+            self.SexField.text = @"保密";
+        }
+    }];
        
 }
 
