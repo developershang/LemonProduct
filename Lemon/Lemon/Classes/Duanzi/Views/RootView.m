@@ -26,7 +26,7 @@
     self.backgroundColor = [UIColor blackColor];
     self.segement = [[UISegmentedControl alloc] initWithItems:@[@"段子",@"图片",@"笑话",@"动图"]];
     self.segement.frame = CGRectMake(0, 64, self.frame.size.width, 30);
-    self.segement.backgroundColor = [UIColor cyanColor];
+    self.segement.backgroundColor = [UIColor whiteColor];
     [self addSubview:self.segement];
     
     
@@ -38,8 +38,6 @@
     [self addSubview:self.table];
 
 
-    
-    
 }
 
 /*
