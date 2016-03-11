@@ -183,10 +183,12 @@
 
 #pragma mark修改用户信息
 +(void)editInformationWithUser:(AVUser*)user nid:(NSString *)nid oldPassword:(NSString*)oldpass password:(NSString *)password photo:(UIImage *)photo sex:(NSString *)sex birthday:(NSString *)birth {
+    if (![password isEqualToString:@""]) {
+        [[AVUser currentUser] updatePassword:oldpass  newPassword:password block:^(id object, NSError *error) {
+            //处理结果
+        }];
+    }
     
-    [[AVUser currentUser] updatePassword:oldpass  newPassword:password block:^(id object, NSError *error) {
-        //处理结果
-    }];
     [self intermationWithUser:user block:^(AVObject *users) {
         
         UIView *view = [[UIView alloc] initWithFrame:[UIScreen mainScreen].bounds];
@@ -222,7 +224,7 @@
                 [vc removeFromParentViewController];
             }
         } progressBlock:^(NSInteger percentDone) {
-            
+            NSLog(@"%ld",percentDone);
         }];
         
     }];
