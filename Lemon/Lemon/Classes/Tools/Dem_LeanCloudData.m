@@ -173,6 +173,7 @@
     return arr;
 }
 
+#pragma mark根据用户名查找用户
 +(AVUser *)searchWithUser:(NSString *)name{
      AVQuery *userQuery = [AVQuery queryWithClassName:@"_User"];
     [userQuery whereKey:@"username" equalTo:name];
@@ -180,6 +181,53 @@
     return user;
 }
 
+#pragma mark修改用户信息
++(void)editInformationWithUser:(AVUser*)user nid:(NSString *)nid oldPassword:(NSString*)oldpass password:(NSString *)password photo:(UIImage *)photo sex:(NSString *)sex birthday:(NSString *)birth {
+    
+    [[AVUser currentUser] updatePassword:oldpass  newPassword:password block:^(id object, NSError *error) {
+        //处理结果
+    }];
+    [self intermationWithUser:user block:^(AVObject *users) {
+        
+        UIView *view = [[UIView alloc] initWithFrame:[UIScreen mainScreen].bounds];
+        [view setTag:108];
+        [view setBackgroundColor:[UIColor colorWithRed:0.546 green:0.541 blue:0.539 alpha:1.000]];
+        [view setAlpha:0.5];
+        UIViewController *vc = [UIApplication sharedApplication].windows[2].rootViewController;
+        [vc.view addSubview:view];
+        UIActivityIndicatorView *act = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 32.0f, 32.0f)];
+        [act setCenter:view.center];//设置旋转菊花的中心位置
+        [act setActivityIndicatorViewStyle:UIActivityIndicatorViewStyleWhiteLarge];//设置菊花的样式
+        [view addSubview: act];
+        [act startAnimating];
+        
+        AVFile *file = [user objectForKey:@"photo"];
+        [file deleteInBackground];
+        NSData *data = UIImagePNGRepresentation(photo);
+        AVFile *img = [AVFile fileWithName:[NSString stringWithFormat:@"%@.png",user.username] data:data];
+        [img saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+            
+            if (succeeded == 1) {
+                [user setObject:img forKey:@"photo"];
+                [user setObject:nid forKey:@"nid"];
+                [users setObject:sex forKey:@"sex"];
+                [users setObject:birth forKey:@"birth"];
+                NSError *error = nil;
+                [users save:&error];
+                NSLog(@"%@",error);
+                
+                UIActivityIndicatorView *act = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 32.0f, 32.0f)];
+                [act stopAnimating];
+                [view removeFromSuperview];
+                [vc removeFromParentViewController];
+            }
+        } progressBlock:^(NSInteger percentDone) {
+            
+        }];
+        
+    }];
+    
+}
 
 
 @end

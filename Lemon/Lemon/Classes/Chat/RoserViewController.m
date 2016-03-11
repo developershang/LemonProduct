@@ -145,18 +145,18 @@
 - (void)conversation:(AVIMConversation *)conversation didReceiveTypedMessage:(AVIMTypedMessage *)message {
     NSLog(@"%@", message.text);
    AVUser *user = [Dem_LeanCloudData searchWithUser:message.text];
-    UIAlertAction *add = [UIAlertAction actionWithTitle:@"同意" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-        
+//    UIAlertAction *add = [UIAlertAction actionWithTitle:@"同意" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+//        
         [Dem_LeanCloudData addBuddyWithUser:[Dem_UserData shareInstance].user buddy:user group:@"我的好友"];
-        [self NSNotificationAction];
-    }];
-    UIAlertAction *del = [UIAlertAction actionWithTitle:@"拒接" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-        [Dem_LeanCloudData delectWithUser:user buddy:[Dem_UserData shareInstance].user];
-    }];
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"好友添加" message:@"无此用户" preferredStyle:UIAlertControllerStyleAlert];
-    [alert addAction:add];
-    [alert addAction:del];
-    [self presentViewController:alert animated:YES completion:nil];
+        [self reloadData];
+//    }];
+//    UIAlertAction *del = [UIAlertAction actionWithTitle:@"拒接" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+//        [Dem_LeanCloudData delectWithUser:user buddy:[Dem_UserData shareInstance].user];
+//    }];
+//    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"好友添加" message:[NSString stringWithFormat:@"add%@",message.text] preferredStyle:UIAlertControllerStyleAlert];
+//    [alert addAction:add];
+//    [alert addAction:del];
+//    [self presentViewController:alert animated:YES completion:nil];
     
 }
 

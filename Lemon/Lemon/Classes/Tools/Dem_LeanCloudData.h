@@ -70,4 +70,10 @@
  **/
 +(AVUser *)searchWithUser:(NSString *)name;
 
+/**
+ *@param
+ *@return 修改用户信息
+ **/
++(void)editInformationWithUser:(AVUser*)user nid:(NSString *)nid oldPassword:(NSString*)oldpass password:(NSString *)password photo:(UIImage *)photo sex:(NSString *)sex birthday:(NSString *)birth;
+
 @end
