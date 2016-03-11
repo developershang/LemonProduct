@@ -58,8 +58,6 @@
 -(void)NSNotificationAction{
     [self reloadNavitation];
     [self reloadData];
-    
-    NSLog(@"   刷新 ");
 
 }
 
@@ -74,7 +72,9 @@
     self.navigationItem.titleView = button;
     [button addTarget:self action:@selector(TextChatAction) forControlEvents:UIControlEventTouchUpInside];
     //接收消息
-    [self ReceiveMessageWithUser:[Dem_UserData shareInstance].user.username];
+    if ([Dem_UserData shareInstance].user.username !=nil) {
+        [self ReceiveMessageWithUser:[Dem_UserData shareInstance].user.username];
+    }
     if ([Dem_UserData shareInstance].user ==nil) {
         button.hidden = YES;
         UIBarButtonItem *left = [[UIBarButtonItem alloc]initWithTitle:@"登陆" style:UIBarButtonItemStyleDone target:self action:@selector(loginAction)];
