@@ -13,7 +13,7 @@
 #import "LoginViewController.h"
 
 #import "DAGRegardingViewController.h"
-
+#import "DAGEditViewController.h"
 #import "RoserViewController.h"
 
 @interface UserViewController ()<UITableViewDataSource,UITableViewDelegate>
@@ -65,6 +65,12 @@
             NSLog(@"xiugai");
             [Dem_UserData shareInstance].reLoad = YES;
             
+               DAGEditViewController *devc =  [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"devc"];
+               UINavigationController *ndevc = [[UINavigationController alloc] initWithRootViewController:devc];
+               [self presentViewController:ndevc animated:YES completion:^{
+                      
+               }];
+               
         }
         else if (indexPath.row == 1){
                DAGRegardingViewController *drvc = [[DAGRegardingViewController alloc] init];

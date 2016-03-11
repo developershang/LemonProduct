@@ -19,6 +19,7 @@
 		C20940CC1C8677EA0049AC25 /* Dem_UserData.m in Sources */ = {isa = PBXBuildFile; fileRef = C20940CB1C8677EA0049AC25 /* Dem_UserData.m */; };
 		C20940CF1C867AD50049AC25 /* XU_ImageTools.m in Sources */ = {isa = PBXBuildFile; fileRef = C20940CE1C867AD50049AC25 /* XU_ImageTools.m */; };
 		C20940D21C869CCD0049AC25 /* Dem_LeanCloudData.m in Sources */ = {isa = PBXBuildFile; fileRef = C20940D11C869CCD0049AC25 /* Dem_LeanCloudData.m */; };
+		C20F2F121C926D050070AAAB /* DAGEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C20F2F111C926D050070AAAB /* DAGEditViewController.m */; };
 		C215A56A1C852D5100C5487A /* Dem_ChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C215A5691C852D5100C5487A /* Dem_ChatViewController.m */; };
 		C215A56D1C852D9100C5487A /* RoserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C215A56C1C852D9100C5487A /* RoserViewController.m */; };
 		C215A5701C8547A200C5487A /* Dem_RongData.m in Sources */ = {isa = PBXBuildFile; fileRef = C215A56F1C8547A200C5487A /* Dem_RongData.m */; };
@@ -318,6 +319,8 @@
 		C20940CE1C867AD50049AC25 /* XU_ImageTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XU_ImageTools.m; sourceTree = "<group>"; };
 		C20940D01C869CCD0049AC25 /* Dem_LeanCloudData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Dem_LeanCloudData.h; sourceTree = "<group>"; };
 		C20940D11C869CCD0049AC25 /* Dem_LeanCloudData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Dem_LeanCloudData.m; sourceTree = "<group>"; };
+		C20F2F101C926D050070AAAB /* DAGEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAGEditViewController.h; sourceTree = "<group>"; };
+		C20F2F111C926D050070AAAB /* DAGEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAGEditViewController.m; sourceTree = "<group>"; };
 		C215A5671C852AC600C5487A /* SysPCH.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SysPCH.pch; sourceTree = "<group>"; };
 		C215A5681C852D5100C5487A /* Dem_ChatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Dem_ChatViewController.h; sourceTree = "<group>"; };
 		C215A5691C852D5100C5487A /* Dem_ChatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Dem_ChatViewController.m; sourceTree = "<group>"; };
@@ -1354,6 +1357,8 @@
 				C215A6521C85B91200C5487A /* Dem_TestChatListViewController.m */,
 				C2172DB91C8925AB00939D9B /* Dem_GroupViewController.h */,
 				C2172DBA1C8925AB00939D9B /* Dem_GroupViewController.m */,
+				C20F2F101C926D050070AAAB /* DAGEditViewController.h */,
+				C20F2F111C926D050070AAAB /* DAGEditViewController.m */,
 				C215A56E1C8547A200C5487A /* Dem_RongData.h */,
 				C215A56F1C8547A200C5487A /* Dem_RongData.m */,
 				C20940CA1C8677EA0049AC25 /* Dem_UserData.h */,
@@ -2001,6 +2006,7 @@
 				C2AFDAAC1C89AB6E00D64594 /* WebSocket.m in Sources */,
 				C2CF9EEA1C84707C00031C10 /* MKAnnotationView+WebCache.m in Sources */,
 				C2E7E7C31C854207000E94C5 /* reserveViewController.m in Sources */,
+				C20F2F121C926D050070AAAB /* DAGEditViewController.m in Sources */,
 				C2A54D8A1C871B8100C7F4E4 /* PicTableViewCell.m in Sources */,
 				C2AFDA9F1C89AB6E00D64594 /* HTTPAuthenticationRequest.m in Sources */,
 				C2B4E11C1C8ECB8400047D46 /* UIButton+NightVersion.m in Sources */,
