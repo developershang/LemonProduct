@@ -33,6 +33,15 @@
 //最新图片
 #define PicURL @"http://api.budejie.com/api/api_open.php?a=newlist&appname=baisishequ&asid=79C90406-DB8A-4758-9466-DEDB502C2A14&c=data&client=iphone&device=ios%20%E8%AE%BE%E5%A4%87&from=ios&jbk=0&mac=&market=&openudid=3739a3941c7bb4f82c78c8c53228edcb4a14f0d0&page=0&per=100&sub_flag=1&type=10&udid=&ver=3.6"
 
+
+//加密图片接口
+#define SG_StringUrl @"http://api.budejie.com/api/api_open.php?a=list&appname=baisishequ&asid=79C90406-DB8A-4758-9466-DEDB502C2A14&c=data&client=iphone&device=ios%20%E8%AE%BE%E5%A4%87&from=ios&jbk=0&mac=&market=&openudid=3739a3941c7bb4f82c78c8c53228edcb4a14f0d0&page=0&per=20&sub_flag=1&type=29&udid=&ver=3.6"
+
+
+//加密段子接口
+#define SG_DStringUrl @"http://api.budejie.com/api/api_open.php?a=list&appname=baisishequ&asid=79C90406-DB8A-4758-9466-DEDB502C2A14&c=data&client=iphone&device=ios%20%E8%AE%BE%E5%A4%87&from=ios&jbk=0&mac=&market=&openudid=3739a3941c7bb4f82c78c8c53228edcb4a14f0d0&page=0&per=20&sub_flag=1&type=29&udid=&ver=3.6"
+
+
 //融云AppKey
 #define RongAppKey @"x4vkb1qpvdquk"
 
