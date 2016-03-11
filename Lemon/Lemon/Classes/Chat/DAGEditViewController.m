@@ -25,6 +25,8 @@
 
 @property (nonatomic, strong)NSMutableArray *SexArray;
 
+@property (nonatomic, strong)UITextField *textField;
+
 @end
 
 @implementation DAGEditViewController
@@ -58,10 +60,45 @@
        
        [self loadData];
        
-    // Do any additional setup after loading the view.
+       [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillAppear:) name:UIKeyboardWillShowNotification object:nil];
+       [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillDisappear:) name:UIKeyboardWillHideNotification object:nil];
+    
 }
 
+#pragma mark - 计算键盘的高度
+- (CGFloat)keyboardEndFrameHeight:(NSDictionary *)userInfo {
+       
+       CGRect keyboardEndingUncorrectedFrame = [[userInfo objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
+       CGRect keyboardEndingFrame = [self.view convertRect:keyboardEndingUncorrectedFrame fromView:nil];
+       return keyboardEndingFrame.size.height;
+       
+}
 
+#pragma mark - 键盘即将出现的响应事件
+-(void)keyboardWillAppear:(NSNotification *)notification
+
+{
+       
+       CGRect currentFrame = self.view.frame;
+       CGFloat change = [self keyboardEndFrameHeight:[notification userInfo]];
+       currentFrame.origin.y = currentFrame.origin.y - change ;
+       self.view.frame = currentFrame;
+       
+       
+}
+
+#pragma mark - 键盘消失的时候的响应事件
+
+-(void)keyboardWillDisappear:(NSNotification *)notification
+
+{
+       CGRect currentFrame = self.view.frame;
+       CGFloat change = [self keyboardEndFrameHeight:[notification userInfo]];
+       currentFrame.origin.y = currentFrame.origin.y + change ;
+       self.view.frame = currentFrame;
+}
+
+#pragma mark -将date类型转换成NSString类型
 - (void)chooseDate:(UIDatePicker *)sender {
        NSDate *selectedDate = sender.date;
        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
@@ -106,10 +143,23 @@
 
 #pragma mark - 键盘的回收和 第一响应者的注销
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
+       self.textField = textField;
        [textField resignFirstResponder];
        return YES;
 }
 
+- (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+       [self.UserNameField resignFirstResponder];
+       [self.PwdField resignFirstResponder];
+       [self.Datefield resignFirstResponder];
+       [self.SexField resignFirstResponder];
+}
+
+- (BOOL)textFieldShouldEndEditing:(UITextField *)textField {
+       CGRect rect = textField.frame;
+       textField.frame = CGRectMake(0, self.view.frame.size.height - 49 + 10, rect.size.width, rect.size.height);
+       return YES;
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
