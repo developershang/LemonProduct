@@ -62,6 +62,7 @@
               
        }];
        
+       
        [alert addAction:action];
        
        UIAlertController *alert1 = [UIAlertController alertControllerWithTitle:@"提示信息" message:@"注册成功" preferredStyle:UIAlertControllerStyleAlert];
