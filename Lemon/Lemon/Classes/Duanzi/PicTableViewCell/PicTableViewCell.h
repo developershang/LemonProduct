@@ -18,5 +18,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *checkDetailLabel;
 @property (nonatomic, assign)NSInteger like;
 
+@property (weak, nonatomic) IBOutlet UIButton *picLikeButton;
 
 @end

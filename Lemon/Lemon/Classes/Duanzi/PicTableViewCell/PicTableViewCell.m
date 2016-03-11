@@ -21,9 +21,7 @@
 
 
 - (IBAction)likeActionButton:(UIButton *)sender {
-    
-    sender.tintColor = [UIColor redColor];
-    
+
     
 }
 

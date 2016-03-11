@@ -11,7 +11,7 @@
 #import "SG_Model.h"
 @interface SearchViewController ()<UITableViewDataSource,UITableViewDelegate,UISearchBarDelegate,UISearchControllerDelegate,UISearchDisplayDelegate>
 @property (nonatomic, strong)NSMutableArray *titleArray;
-
+@property (nonatomic, strong)NSMutableArray *indexArray;
 @end
 
 @implementation SearchViewController
@@ -25,6 +25,27 @@
     
     // Do any additional setup after loading the view from its nib.
 }
+
+
+-(NSMutableArray *)titleArray{
+    if (_titleArray == nil) {
+        _titleArray = [NSMutableArray array];
+    }
+    return _titleArray;
+}
+
+
+- (NSMutableArray *)indexArray{
+    
+    if (_indexArray  == nil) {
+        _indexArray = [NSMutableArray array];
+    }
+    
+    return _indexArray;
+
+}
+
+
 - (IBAction)backAction:(UIButton *)sender {
     
     [self dismissViewControllerAnimated:YES completion:nil];
@@ -49,6 +70,8 @@
     }}
     
 }*/
+
+
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText{
  
     self.titleArray = [NSMutableArray array];
@@ -57,8 +80,16 @@
     for (SG_Model *model in arr) {
         
         if ([model.text containsString:searchBar.text]) {
+           
             [self.titleArray addObject:model.text];
+            NSInteger  i =  [arr indexOfObject:model];
+            NSLog(@"包含%ld-----",i);
+            NSIndexPath *indexpath = [NSIndexPath indexPathForRow:i inSection:0];
+            [self.indexArray addObject: indexpath];
+            
         }
+           
+        
     }
     [self.table reloadData];
 }
@@ -96,8 +127,13 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    NSLog(@"点击了 %@",self.titleArray[indexPath.row]);
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [DataHandel shareInstance].indexPath =  self.indexArray[indexPath.row];
+    NSLog(@"点解了第%ld个",[DataHandel shareInstance].indexPath.row);
+    
+    
+    [self dismissViewControllerAnimated:YES completion:^{
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"jump" object:nil];
+    }];
     
 }
 
