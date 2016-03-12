@@ -119,6 +119,10 @@
 
 #pragma mark 用户信息查询
 +(void)intermationWithUser:(AVUser*)user block:(void(^)(AVObject *users))block{
+    if (user == nil) {
+        NSLog(@"user == %@",user);
+        return;
+    }
     AVQuery *query = [AVQuery queryWithClassName:@"Users"];
     [query whereKey:@"user" equalTo:user];
     AVObject *users = [[query findObjects]firstObject];
@@ -202,7 +206,21 @@
         [act setActivityIndicatorViewStyle:UIActivityIndicatorViewStyleWhiteLarge];//设置菊花的样式
         [view addSubview: act];
         [act startAnimating];
-        
+        if(photo == nil){
+            [user setObject:nid forKey:@"nid"];
+            [users setObject:sex forKey:@"sex"];
+            [users setObject:birth forKey:@"birth"];
+            NSError *error = nil;
+            [users save:&error];
+            NSLog(@"%@",error);
+            
+            UIActivityIndicatorView *act = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 32.0f, 32.0f)];
+            [act stopAnimating];
+            [view removeFromSuperview];
+            [vc removeFromParentViewController];
+            [[NSNotificationCenter defaultCenter]postNotificationName:@"reInfor" object:@"reInfor"];
+            return ;
+        }
         AVFile *file = [user objectForKey:@"photo"];
         [file deleteInBackground];
         NSData *data = UIImagePNGRepresentation(photo);
@@ -222,6 +240,7 @@
                 [act stopAnimating];
                 [view removeFromSuperview];
                 [vc removeFromParentViewController];
+                [[NSNotificationCenter defaultCenter]postNotificationName:@"reInfor" object:@"reInfor"];
             }
         } progressBlock:^(NSInteger percentDone) {
             NSLog(@"%ld",percentDone);

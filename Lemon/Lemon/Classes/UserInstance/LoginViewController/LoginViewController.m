@@ -41,7 +41,7 @@
 -(void)loginAction{
     [self.view endEditing:YES];
     [[DHSlideMenuController sharedInstance]hideSlideMenuViewController:NO];
-    
+    [DHSlideMenuController sharedInstance].leftViewController = nil;
     [Dem_LeanCloudData loginWithUserName:self.userNameTexiField.text pwd:self.passWordTexfield.text block:^(AVUser *user) {
         [[Dem_UserData shareInstance]logoutUser];
         if (user !=nil) {

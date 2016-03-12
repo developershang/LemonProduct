@@ -12,7 +12,7 @@
 #import <RongIMLib/RongIMLib.h>
 #import <RongIMKit/RongIMKit.h>
 #import <AVOSCloudIM/AVOSCloudIM.h>
-
+#import "DAGEditViewController.h"
 @interface Dem_BuddyViewController ()
 
 
@@ -39,6 +39,8 @@
     self.budArr = [NSMutableArray array];
     [Dem_LeanCloudData intermationWithUser:self.user block:^(AVObject *users) {
         self.name.text = [users objectForKey:@"nid"];
+        self.sexLab.text = [users objectForKey:@"sex"];
+        self.ageLab.text = [users objectForKey:@"birth"];
         AVFile *file = [users objectForKey:@"photo"];
         NSData *data = [file getData];
         self.photo.image = [UIImage imageWithData:data];
@@ -79,7 +81,15 @@
 }
 #pragma mark 编辑资料
 -(void)editAction{
+    [Dem_UserData shareInstance].reLoad = YES;
     
+    DAGEditViewController *devc =  [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"devc"];
+    UINavigationController *ndevc = [[UINavigationController alloc] initWithRootViewController:devc];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self presentViewController:ndevc animated:YES completion:^{
+            
+        }];
+    });
 }
 #pragma mark 删除好友
 -(void)delAction{
