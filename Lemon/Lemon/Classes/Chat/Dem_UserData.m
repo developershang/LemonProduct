@@ -61,6 +61,8 @@ static Dem_UserData *handle = nil;
     AVFile *file = [Users objectForKey:@"photo"];
     NSData *data = [file getData];
     self.model.photo = [UIImage imageWithData:data];
+    self.model.age = [Users objectForKey:@"birth"];
+    self.model.sex = [Users objectForKey:@"sex"];
     [self RCIM];
 }
 

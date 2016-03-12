@@ -36,6 +36,9 @@
 
 @property (nonatomic, strong)NSMutableArray *allTextFields;
 
+
+@property(nonatomic,assign)BOOL isChange;
+@property(nonatomic,strong)UIImage *isImg;
 @end
 
 static BOOL isLoaded;
@@ -44,14 +47,14 @@ static BOOL isLoaded;
 - (void)viewDidLoad {
     [super viewDidLoad];
        
-       UIDatePicker *picker = [[UIDatePicker alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 219)];
+       UIDatePicker *picker = [[UIDatePicker alloc] init];
        picker.datePickerMode = UIDatePickerModeDate;
        picker.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"zh_CN"];
        [picker addTarget:self action:@selector(chooseDate:) forControlEvents:UIControlEventValueChanged];
        [self chooseDate:picker];
        // 设置键盘的inputView
        self.Datefield.inputView = picker;
-       
+    self.UserNameField.userInteractionEnabled = NO;
        UIBarButtonItem *right = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(rightAction)];
        self.navigationItem.rightBarButtonItem = right;
     
@@ -138,7 +141,7 @@ static BOOL isLoaded;
        if (isLoaded == NO) {
        CGRect currentFrame = self.view.frame;
        CGFloat change = [self keyboardEndFrameHeight:[notification userInfo]];
-       currentFrame.origin.y = currentFrame.origin.y - change ;
+       currentFrame.origin.y = currentFrame.origin.y - change + 100 ;
        self.view.frame = currentFrame;
        isLoaded = YES;
        }
@@ -153,7 +156,7 @@ static BOOL isLoaded;
        
        CGRect currentFrame = self.view.frame;
        CGFloat change = [self keyboardEndFrameHeight:[notification userInfo]];
-       currentFrame.origin.y = currentFrame.origin.y + change ;
+       currentFrame.origin.y = currentFrame.origin.y + change - 100;
        self.view.frame = currentFrame;
        isLoaded = NO;
 }
@@ -226,7 +229,12 @@ static BOOL isLoaded;
 
 
 - (void)rightAction {
+    
     [[DHSlideMenuController sharedInstance]hideSlideMenuViewController:NO];
+    
+    if ([self.HeaderImage.image isEqual:self.isImg]) {
+        self.HeaderImage.image = nil;
+    }
     NSString *oldpass = [Dem_UserData shareInstance].user.password;
     NSLog(@"%@",oldpass);
     [Dem_LeanCloudData editInformationWithUser:[Dem_UserData shareInstance].user nid:self.UserNameField.text oldPassword:oldpass password:self.PwdField.text photo:self.HeaderImage.image sex:self.SexField.text birthday:self.Datefield.text];
@@ -244,7 +252,8 @@ static BOOL isLoaded;
         self.UserNameField.text = [users objectForKey:@"nid"];
         AVFile *file = [users objectForKey:@"photo"];
         NSData *data = [file getData];
-        self.HeaderImage.image =[UIImage imageWithData:data];
+        self.isImg =[UIImage imageWithData:data];
+        self.HeaderImage.image =self.isImg;
         self.Datefield.text = [users objectForKey:@"birth"];
         self.SexField.text = [users objectForKey:@"sex"];
         if ([self.SexField.text isEqualToString:@""]) {

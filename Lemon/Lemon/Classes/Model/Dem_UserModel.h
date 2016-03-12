@@ -23,7 +23,7 @@
 @property(nonatomic,copy)NSString *password;
 //emalll
 @property(nonatomic,copy)NSString *email;
-//手机号
-@property(nonatomic,copy)NSString *mobilePhoneNumber ;
+//年龄
+@property(nonatomic,copy)NSString *age;
 
 @end

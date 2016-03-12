@@ -17,6 +17,11 @@
 #import "RoserViewController.h"
 
 @interface UserViewController ()<UITableViewDataSource,UITableViewDelegate>
+
+@property (weak, nonatomic) IBOutlet UILabel *ageLab;
+
+@property (weak, nonatomic) IBOutlet UILabel *sexLab;
+
 @property (weak, nonatomic) IBOutlet UIImageView *photo;
 @property (weak, nonatomic) IBOutlet UILabel *name;
 @property (weak, nonatomic) IBOutlet UITableView *table;
@@ -34,14 +39,29 @@
     [self.array addObject:arr1];
     [self.array addObject:arr2];
     self.table.separatorStyle = UITableViewCellSeparatorStyleNone;
+    
+     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(NSNotificationAction) name:@"reInfor" object:@"reInfor"];
     // Do any additional setup after loading the view.
 }
 
-
+-(void)NSNotificationAction{
+    AVQuery *query = [AVQuery queryWithClassName:@"Users"];
+    [query whereKey:@"user" equalTo:[Dem_UserData shareInstance].user];
+    AVObject *Users = [[query findObjects]firstObject];
+    [Dem_UserData shareInstance].model.username = [Users objectForKey:@"nid"];
+    
+    AVFile *file = [Users objectForKey:@"photo"];
+    NSData *data = [file getData];
+   [Dem_UserData shareInstance].model.photo = [UIImage imageWithData:data];
+    [Dem_UserData shareInstance].model.age = [Users objectForKey:@"birth"];
+    [Dem_UserData shareInstance].model.sex = [Users objectForKey:@"sex"];
+}
 
 -(void)viewWillAppear:(BOOL)animated{
     self.photo.image = [Dem_UserData shareInstance].model.photo;
     self.name.text = [Dem_UserData shareInstance].model.username;
+    self.sexLab.text = [Dem_UserData shareInstance].model.sex;
+    self.ageLab.text =  [Dem_UserData shareInstance].model.age;
 }
 #pragma mark row的个数
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -72,8 +92,6 @@
                     
                 }];
             });
-            
-               
         }
         else if (indexPath.row == 1){
                DAGRegardingViewController *drvc = [[DAGRegardingViewController alloc] init];
