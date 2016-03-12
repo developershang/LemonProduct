@@ -44,7 +44,7 @@ static BOOL isLoaded;
 - (void)viewDidLoad {
     [super viewDidLoad];
        
-       UIDatePicker *picker = [[UIDatePicker alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 219)];
+       UIDatePicker *picker = [[UIDatePicker alloc] init];
        picker.datePickerMode = UIDatePickerModeDate;
        picker.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"zh_CN"];
        [picker addTarget:self action:@selector(chooseDate:) forControlEvents:UIControlEventValueChanged];
@@ -139,7 +139,7 @@ static BOOL isLoaded;
        if (isLoaded == NO) {
        CGRect currentFrame = self.view.frame;
        CGFloat change = [self keyboardEndFrameHeight:[notification userInfo]];
-       currentFrame.origin.y = currentFrame.origin.y - change ;
+       currentFrame.origin.y = currentFrame.origin.y - change + 100 ;
        self.view.frame = currentFrame;
        isLoaded = YES;
        }
@@ -154,7 +154,7 @@ static BOOL isLoaded;
        
        CGRect currentFrame = self.view.frame;
        CGFloat change = [self keyboardEndFrameHeight:[notification userInfo]];
-       currentFrame.origin.y = currentFrame.origin.y + change ;
+       currentFrame.origin.y = currentFrame.origin.y + change - 100;
        self.view.frame = currentFrame;
        isLoaded = NO;
 }

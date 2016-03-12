@@ -17,6 +17,11 @@
 #import "RoserViewController.h"
 
 @interface UserViewController ()<UITableViewDataSource,UITableViewDelegate>
+
+@property (weak, nonatomic) IBOutlet UILabel *ageLab;
+
+@property (weak, nonatomic) IBOutlet UILabel *sexLab;
+
 @property (weak, nonatomic) IBOutlet UIImageView *photo;
 @property (weak, nonatomic) IBOutlet UILabel *name;
 @property (weak, nonatomic) IBOutlet UITableView *table;

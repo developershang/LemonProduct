@@ -12,7 +12,11 @@
 #import "Dem_RongData.h"
 #import "DAGAuthCodeView.h"
 
-@interface RegisterViewController ()<UINavigationControllerDelegate,UIImagePickerControllerDelegate>
+@interface RegisterViewController ()<UINavigationControllerDelegate,UIImagePickerControllerDelegate, UITextFieldDelegate>
+
+
+@property (strong, nonatomic) IBOutlet UIView *mainView;
+
 @property (weak, nonatomic) IBOutlet UIImageView *photoView;
 
 @property (weak, nonatomic) IBOutlet UITextField *userNameTextfield;
@@ -32,7 +36,9 @@
 
 @property (nonatomic, strong)DAGAuthCodeView *codeView;
 
+
 @end
+
 
 @implementation RegisterViewController
 
@@ -51,8 +57,8 @@
        [self.codeView addGestureRecognizer:authcodeTap];
        [self.identifyCodeMakeTextField addSubview:self.codeView];
        
+       
 }
-
 
 
 -(void)registAction{
@@ -169,6 +175,8 @@
 -(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
     [self.view endEditing:YES];
 }
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

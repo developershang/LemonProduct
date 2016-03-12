@@ -15,6 +15,11 @@
 
 @interface Dem_BuddyViewController ()
 
+
+@property (weak, nonatomic) IBOutlet UILabel *ageLab;
+
+@property (weak, nonatomic) IBOutlet UILabel *sexLab;
+
 @property (weak, nonatomic) IBOutlet UIImageView *photo;
 @property (weak, nonatomic) IBOutlet UILabel *name;
 @property (weak, nonatomic) IBOutlet UIButton *button;
@@ -23,6 +28,8 @@
 @property(nonatomic,strong)NSMutableArray *budArr;
 @property(nonatomic,assign)int num;
 @property(nonatomic,strong)AVIMClient *client;
+
+
 @end
 
 @implementation Dem_BuddyViewController
