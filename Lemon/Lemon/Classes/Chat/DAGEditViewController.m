@@ -44,7 +44,7 @@ static BOOL isLoaded;
 - (void)viewDidLoad {
     [super viewDidLoad];
        
-       UIDatePicker *picker = [[UIDatePicker alloc] init];
+       UIDatePicker *picker = [[UIDatePicker alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 219)];
        picker.datePickerMode = UIDatePickerModeDate;
        picker.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"zh_CN"];
        [picker addTarget:self action:@selector(chooseDate:) forControlEvents:UIControlEventValueChanged];
@@ -72,7 +72,7 @@ static BOOL isLoaded;
        [self loadData];
        
        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillAppear:) name:UIKeyboardWillShowNotification object:nil];
-       [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillDisappear:) name:UIKeyboardWillHideNotification object:nil];
+       [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillDisAppear:) name:UIKeyboardWillHideNotification object:nil];
        
        self.tool = [KeyboardTool keyboardTool];
        self.allTextFields = [NSMutableArray array];
@@ -134,8 +134,7 @@ static BOOL isLoaded;
 #pragma mark - 键盘即将出现的响应事件
 -(void)keyboardWillAppear:(NSNotification *)notification
 
-{
-       
+{ 
        if (isLoaded == NO) {
        CGRect currentFrame = self.view.frame;
        CGFloat change = [self keyboardEndFrameHeight:[notification userInfo]];
@@ -148,7 +147,7 @@ static BOOL isLoaded;
 
 #pragma mark - 键盘消失的时候的响应事件
 
--(void)keyboardWillDisappear:(NSNotification *)notification
+-(void)keyboardWillDisAppear:(NSNotification *)notification
 
 {
        

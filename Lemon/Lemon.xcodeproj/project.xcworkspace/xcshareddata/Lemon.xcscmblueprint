@@ -1,0 +1,32 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "8D6D2E5D839978015A23F5230C07F5E08F408C04",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+    "3ae940f3-8410-4859-82cb-97a2b19ad8f4++3340" : {
+
+    }
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "8D6D2E5D839978015A23F5230C07F5E08F408C04" : 0,
+    "3ae940f3-8410-4859-82cb-97a2b19ad8f4++3340" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "2FB5065D-BCF5-475F-B79E-625B87C61380",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "8D6D2E5D839978015A23F5230C07F5E08F408C04" : "LemonProduct\/",
+    "3ae940f3-8410-4859-82cb-97a2b19ad8f4++3340" : "LemonProduct\/Lemon\/Lemon\/Classes\/ThirdParties\/MBProgressHUD\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "Lemon",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "Lemon\/Lemon.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "http:\/\/60.28.29.48:8082\/svn",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Subversion",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "3ae940f3-8410-4859-82cb-97a2b19ad8f4++3340"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/developershang\/LemonProduct.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "8D6D2E5D839978015A23F5230C07F5E08F408C04"
+    }
+  ]
+}
