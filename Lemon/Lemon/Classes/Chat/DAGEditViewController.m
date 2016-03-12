@@ -44,7 +44,7 @@ static BOOL isLoaded;
 - (void)viewDidLoad {
     [super viewDidLoad];
        
-       UIDatePicker *picker = [[UIDatePicker alloc] init];
+       UIDatePicker *picker = [[UIDatePicker alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 219)];
        picker.datePickerMode = UIDatePickerModeDate;
        picker.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"zh_CN"];
        [picker addTarget:self action:@selector(chooseDate:) forControlEvents:UIControlEventValueChanged];

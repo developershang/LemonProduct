@@ -21,4 +21,6 @@
 #pragma mark - 根据当前用户查看已保存的数据
 - (DAGImageDownLoad *)selectByName:(NSString *)name;
 
+- (void)deleteByname:(NSString *)name;
+
 @end
