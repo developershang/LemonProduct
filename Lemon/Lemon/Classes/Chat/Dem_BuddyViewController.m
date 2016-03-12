@@ -109,7 +109,7 @@
         [ self.client createConversationWithName:[NSString stringWithFormat:@"%@ add %@",user,friends] clientIds:@[friends] callback:^(AVIMConversation *conversation, NSError *error) {
             NSLog(@"error ~~~ %@",error);
             // Tom 发了一条消息给 Jerry
-            [conversation sendMessage:[AVIMTextMessage messageWithText:[NSString stringWithFormat:@"%@",user] attributes:nil] callback:^(BOOL succeeded, NSError *error) {
+            [conversation sendMessage:[AVIMTextMessage messageWithText:[NSString stringWithFormat:@"add%@",user] attributes:nil] callback:^(BOOL succeeded, NSError *error) {
                 if (succeeded) {
                     NSLog(@"发送成功！");
                     [self.navigationController popToRootViewControllerAnimated:YES];
