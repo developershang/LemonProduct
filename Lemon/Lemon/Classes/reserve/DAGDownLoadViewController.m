@@ -25,12 +25,22 @@
     [super viewDidLoad];
        self.tableView = [[UITableView alloc] initWithFrame:[UIScreen mainScreen].bounds style:UITableViewStylePlain];
        [self.view addSubview:self.tableView];
-       
+       UIBarButtonItem *right = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemTrash target:self action:@selector(rightAction)];
+       self.navigationItem.rightBarButtonItem = right;
       
        [self loadData];
        
        
     // Do any additional setup after loading the view.
+}
+
+- (void)rightAction {
+       
+       AVUser *user = [AVUser currentUser];
+       [[DAGDataBase shareInstance] deleteByname:user.username];
+       [self.imageArray removeAllObjects];
+       [self.tableView reloadData];
+       
 }
 
 - (void)loadData {
@@ -73,6 +83,8 @@
        cell.imageView.image = image;
        return cell;
 }
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

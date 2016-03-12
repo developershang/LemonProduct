@@ -8,6 +8,7 @@
 
 #import "DAGDataBase.h"
 #import "DAGImageDownLoad.h"
+
 static DAGDataBase *manager = nil;
 @implementation DAGDataBase
 
@@ -120,5 +121,15 @@ static sqlite3 *db = nil;
        return image;
 }
 
+// 根据下标删除数据
+- (void)deleteByname:(NSString *)name {
+       NSString *sql = [NSString  stringWithFormat:@"delete from ImageDownLoad where name ='%@'", name];
+       int result = sqlite3_exec(db, sql.UTF8String, NULL, NULL, NULL);
+       if (result == SQLITE_OK) {
+              NSLog(@"删除成功");
+       } else {
+              NSLog(@"删除失败");
+       }
+}
 
 @end
