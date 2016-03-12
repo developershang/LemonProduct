@@ -67,9 +67,12 @@
             
                DAGEditViewController *devc =  [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"devc"];
                UINavigationController *ndevc = [[UINavigationController alloc] initWithRootViewController:devc];
-               [self presentViewController:ndevc animated:YES completion:^{
-                      
-               }];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self presentViewController:ndevc animated:YES completion:^{
+                    
+                }];
+            });
+            
                
         }
         else if (indexPath.row == 1){
