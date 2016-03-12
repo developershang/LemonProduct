@@ -23,6 +23,9 @@
 @property(nonatomic,strong)NSMutableArray *data;
 @property(nonatomic,strong)AVObject *inter;
 @property (nonatomic, strong) AVIMClient *client;
+@property(nonatomic,strong)UIAlertController *alert;
+@property(nonatomic,strong)UIAlertAction *add;
+@property(nonatomic,strong)UIAlertAction *del;
 
 @end
 
@@ -33,6 +36,9 @@
     self.client = [[AVIMClient alloc] init];
     
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(NSNotificationAction) name:@"reload" object:@"refresh"];
+    self.alert = [UIAlertController alertControllerWithTitle:@"好友添加" message:[NSString stringWithFormat:@"add"] preferredStyle:UIAlertControllerStyleAlert];
+    
+    
     
     self.table = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height-49) style:UITableViewStylePlain];
        UIImageView *image = [[UIImageView alloc] initWithFrame:[UIScreen mainScreen].bounds];
@@ -149,23 +155,80 @@
 // 接收消息的回调函数
 - (void)conversation:(AVIMConversation *)conversation didReceiveTypedMessage:(AVIMTypedMessage *)message {
     NSLog(@"%@", message.text);
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"好友添加" message:[NSString stringWithFormat:@"add%@",message.text] preferredStyle:UIAlertControllerStyleAlert];
-   AVUser *user = [Dem_LeanCloudData searchWithUser:message.text];
-    UIAlertAction *add = [UIAlertAction actionWithTitle:@"同意" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    NSLog(@"%@",conversation.conversationId);
     
-        [Dem_LeanCloudData addBuddyWithUser:[Dem_UserData shareInstance].user buddy:user group:@"我的好友"];
+    NSString *name = [message.text substringFromIndex:3];
+    NSString *type = [message.text substringToIndex:3];
+    NSLog(@"type = %@",type);
+    NSLog(@"name = %@",name);
+    
+    self.alert = [UIAlertController alertControllerWithTitle:@"好友添加" message:[NSString stringWithFormat:@"%@添加你为好友",message.text] preferredStyle:UIAlertControllerStyleAlert];
+    
+    if ([conversation.conversationId isEqualToString:[Dem_UserData shareInstance].user.username]) {
+        return;
+    }
+    if ([type isEqualToString:@"add"]) {
+        
+        AVUser *user = [Dem_LeanCloudData searchWithUser:name];
+        self.add = [UIAlertAction actionWithTitle:@"同意" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            
+            [Dem_LeanCloudData addBuddyWithUser:[Dem_UserData shareInstance].user buddy:user group:@"我的好友"];
+            [Dem_UserData shareInstance].reLoad = YES;
+            [self reloadData];
+            
+        }];
+        self.del = [UIAlertAction actionWithTitle:@"拒接" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            [Dem_LeanCloudData delectWithUser:user buddy:[Dem_UserData shareInstance].user];
+            [self chatWithUser:conversation.clientId andFriend:name message:@"del"];
+        }];
+        [self.alert addAction:self.add];
+        [self.alert addAction:self.del];
+        [self presentViewController:self.alert animated:YES completion:nil];
+    }
+    if ([type isEqualToString:@"del"]) {
+        [Dem_UserData shareInstance].reLoad = YES;
         [self reloadData];
-    }];
-    UIAlertAction *del = [UIAlertAction actionWithTitle:@"拒接" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-        [Dem_LeanCloudData delectWithUser:user buddy:[Dem_UserData shareInstance].user];
-    }];
-    
-    [alert addAction:add];
-    [alert addAction:del];
-    [self presentViewController:alert animated:YES completion:nil];
-    
+        self.del = [UIAlertAction actionWithTitle:@"拒接" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action){
+            
+        }];
+        [self.alert addAction:self.del];
+        [self presentViewController:self.alert animated:YES completion:nil];
+    }
+    if ([type isEqualToString:@"ture"]) {
+//        [Dem_UserData shareInstance].reLoad = YES;
+//        [self reloadData];
+        self.add = [UIAlertAction actionWithTitle:[NSString stringWithFormat:@"%@已同意",name] style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action){
+            
+        }];
+        [self.alert addAction:self.add];
+        [self presentViewController:self.alert animated:YES completion:nil];
+    }
 }
 
+
+
+
+#pragma markh好友发送通知
+-(void)chatWithUser:(NSString *)user andFriend:(NSString *)friends message:(NSString *)message{
+    // Tom 创建了一个 client，用自己的名字作为 clientId
+    self.client = [[AVIMClient alloc] initWithClientId:user];
+    // Tom 打开 client
+    [ self.client openWithCallback:^(BOOL succeeded, NSError *error) {
+        // Tom 建立了与 Jerry 的会话
+        NSLog(@"error !!! %@",error);
+        [ self.client createConversationWithName:[NSString stringWithFormat:@"%@ del %@",user,friends] clientIds:@[friends] callback:^(AVIMConversation *conversation, NSError *error) {
+            NSLog(@"error ~~~ %@",error);
+            // Tom 发了一条消息给 Jerry
+            [conversation sendMessage:[AVIMTextMessage messageWithText:[NSString stringWithFormat:@"%@%@",message,user] attributes:nil] callback:^(BOOL succeeded, NSError *error) {
+                if (succeeded) {
+                    NSLog(@"发送成功！");
+                    [self.navigationController popToRootViewControllerAnimated:YES];
+                }
+                NSLog(@"error == = %@",error);
+            }];
+        }];
+    }];
+}
 
 
 
