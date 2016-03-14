@@ -165,8 +165,6 @@
 		C2CF9F111C84752600031C10 /* IMG_0011.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C2CF9F101C84752600031C10 /* IMG_0011.jpg */; };
 		C2CF9F131C84779200031C10 /* Chat.png in Resources */ = {isa = PBXBuildFile; fileRef = C2CF9F121C84779200031C10 /* Chat.png */; };
 		C2CF9F151C8477FD00031C10 /* search.png in Resources */ = {isa = PBXBuildFile; fileRef = C2CF9F141C8477FC00031C10 /* search.png */; };
-		C2D277581C94403C008A2806 /* webViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D277561C94403C008A2806 /* webViewController.m */; };
-		C2D277591C94403C008A2806 /* webViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2D277571C94403C008A2806 /* webViewController.xib */; };
 		C2D277FF1C94448A008A2806 /* Animation3D.html in Resources */ = {isa = PBXBuildFile; fileRef = C2D277C81C94448A008A2806 /* Animation3D.html */; };
 		C2D2780B1C94448A008A2806 /* 2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C2D277D51C94448A008A2806 /* 2.jpg */; };
 		C2D278111C94448A008A2806 /* 3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C2D277DB1C94448A008A2806 /* 3.jpg */; };
@@ -184,10 +182,6 @@
 		C2E7E7C51C8544C0000E94C5 /* iconfont-comments.png in Resources */ = {isa = PBXBuildFile; fileRef = C2E7E7C41C8544C0000E94C5 /* iconfont-comments.png */; };
 		C2E7E7C71C857A57000E94C5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C2E7E7C61C857A57000E94C5 /* Images.xcassets */; };
 		C2E7E7CD1C85BFF8000E94C5 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2E7E7CC1C85BFF8000E94C5 /* RootViewController.m */; };
-		C2F056861C8FBEA800918256 /* CommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2F0567E1C8FBEA800918256 /* CommentViewController.m */; };
-		C2F056871C8FBEA800918256 /* CommentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2F0567F1C8FBEA800918256 /* CommentViewController.xib */; };
-		C2F056881C8FBEA800918256 /* PostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2F056811C8FBEA800918256 /* PostViewController.m */; };
-		C2F056891C8FBEA800918256 /* PostViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2F056821C8FBEA800918256 /* PostViewController.xib */; };
 		C2F0568A1C8FBEA800918256 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2F056841C8FBEA800918256 /* SearchViewController.m */; };
 		C2F0568B1C8FBEA800918256 /* SearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2F056851C8FBEA800918256 /* SearchViewController.xib */; };
 		C2F0568F1C90024B00918256 /* RequsetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2F0568D1C90024B00918256 /* RequsetViewController.m */; };
@@ -490,9 +484,6 @@
 		C2CF9F101C84752600031C10 /* IMG_0011.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = IMG_0011.jpg; sourceTree = "<group>"; };
 		C2CF9F121C84779200031C10 /* Chat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Chat.png; sourceTree = "<group>"; };
 		C2CF9F141C8477FC00031C10 /* search.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = search.png; sourceTree = "<group>"; };
-		C2D277551C94403C008A2806 /* webViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = webViewController.h; sourceTree = "<group>"; };
-		C2D277561C94403C008A2806 /* webViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = webViewController.m; sourceTree = "<group>"; };
-		C2D277571C94403C008A2806 /* webViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = webViewController.xib; sourceTree = "<group>"; };
 		C2D277C81C94448A008A2806 /* Animation3D.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Animation3D.html; sourceTree = "<group>"; };
 		C2D277D51C94448A008A2806 /* 2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = 2.jpg; path = images/2.jpg; sourceTree = "<group>"; };
 		C2D277DB1C94448A008A2806 /* 3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = 3.jpg; path = images/3.jpg; sourceTree = "<group>"; };
@@ -516,12 +507,6 @@
 		C2E7E7C61C857A57000E94C5 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		C2E7E7CB1C85BFF8000E94C5 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		C2E7E7CC1C85BFF8000E94C5 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
-		C2F0567D1C8FBEA800918256 /* CommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentViewController.h; sourceTree = "<group>"; };
-		C2F0567E1C8FBEA800918256 /* CommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentViewController.m; sourceTree = "<group>"; };
-		C2F0567F1C8FBEA800918256 /* CommentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommentViewController.xib; sourceTree = "<group>"; };
-		C2F056801C8FBEA800918256 /* PostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostViewController.h; sourceTree = "<group>"; };
-		C2F056811C8FBEA800918256 /* PostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostViewController.m; sourceTree = "<group>"; };
-		C2F056821C8FBEA800918256 /* PostViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostViewController.xib; sourceTree = "<group>"; };
 		C2F056831C8FBEA800918256 /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
 		C2F056841C8FBEA800918256 /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
 		C2F056851C8FBEA800918256 /* SearchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchViewController.xib; sourceTree = "<group>"; };
@@ -1330,20 +1315,11 @@
 		C2E7E7CA1C85BFDA000E94C5 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				C2F0567D1C8FBEA800918256 /* CommentViewController.h */,
-				C2F0567E1C8FBEA800918256 /* CommentViewController.m */,
-				C2F0567F1C8FBEA800918256 /* CommentViewController.xib */,
-				C2F056801C8FBEA800918256 /* PostViewController.h */,
-				C2F056811C8FBEA800918256 /* PostViewController.m */,
-				C2F056821C8FBEA800918256 /* PostViewController.xib */,
 				C2F056831C8FBEA800918256 /* SearchViewController.h */,
 				C2F056841C8FBEA800918256 /* SearchViewController.m */,
 				C2F056851C8FBEA800918256 /* SearchViewController.xib */,
 				C2E7E7CB1C85BFF8000E94C5 /* RootViewController.h */,
 				C2E7E7CC1C85BFF8000E94C5 /* RootViewController.m */,
-				C2D277551C94403C008A2806 /* webViewController.h */,
-				C2D277561C94403C008A2806 /* webViewController.m */,
-				C2D277571C94403C008A2806 /* webViewController.xib */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -1426,7 +1402,6 @@
 				C2AFDA561C893C4700D64594 /* DAGJokeDetailTableViewCell.xib in Resources */,
 				C2D278131C94448A008A2806 /* 5.jpg in Resources */,
 				C28B97091C914A6D0018CD34 /* sky.jpg in Resources */,
-				C2D277591C94403C008A2806 /* webViewController.xib in Resources */,
 				C2D278121C94448A008A2806 /* 4.jpg in Resources */,
 				C2D2780B1C94448A008A2806 /* 2.jpg in Resources */,
 				C2AFDAB71C89AB6E00D64594 /* README.txt in Resources */,
@@ -1440,13 +1415,11 @@
 				C20895091C87D33600053772 /* DAGJokeTableViewCell.xib in Resources */,
 				C23F74071C869C2A00C1475E /* Duanzi.png in Resources */,
 				C2CF9F131C84779200031C10 /* Chat.png in Resources */,
-				C2F056871C8FBEA800918256 /* CommentViewController.xib in Resources */,
 				C28B970D1C914E310018CD34 /* chat.jpg in Resources */,
 				C2CF9E661C846B7000031C10 /* Assets.xcassets in Resources */,
 				C216288D1C87E0520012FFC1 /* btn_down.png in Resources */,
 				C2D278161C94448A008A2806 /* 8.jpg in Resources */,
 				C2CF9F111C84752600031C10 /* IMG_0011.jpg in Resources */,
-				C2F056891C8FBEA800918256 /* PostViewController.xib in Resources */,
 				C2E7E7C71C857A57000E94C5 /* Images.xcassets in Resources */,
 				C2CF9EE51C84707C00031C10 /* MJRefresh.bundle in Resources */,
 				C228DFF91C902492004566C3 /* 742565.jpg in Resources */,
@@ -1522,7 +1495,6 @@
 				C2F0568A1C8FBEA800918256 /* SearchViewController.m in Sources */,
 				C2CF9EF71C84707C00031C10 /* UIImageView+HighlightedWebCache.m in Sources */,
 				C2AFDA591C89751600D64594 /* CommentDetailViewController.m in Sources */,
-				C2F056881C8FBEA800918256 /* PostViewController.m in Sources */,
 				C2CF9EFA1C84707C00031C10 /* UIScrollView+MJExtension.m in Sources */,
 				C2AFDA9C1C89AB6E00D64594 /* DDData.m in Sources */,
 				C2B4E1281C8ECB8400047D46 /* UITableView+NightVersion.m in Sources */,
@@ -1538,7 +1510,6 @@
 				C2AFDAA71C89AB6E00D64594 /* HTTPDataResponse.m in Sources */,
 				C250FF761C86990F0044BBD4 /* DAGSearchNewsViewController.m in Sources */,
 				C2AFDAAA1C89AB6E00D64594 /* HTTPFileResponse.m in Sources */,
-				C2F056861C8FBEA800918256 /* CommentViewController.m in Sources */,
 				C2B4E12C1C8ECB8400047D46 /* UIView+BackgroundColor.m in Sources */,
 				C2AFDAB11C89AB6E00D64594 /* DDASLLogger.m in Sources */,
 				C215A5701C8547A200C5487A /* Dem_RongData.m in Sources */,
@@ -1578,7 +1549,6 @@
 				C2CF9EE91C84707C00031C10 /* MJRefreshHeaderView.m in Sources */,
 				C2CF9EF41C84707C00031C10 /* UIImage+GIF.m in Sources */,
 				C2ACFAE11C8A743500023A99 /* DAGDownLoadViewController.m in Sources */,
-				C2D277581C94403C008A2806 /* webViewController.m in Sources */,
 				C23F73FE1C86921000C1475E /* LoginViewController.m in Sources */,
 				C2CF9EF91C84707C00031C10 /* UIView+WebCacheOperation.m in Sources */,
 				C2AFDA9D1C89AB6E00D64594 /* DDNumber.m in Sources */,

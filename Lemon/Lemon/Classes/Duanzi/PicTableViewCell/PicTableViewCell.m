@@ -11,33 +11,13 @@
 @implementation PicTableViewCell
 
 - (void)awakeFromNib {
-    self.like = 0;
+
     self.userPhotoView.layer.masksToBounds = YES;
     self.userPhotoView.layer.cornerRadius = self.userPhotoView.frame.size.width *0.5;
     
 }
 
 
-
-
-- (IBAction)likeActionButton:(UIButton *)sender {
-
-    
-}
-
-- (IBAction)disLikeActionButton:(UIButton *)sender {
-      NSLog(@"点击了踩");
-}
-
-- (IBAction)commentActionButton:(UIButton *)sender {
-    [[NSNotificationCenter defaultCenter]postNotificationName:@"comment" object:nil];
-    
-    NSLog(@"点击了评论");
-}
-
-- (IBAction)shareAction:(UIButton *)sender {
-      NSLog(@"点击了分享");
-}
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];

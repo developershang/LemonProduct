@@ -24,11 +24,11 @@
 - (void)setup{
     
     self.backgroundColor = [UIColor blackColor];
-    self.segement = [[UISegmentedControl alloc] initWithItems:@[@"段子",@"图片",@"笑话",@"动图"]];
+    self.segement = [[UISegmentedControl alloc] initWithItems:@[@"段子",@"图片",@"动图"]];
     self.segement.frame = CGRectMake(0, 64, self.frame.size.width, 30);
     self.segement.backgroundColor = [UIColor whiteColor];
+    self.segement.selectedSegmentIndex = 1;
     [self addSubview:self.segement];
-    
     
     
     self.table = [[UITableView alloc] initWithFrame:CGRectMake(0, 64+30, self.frame.size.width, self.frame.size.height - 94 - 49 ) style:UITableViewStylePlain];

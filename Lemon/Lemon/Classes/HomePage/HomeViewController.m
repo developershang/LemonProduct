@@ -91,7 +91,7 @@
     
     DAGNewsListViewController *dvc = [[DAGNewsListViewController alloc] init];
        UINavigationController *ndvc = [[UINavigationController alloc] initWithRootViewController:dvc];
-    ndvc.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"video" image:[UIImage imageNamed:@"movie.png"] tag:103];
+    ndvc.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"news" image:[UIImage imageNamed:@"movie.png"] tag:103];
 
     
     RoserViewController *rvc = [[RoserViewController alloc] init];

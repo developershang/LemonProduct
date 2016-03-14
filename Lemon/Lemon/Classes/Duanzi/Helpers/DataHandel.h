@@ -20,6 +20,8 @@
 //搜索传值
 @property (nonatomic, strong)NSIndexPath *indexPath;
 
+
+@property (nonatomic,assign)NSInteger selectedIndex;
 #pragma mark单例的建立
 +(instancetype)shareInstance;
 

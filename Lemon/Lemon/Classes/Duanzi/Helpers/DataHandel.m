@@ -115,6 +115,8 @@ static DataHandel *datahandel;
         
     }];
     
+    
+    
 }
 
 
@@ -148,7 +150,6 @@ static DataHandel *datahandel;
         
         NSMutableDictionary *infodic = dic[@"info"];
         [self.infoDAtaArray addObject:[infodic objectForKey:@"maxtime"]];
-        NSLog(@"maxtime ===  %@",self.infoDAtaArray);
         
         NSMutableArray *array = dic[@"list"];
         
@@ -157,8 +158,7 @@ static DataHandel *datahandel;
             SG_Model *model = [[SG_Model alloc] init];
             
             [model setValuesForKeysWithDictionary:dict];
-            
-            
+
             [self.DataArray addObject:model];
             
         };
