@@ -271,6 +271,11 @@ static NSInteger i = 1;
               } else {
               [cell setimageWithModel:nil];
               }
+              // 为image添加手势 进行轻拍放大
+              UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction)];
+              cell.photoView.userInteractionEnabled = YES;
+              [cell.photoView addGestureRecognizer:tap];
+              self.photo = cell.photoView;
               self.imageSize = [XU_ImageTools getImageSizeWithURL:model.url];
               cell.model = model;
               return cell;
@@ -300,20 +305,20 @@ static NSInteger i = 1;
                      [self.navigationController pushViewController:ddvc animated:YES];
               } else {
               
-       DAGJokeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifier forIndexPath:indexPath];
-       cell.selectionStyle = UITableViewCellSelectionStyleNone;
-       DAGFunPicModel *model = self.FunPicArray[indexPath.row];
-       cell.updateLab.text = model.updatetime;
-       cell.contentLab.text = model.content;
-       [cell.photoView sd_setImageWithURL:[NSURL URLWithString:model.url] placeholderImage:[UIImage imageNamed:@"placeholder"]];
-                     
-       // 为image添加手势 进行轻拍放大
-       UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction)];
-       cell.photoView.userInteractionEnabled = YES;
-       [cell.photoView addGestureRecognizer:tap];
-       self.photo = cell.photoView;
-       self.imageSize = [XU_ImageTools getImageSizeWithURL:model.url];
-       cell.model = model;
+//       DAGJokeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifier forIndexPath:indexPath];
+//       cell.selectionStyle = UITableViewCellSelectionStyleNone;
+//       DAGFunPicModel *model = self.FunPicArray[indexPath.row];
+//       cell.updateLab.text = model.updatetime;
+//       cell.contentLab.text = model.content;
+//       [cell.photoView sd_setImageWithURL:[NSURL URLWithString:model.url] placeholderImage:[UIImage imageNamed:@"placeholder"]];
+//                     
+//       // 为image添加手势 进行轻拍放大
+//       UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction)];
+//       cell.photoView.userInteractionEnabled = YES;
+//       [cell.photoView addGestureRecognizer:tap];
+//       self.photo = cell.photoView;
+//       self.imageSize = [XU_ImageTools getImageSizeWithURL:model.url];
+//       cell.model = model;
        }
        }
 }
@@ -365,7 +370,7 @@ static NSInteger i = 1;
               } else {
                      AVObject *Submit = [AVObject objectWithClassName:@"Submit"];
                      [Submit setObject:@"1" forKey:@"click"];
-                     [Submit setObject:@"content" forKey:@"comment"];
+                     [Submit setObject:@"很不错的笑话😀" forKey:@"comment"];
                      [Submit setObject:self.model.hashId forKey:@"hashId"];
                      [Submit save];
                      [self getPraise];
