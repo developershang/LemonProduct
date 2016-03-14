@@ -43,7 +43,7 @@
        self.dlv.table.backgroundView = image;
        self.navigationItem.title = @"实时热点";
        
-       UIBarButtonItem *right = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"06-magnifying-glass"] style:UIBarButtonItemStyleDone target:self action:@selector(searchAction)];
+       UIBarButtonItem *right = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:@selector(searchAction)];
        self.navigationItem.rightBarButtonItem = right;
        
        self.dlv.table.dataSource = self;
