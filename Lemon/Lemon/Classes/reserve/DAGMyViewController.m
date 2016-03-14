@@ -42,7 +42,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
        switch (section) {
               case 0:
-                     return 2;
+                     return 1;
                      break;
                case 1:
                      return 1;
@@ -66,8 +66,6 @@
               if (indexPath.row == 0) {
                      cell.textLabel.text = @"我的下载";
                      
-              }else {
-                     cell.textLabel.text = @"清除缓存";
               }
        } else {
               cell.textLabel.text = @"夜间模式";

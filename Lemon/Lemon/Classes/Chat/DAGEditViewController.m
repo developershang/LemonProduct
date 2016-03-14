@@ -141,7 +141,7 @@ static BOOL isLoaded;
        if (isLoaded == NO) {
        CGRect currentFrame = self.view.frame;
        CGFloat change = [self keyboardEndFrameHeight:[notification userInfo]];
-       currentFrame.origin.y = currentFrame.origin.y - change + 100 ;
+       currentFrame.origin.y = currentFrame.origin.y - change;
        self.view.frame = currentFrame;
        isLoaded = YES;
        }
@@ -153,10 +153,9 @@ static BOOL isLoaded;
 -(void)keyboardWillDisAppear:(NSNotification *)notification
 
 {
-       
        CGRect currentFrame = self.view.frame;
        CGFloat change = [self keyboardEndFrameHeight:[notification userInfo]];
-       currentFrame.origin.y = currentFrame.origin.y + change - 100;
+       currentFrame.origin.y = currentFrame.origin.y + change;
        self.view.frame = currentFrame;
        isLoaded = NO;
 }
