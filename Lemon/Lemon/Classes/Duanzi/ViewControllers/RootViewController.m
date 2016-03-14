@@ -21,6 +21,7 @@
 #import "XU_ImageTools.h"
 #import "DAGImageManager.h"
 #import "DAGJokeViewController.h"
+#import "webViewController.h"
 @interface RootViewController ()<UITableViewDataSource ,UITableViewDelegate>
 
 @property (nonatomic, strong)UIImageView *photo;
@@ -359,7 +360,7 @@
 
             
         case 2: {
-            UIViewController *vc = [[UIViewController alloc] init];
+            webViewController *vc = [[webViewController alloc] init];
             vc.view.backgroundColor = [UIColor cyanColor];
             [self.navigationController pushViewController:vc animated:YES];
         }break;

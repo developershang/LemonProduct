@@ -36,6 +36,7 @@
     self.client = [[AVIMClient alloc] init];
     
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(NSNotificationAction) name:@"reload" object:@"refresh"];
+    
     self.alert = [UIAlertController alertControllerWithTitle:@"好友添加" message:[NSString stringWithFormat:@"add"] preferredStyle:UIAlertControllerStyleAlert];
     
     

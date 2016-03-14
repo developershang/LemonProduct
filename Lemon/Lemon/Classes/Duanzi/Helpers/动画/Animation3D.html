@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+	<meta charset="UTF-8">
+	<title>3D Cube</title>
+
+	<style type="text/css">
+@keyframes roll{
+
+	from{
+		-webkit-transform: rotateX(0) rotateY(0);
+                transform: rotateX(0) rotateY(0);
+	}
+	to{
+	-webkit-transform: rotateX(360deg) rotateY(-360deg);
+            transform: rotateX(360deg) rotateY(360deg);
+	}
+}
+ 
+
+
+.bg{
+
+	margin-top: 100px;
+	margin-left: 50px;
+	width: 200px;
+	height: 200px;
+	padding: 50px;
+	position: relative;;
+	animation: roll 8s linear infinite;
+	-webkit-transform:rotateX(45deg) rotateY(45deg);
+	/*这句话可以开区3d效果*/
+	-webkit-transform-style: preserve-3d;
+	transform-style: preserve-3d;
+}
+
+.bg div{
+
+    margin:(100px,50px);
+	width: 200px;
+	height: 200px;
+	background: cyan;
+	position: absolute;
+	background-size: cover;
+}
+
+
+.bg div:nth-of-type(1){
+
+	-webkit-transform:  translateZ(100px);
+	background-image: url(1.jpg);
+}
+
+.bg div:nth-of-type(2){
+
+	-webkit-transform: rotateY(90deg) translateZ(100px);
+	background-image: url(2.jpg);
+
+}
+.bg div:nth-of-type(3){
+
+	-webkit-transform: rotateY(180deg) translateZ(100px);
+	background-image: url(3.jpg);
+
+}
+.bg div:nth-of-type(4){
+
+	-webkit-transform: rotateY(-90deg) translateZ(100px);
+	background-image: url(4.jpg);
+
+}
+.bg div:nth-of-type(5){
+
+	-webkit-transform: rotateX(90deg) translateZ(100px);
+	background-image: url(5.jpg);
+
+}
+
+.bg div:nth-of-type(6){
+
+	-webkit-transform: rotateX(-90deg) translateZ(100px) ;
+	background-image: url(8.jpg);
+
+}
+
+
+	</style>
+
+
+</head>
+	<body>
+
+		<div class="bg">
+
+			<div class="div1">1</div>
+			<div class="div2">2</div>
+			<div class="div3">3</div>
+			<div class="div4">4</div>
+			<div class="div5">5</div>
+			<div class="div6">6</div>
+
+		</div>
+
+	</body>
+</html>

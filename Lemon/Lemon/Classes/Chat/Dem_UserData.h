@@ -20,6 +20,7 @@
 //好友table刷新
 @property(nonatomic,assign)BOOL reLoad;
 
+
 /**
  *@param 单例
  *@return
