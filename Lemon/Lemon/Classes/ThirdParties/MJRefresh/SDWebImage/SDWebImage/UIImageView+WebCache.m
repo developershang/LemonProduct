@@ -42,12 +42,7 @@ static char imageURLKey;
     [self sd_cancelCurrentImageLoad];
     objc_setAssociatedObject(self, &imageURLKey, url, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 
-    if (!(options & SDWebImageDelayPlaceholder)) {
-        dispatch_main_async_safe(^{
-            self.image = placeholder;
-        });
-    }
-    
+ 
     if (url) {
         __weak __typeof(self)wself = self;
         id <SDWebImageOperation> operation = [SDWebImageManager.sharedManager downloadImageWithURL:url options:options progress:progressBlock completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {

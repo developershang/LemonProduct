@@ -2,7 +2,7 @@
 //  RootView.m
 //  Lemon
 //
-//  Created by lanou3g on 16/3/2.
+//  Created by shang on 16/3/2.
 //  Copyright © 2016年 Demon. All rights reserved.
 //
 
@@ -47,5 +47,10 @@
     // Drawing code
 }
 */
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    
+    NSLog(@"开会时触摸");
+}
 
 @end

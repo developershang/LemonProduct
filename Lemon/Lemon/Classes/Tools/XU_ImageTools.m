@@ -2,7 +2,7 @@
 //  XU_ImageTools.m
 //  知聊
 //
-//  Created by lanou3g on 16/1/27.
+//  Created by shang on 16/1/27.
 //  Copyright © 2016年 XuMengyu. All rights reserved.
 //
 

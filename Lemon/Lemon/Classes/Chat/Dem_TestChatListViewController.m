@@ -2,7 +2,7 @@
 //  Dem_TestChatListViewController.m
 //  Lemon
 //
-//  Created by lanou3g on 16/3/1.
+//  Created by shang on 16/3/1.
 //  Copyright © 2016年 Demon. All rights reserved.
 //
 

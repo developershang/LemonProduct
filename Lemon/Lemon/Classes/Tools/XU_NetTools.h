@@ -2,8 +2,8 @@
 //  XU_NetTools.h
 //  UILesson17_NetWorking2
 //
-//  Created by lanou3g on 15/12/29.
-//  Copyright © 2015年 lanou3g. All rights reserved.
+//  Created by shang on 15/12/29.
+//  Copyright © 2015年 shang. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>

@@ -2,7 +2,7 @@
 //  SG_NetTools.h
 //  UILesson17_NetWorking2
 //
-//  Created by lanou3g on 15/12/29.
+//  Created by shang on 15/12/29.
 //  Copyright © 2015年 上官伟. All rights reserved.
 //
 

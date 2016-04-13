@@ -2,7 +2,7 @@
 //  HomeViewController.m
 //  Lemon
 //
-//  Created by lanou3g on 16/3/1.
+//  Created by shang on 16/3/1.
 //  Copyright © 2016年 Demon. All rights reserved.
 //
 
@@ -86,7 +86,7 @@
        
     RootViewController *srvc = [[RootViewController alloc] init];
     enjoyViewController *evc = [[enjoyViewController alloc] initWithRootViewController:srvc];
-    evc.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"enjoy" image:[UIImage imageNamed:@"duanzi.png"] tag:102];
+    evc.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"enjoy" image:[UIImage imageNamed:@"Duanzi.png"] tag:102];
     
     
     DAGNewsListViewController *dvc = [[DAGNewsListViewController alloc] init];

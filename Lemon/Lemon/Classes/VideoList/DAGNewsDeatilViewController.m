@@ -2,7 +2,7 @@
 //  DAGNewsDeatilViewController.m
 //  Lemon
 //
-//  Created by lanou3g on 16/3/2.
+//  Created by shang on 16/3/2.
 //  Copyright © 2016年 Demon. All rights reserved.
 //
 
@@ -67,6 +67,12 @@ static BOOL isLoading = NO;
        [act stopAnimating];
        UIView *view = (UIView*)[self.view viewWithTag:108];
        [view removeFromSuperview];
+    
+   NSString *str = @"document.getElementsById('BAIDU_UNION__wrapper_u2355094_0').style.display = 'none';";
+    [webView stringByEvaluatingJavaScriptFromString:str];
+    
+    
+    
 }
 
 

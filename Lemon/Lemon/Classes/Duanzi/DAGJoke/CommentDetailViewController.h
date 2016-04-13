@@ -2,7 +2,7 @@
 //  CommentDetailViewController.h
 //  Lemon
 //
-//  Created by lanou3g on 16/3/4.
+//  Created by shang on 16/3/4.
 //  Copyright © 2016年 Demon. All rights reserved.
 //
 

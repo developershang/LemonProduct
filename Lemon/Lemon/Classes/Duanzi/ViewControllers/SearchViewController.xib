@@ -30,7 +30,7 @@
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </tableView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xjt-TO-kvO">
-                    <rect key="frame" x="30" y="15" width="68" height="34"/>
+                    <rect key="frame" x="30" y="30" width="48" height="24"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="xjt-TO-kvO" secondAttribute="height" multiplier="2" id="GmT-qZ-7hO"/>
                     </constraints>
@@ -42,8 +42,8 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="xjt-TO-kvO" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="15" id="LNJ-RW-8yR"/>
-                <constraint firstItem="Xgd-rJ-scK" firstAttribute="top" secondItem="xjt-TO-kvO" secondAttribute="bottom" constant="15" id="ilw-Rq-rkx"/>
+                <constraint firstItem="xjt-TO-kvO" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="30" id="LNJ-RW-8yR"/>
+                <constraint firstItem="Xgd-rJ-scK" firstAttribute="top" secondItem="xjt-TO-kvO" secondAttribute="bottom" constant="10" id="ilw-Rq-rkx"/>
                 <constraint firstItem="RHs-hV-3BT" firstAttribute="top" secondItem="Xgd-rJ-scK" secondAttribute="bottom" id="kBQ-Nc-mgv"/>
                 <constraint firstAttribute="bottom" secondItem="RHs-hV-3BT" secondAttribute="bottom" id="l0X-Ap-Ety"/>
                 <constraint firstItem="Xgd-rJ-scK" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="lS4-uW-XBi"/>

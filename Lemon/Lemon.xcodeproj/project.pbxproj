@@ -186,6 +186,7 @@
 		C2F0568B1C8FBEA800918256 /* SearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2F056851C8FBEA800918256 /* SearchViewController.xib */; };
 		C2F0568F1C90024B00918256 /* RequsetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2F0568D1C90024B00918256 /* RequsetViewController.m */; };
 		C2F056901C90024B00918256 /* RequsetViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2F0568E1C90024B00918256 /* RequsetViewController.xib */; };
+		C2FBC1AE1C997A5D0088F9E2 /* TableViwe.m in Sources */ = {isa = PBXBuildFile; fileRef = C2FBC1AD1C997A5D0088F9E2 /* TableViwe.m */; };
 		FB934B9229C3398109C09466 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 07F427A90B2FA9BEBB7AAB3B /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -513,6 +514,8 @@
 		C2F0568C1C90024B00918256 /* RequsetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequsetViewController.h; sourceTree = "<group>"; };
 		C2F0568D1C90024B00918256 /* RequsetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RequsetViewController.m; sourceTree = "<group>"; };
 		C2F0568E1C90024B00918256 /* RequsetViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RequsetViewController.xib; sourceTree = "<group>"; };
+		C2FBC1AC1C997A5D0088F9E2 /* TableViwe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViwe.h; sourceTree = "<group>"; };
+		C2FBC1AD1C997A5D0088F9E2 /* TableViwe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViwe.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -608,6 +611,8 @@
 				C28B97061C911E2F0018CD34 /* cat.jpg */,
 				C2A54D691C86EF4C00C7F4E4 /* RootView.h */,
 				C2A54D6A1C86EF4C00C7F4E4 /* RootView.m */,
+				C2FBC1AC1C997A5D0088F9E2 /* TableViwe.h */,
+				C2FBC1AD1C997A5D0088F9E2 /* TableViwe.m */,
 				C2A0CFE41C8D19DF00E5A614 /* DAGAuthCodeView.h */,
 				C2A0CFE51C8D19DF00E5A614 /* DAGAuthCodeView.m */,
 			);
@@ -1358,6 +1363,7 @@
 				TargetAttributes = {
 					C2CF9E551C846B6F00031C10 = {
 						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = P35JAKLEU6;
 					};
 				};
 			};
@@ -1522,6 +1528,7 @@
 				C2B4E1161C8ECB8400047D46 /* UIViewController+ChangeColor.m in Sources */,
 				C2CF9E841C846FFB00031C10 /* AppDelegate.m in Sources */,
 				C215A56D1C852D9100C5487A /* RoserViewController.m in Sources */,
+				C2FBC1AE1C997A5D0088F9E2 /* TableViwe.m in Sources */,
 				C23F74011C86921E00C1475E /* RegisterViewController.m in Sources */,
 				C2B4E1211C8ECB8400047D46 /* UINavigationBar+NightVersion.m in Sources */,
 				C2B4E11E1C8ECB8400047D46 /* UILabel+NightVersion.m in Sources */,
@@ -1732,12 +1739,15 @@
 			baseConfigurationReference = 68C7E15C7E372A6FA8348E80 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Lemon/Classes/Tools/SysPCH.pch;
 				INFOPLIST_FILE = Lemon/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.tingyuge.Lemon;
+				PRODUCT_BUNDLE_IDENTIFIER = com.asdfasdfasdf;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)";
 			};
 			name = Debug;
@@ -1747,12 +1757,15 @@
 			baseConfigurationReference = 173C73A07B362DCA9DDC6B43 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Lemon/Classes/Tools/SysPCH.pch;
 				INFOPLIST_FILE = Lemon/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.tingyuge.Lemon;
+				PRODUCT_BUNDLE_IDENTIFIER = com.asdfasdfasdf;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)";
 			};
 			name = Release;

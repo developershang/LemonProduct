@@ -2,7 +2,7 @@
 //  RootViewController.m
 //  Lemon
 //
-//  Created by lanou3g on 16/3/1.
+//  Created by shang on 16/3/1.
 //  Copyright © 2016年 Demon. All rights reserved.
 //
 
@@ -135,12 +135,10 @@ NSInteger selectedIndex = 1;
         [act setCenter:CGPointMake(picCell.contentImageView.frame.size.width *0.5, picCell.contentImageView.frame.size.height *0.5)];
         [picCell.contentImageView addSubview:act];
         [act startAnimating];
-        
         [picCell.contentImageView sd_setImageWithURL:[NSURL URLWithString:model.image0] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
             [act stopAnimating];
         }];
-        
-        
+            
         picCell.contentDetailLabel.text = model.text;
         picCell.checkDetailLabel.text = [NSString stringWithFormat:@"赞:%@    踩:%@    分享:%@", model.love,model.hate,model.comment];
         self.photo = picCell.contentImageView;
@@ -264,6 +262,7 @@ NSInteger selectedIndex = 1;
 
 - (void)viewWillAppear:(BOOL)animated{
     self.rv.segement.selectedSegmentIndex =selectedIndex;
+    NSLog(@"你好啊");
 }
 /*
 #pragma mark - Navigation
@@ -276,9 +275,17 @@ NSInteger selectedIndex = 1;
 */
 
 
+- (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    
+    NSLog(@"触摸完毕");
+    
+}
 
 
-
+- (void)touchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    
+    NSLog(@"触摸");
+}
 
 
 
